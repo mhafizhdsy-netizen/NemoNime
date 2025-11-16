@@ -18,7 +18,7 @@ function Home() {
   if (!homeInfo) return <Error error="404" />;
   return (
     <>
-      <div className="pt-16 w-full">
+      <div id="main-content" className="pt-16 w-full">
         <Spotlight spotlights={homeInfo.spotlights} />
         <div className="mt-6">
           <Genre data={homeInfo.genres} />

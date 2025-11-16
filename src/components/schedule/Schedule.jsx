@@ -119,7 +119,7 @@ const Schedule = () => {
           <div className="font-bold text-2xl text-white max-[478px]:text-[18px]">
             Estimated Schedule
           </div>
-          <p className="leading-[28px] px-3 bg-zinc-800 text-white rounded-md text-[14px] font-medium max-[478px]:text-[12px] max-[275px]:text-[10px]">
+          <p className="leading-[28px] px-3 bg-zinc-800 text-white rounded-xl text-[14px] font-medium max-[478px]:text-[12px] max-[275px]:text-[10px]">
             ({GMTOffset}) {currentTime.toLocaleDateString()}{" "}
             {currentTime.toLocaleTimeString()}
           </p>
@@ -150,7 +150,7 @@ const Schedule = () => {
                   <div
                     ref={(el) => (cardRefs.current[index] = el)}
                     onClick={() => toggleActive(index)}
-                    className={`h-[60px] flex flex-col justify-center items-center w-full text-center rounded-lg cursor-pointer transition-all duration-200 ${
+                    className={`h-[60px] flex flex-col justify-center items-center w-full text-center rounded-xl cursor-pointer transition-all duration-200 ${
                       currentActiveIndex === index
                         ? "bg-white text-black"
                         : "bg-zinc-800 text-white hover:bg-zinc-700"
@@ -213,7 +213,7 @@ const Schedule = () => {
                   {item.title || "N/A"}
                 </h3>
               </div>
-              <div className="flex items-center gap-x-2 py-1 px-3 rounded-md bg-zinc-800 group-hover:bg-white transition-all duration-200">
+              <div className="flex items-center gap-x-2 py-1 px-3 rounded-xl bg-zinc-800 group-hover:bg-white transition-all duration-200">
                 <FontAwesomeIcon
                   icon={faPlay}
                   className="mt-[1px] text-[10px] max-[320px]:text-[8px] text-zinc-400 group-hover:text-black"
@@ -239,3 +239,4 @@ const Schedule = () => {
 };
 
 export default Schedule;
+

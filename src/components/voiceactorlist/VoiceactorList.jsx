@@ -84,7 +84,7 @@ function VoiceactorList({ id, isOpen, onClose }) {
           </div>
 
           {/* Content */}
-          <div className="flex-1 overflow-y-auto p-2 sm:p-6 scrollbar-thin scrollbar-thumb-zinc-800 scrollbar-track-transparent">
+          <div className="flex-1 overflow-y-auto p-2 sm:p-6 scrollbar-thin scrollbar-track-transparent scrollbar-track-rounded-xl scrollbar-thumb-white/10 hover:scrollbar-thumb-white/20 scrollbar-thumb-rounded-xl">
             {loading ? (
               <VoiceActorlistLoader />
             ) : (

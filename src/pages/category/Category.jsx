@@ -45,20 +45,38 @@ function Category({ path, label }) {
         {loading ? (
           <CategoryCardLoader className={"max-[478px]:mt-2"} gridClass={categoryGridClass} />
         ) : page > totalPages ? (
-          <div className="flex flex-col gap-y-4">
-            <h1 className="font-bold text-2xl text-white max-[478px]:text-[18px]">
-              {label.split("/").pop()}
-            </h1>
-            <p className="text-white text-lg max-[478px]:text-[16px] max-[300px]:leading-6">
-              You came a long way, go back <br className="max-[300px]:hidden" />
-              nothing is here
-            </p>
+          <div className="flex flex-col gap-y-6 bg-gradient-to-br from-[#141414] to-[#0f0f0f] rounded-xl p-8 border border-white/5 shadow-xl">
+            <div className="flex items-center gap-3">
+              <span className="w-1.5 h-8 bg-gradient-to-b from-[#e91e63] to-[#00bcd4] rounded-full"></span>
+              <h1 className="font-bold text-3xl text-white max-[478px]:text-xl">
+                {label.split("/").pop()}
+              </h1>
+            </div>
+            <div className="flex flex-col items-center justify-center py-12 gap-4">
+              <div className="w-20 h-20 rounded-full bg-gradient-to-br from-[#e91e63]/20 to-[#00bcd4]/20 flex items-center justify-center border border-white/10">
+                <span className="text-4xl">🚀</span>
+              </div>
+              <p className="text-white/70 text-lg text-center max-[478px]:text-base max-[300px]:leading-6">
+                You came a long way, go back <br className="max-[300px]:hidden" />
+                nothing is here
+              </p>
+            </div>
           </div>
         ) : categoryInfo && categoryInfo.length > 0 ? (
-          <div className="flex flex-col gap-y-2 max-[478px]:gap-y-0">
-            <h1 className="font-bold text-2xl text-white max-[478px]:text-[18px]">
-              {label.split("/").pop()}
-            </h1>
+          <div className="flex flex-col gap-y-6 max-[478px]:gap-y-4">
+            <div className="bg-gradient-to-br from-[#141414] to-[#0f0f0f] rounded-xl p-6 border border-white/5 shadow-xl max-[478px]:p-4">
+              <div className="flex items-center gap-3">
+                <span className="w-1.5 h-8 bg-gradient-to-b from-[#e91e63] to-[#00bcd4] rounded-full max-[478px]:h-6"></span>
+                <h1 className="font-bold text-3xl text-white max-[478px]:text-xl">
+                  {label.split("/").pop()}
+                </h1>
+              </div>
+              <div className="mt-2 flex items-center gap-2 text-white/50 text-sm">
+                <span>Page {page} of {totalPages}</span>
+                <span>•</span>
+                <span>{categoryInfo.length} results</span>
+              </div>
+            </div>
             <CategoryCard
               data={categoryInfo}
               showViewMore={false}
@@ -67,7 +85,7 @@ function Category({ path, label }) {
               categoryPage={true}
               path={path}
             />
-            <div className="flex justify-center w-full mt-8">
+            <div className="flex justify-center w-full mt-4">
               <PageSlider
                 page={page}
                 totalPages={totalPages}
@@ -76,22 +94,38 @@ function Category({ path, label }) {
             </div>
           </div>
         ) : error ? (
-          <div className="flex flex-col gap-y-4">
-            <h1 className="font-bold text-2xl text-white max-[478px]:text-[18px]">
-              {label.split("/").pop()}
-            </h1>
-            <p className="text-white text-lg max-[478px]:text-[16px]">
-              Couldn't get {label.split("/").pop()} results, please try again
-            </p>
+          <div className="flex flex-col gap-y-6 bg-gradient-to-br from-[#141414] to-[#0f0f0f] rounded-xl p-8 border border-white/5 shadow-xl">
+            <div className="flex items-center gap-3">
+              <span className="w-1.5 h-8 bg-gradient-to-b from-[#e91e63] to-[#00bcd4] rounded-full"></span>
+              <h1 className="font-bold text-3xl text-white max-[478px]:text-xl">
+                {label.split("/").pop()}
+              </h1>
+            </div>
+            <div className="flex flex-col items-center justify-center py-12 gap-4">
+              <div className="w-20 h-20 rounded-full bg-gradient-to-br from-red-500/20 to-orange-500/20 flex items-center justify-center border border-red-500/20">
+                <span className="text-4xl">⚠️</span>
+              </div>
+              <p className="text-white/70 text-lg text-center max-[478px]:text-base">
+                Couldn't get {label.split("/").pop()} results, please try again
+              </p>
+            </div>
           </div>
         ) : (
-          <div className="flex flex-col gap-y-4">
-            <h1 className="font-bold text-2xl text-white max-[478px]:text-[18px]">
-              {label.split("/").pop()}
-            </h1>
-            <p className="text-white text-lg max-[478px]:text-[16px]">
-              No results found for: {label.split("/").pop()}
-            </p>
+          <div className="flex flex-col gap-y-6 bg-gradient-to-br from-[#141414] to-[#0f0f0f] rounded-xl p-8 border border-white/5 shadow-xl">
+            <div className="flex items-center gap-3">
+              <span className="w-1.5 h-8 bg-gradient-to-b from-[#e91e63] to-[#00bcd4] rounded-full"></span>
+              <h1 className="font-bold text-3xl text-white max-[478px]:text-xl">
+                {label.split("/").pop()}
+              </h1>
+            </div>
+            <div className="flex flex-col items-center justify-center py-12 gap-4">
+              <div className="w-20 h-20 rounded-full bg-gradient-to-br from-[#e91e63]/20 to-[#00bcd4]/20 flex items-center justify-center border border-white/10">
+                <span className="text-4xl">🔍</span>
+              </div>
+              <p className="text-white/70 text-lg text-center max-[478px]:text-base">
+                No results found for: {label.split("/").pop()}
+              </p>
+            </div>
           </div>
         )}
       </div>

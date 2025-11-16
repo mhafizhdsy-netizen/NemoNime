@@ -87,7 +87,7 @@ function Cart({ label, data, path }) {
                 </Link>
                 <div className="flex items-center flex-wrap w-fit space-x-1">
                   {item.tvInfo?.sub && (
-                    <div className="flex space-x-1 justify-center items-center bg-[#B0E3AF] rounded-[4px] px-[4px] text-black py-[2px]">
+                    <div className="flex space-x-1 justify-center items-center bg-[#B0E3AF] rounded-lg px-[4px] text-black py-[2px]">
                       <FontAwesomeIcon
                         icon={faClosedCaptioning}
                         className="text-[12px]"
@@ -97,7 +97,7 @@ function Cart({ label, data, path }) {
                   )}
 
                   {item.tvInfo?.dub && (
-                    <div className="flex space-x-1 justify-center items-center bg-[#B9E7FF] rounded-[4px] px-[8px] text-black py-[2px]">
+                    <div className="flex space-x-1 justify-center items-center bg-[#B9E7FF] rounded-lg px-[8px] text-black py-[2px]">
                       <FontAwesomeIcon
                         icon={faMicrophone}
                         className="text-[12px]"
@@ -130,3 +130,4 @@ function Cart({ label, data, path }) {
 }
 
 export default Cart;
+

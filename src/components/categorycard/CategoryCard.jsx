@@ -102,7 +102,7 @@ const CategoryCard = React.memo(
                   className="flex flex-col category-card-container"
                   style={{ height: "fit-content" }}
                 >
-                  <div className="w-full h-auto pb-[140%] relative inline-block overflow-hidden rounded-lg shadow-lg group">
+                  <div className="w-full h-auto pb-[140%] relative inline-block overflow-hidden rounded-xl shadow-lg group">
                     <div
                       className="inline-block bg-gray-900 absolute left-0 top-0 w-full h-full group hover:cursor-pointer"
                       onClick={() =>
@@ -118,7 +118,7 @@ const CategoryCard = React.memo(
                       <img
                         src={`${item.poster}`}
                         alt={item.title}
-                        className="block w-full h-full object-cover transition-all duration-500 ease-in-out group-hover:scale-105 group-hover:blur-sm"
+                        className="block w-full h-full object-cover transition-all duration-500 ease-in-out group-hover:scale-105"
                       />
                       <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-center justify-center">
                         <div className="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
@@ -131,14 +131,14 @@ const CategoryCard = React.memo(
                     </div>
                     {(item.tvInfo?.rating === "18+" ||
                       item?.adultContent === true) && (
-                      <div className="text-white px-2 py-0.5 rounded-lg bg-red-600 absolute top-3 left-3 flex items-center justify-center text-[12px] font-bold">
+                      <div className="text-white px-2 py-0.5 rounded-xl bg-red-600 absolute top-3 left-3 flex items-center justify-center text-[12px] font-bold">
                         18+
                       </div>
                     )}
                     <div className="absolute bottom-0 left-0 right-0 p-3 pb-2 bg-gradient-to-t from-black/80 via-black/50 to-transparent">
                       <div className="flex items-center justify-start w-full space-x-1.5 z-[100] flex-wrap gap-y-1.5">
                         {item.tvInfo?.sub && (
-                          <div className="flex space-x-0.5 justify-center items-center bg-[#2a2a2a] rounded-[2px] px-2 text-white py-1">
+                          <div className="flex space-x-0.5 justify-center items-center bg-gradient-to-r from-white/10 to-white/5 border border-white/10 rounded-xl px-2 text-white py-1">
                             <FontAwesomeIcon
                               icon={faClosedCaptioning}
                               className="text-[11px]"
@@ -149,7 +149,7 @@ const CategoryCard = React.memo(
                           </div>
                         )}
                         {item.tvInfo?.dub && (
-                          <div className="flex space-x-0.5 justify-center items-center bg-[#2a2a2a] rounded-[2px] px-2 text-white py-1">
+                          <div className="flex space-x-0.5 justify-center items-center bg-gradient-to-r from-white/10 to-white/5 border border-white/10 rounded-xl px-2 text-white py-1">
                             <FontAwesomeIcon
                               icon={faMicrophone}
                               className="text-[11px]"
@@ -160,22 +160,22 @@ const CategoryCard = React.memo(
                           </div>
                         )}
                         {item.tvInfo?.showType && (
-                          <div className="bg-[#2a2a2a] text-white rounded-[2px] px-2 py-1 text-[11px] font-medium">
+                          <div className="bg-gradient-to-r from-white/10 to-white/5 border border-white/10 text-white rounded-xl px-2 py-1 text-[11px] font-medium">
                             {item.tvInfo.showType.split(" ").shift()}
                           </div>
                         )}
                         {item.releaseDate && (
-                          <div className="bg-[#2a2a2a] text-white rounded-[2px] px-2 py-1 text-[11px] font-medium">
+                          <div className="bg-gradient-to-r from-white/10 to-white/5 border border-white/10 text-white rounded-xl px-2 py-1 text-[11px] font-medium">
                             {item.releaseDate}
                           </div>
                         )}
                         {!item.tvInfo?.showType && item.type && (
-                          <div className="bg-[#2a2a2a] text-white rounded-[2px] px-2 py-1 text-[11px] font-medium">
+                          <div className="bg-gradient-to-r from-white/10 to-white/5 border border-white/10 text-white rounded-xl px-2 py-1 text-[11px] font-medium">
                             {item.type}
                           </div>
                         )}
                         {(item.tvInfo?.duration || item.duration) && (
-                          <div className="bg-[#2a2a2a] text-white rounded-[2px] px-2 py-1 text-[11px] font-medium">
+                          <div className="bg-gradient-to-r from-white/10 to-white/5 border border-white/10 text-white rounded-xl px-2 py-1 text-[11px] font-medium">
                             {item.tvInfo?.duration === "m" ||
                             item.tvInfo?.duration === "?" ||
                             item.duration === "m" ||
@@ -209,7 +209,7 @@ const CategoryCard = React.memo(
                 className="flex flex-col transition-transform duration-300 ease-in-out"
                 style={{ height: "fit-content" }}
               >
-                <div className="w-full h-auto pb-[140%] relative inline-block overflow-hidden rounded-lg shadow-lg group">
+                <div className="w-full h-auto pb-[140%] relative inline-block overflow-hidden rounded-xl shadow-lg group">
                   <div
                     className="inline-block bg-gray-900 absolute left-0 top-0 w-full h-full group hover:cursor-pointer"
                     onClick={() =>
@@ -225,7 +225,7 @@ const CategoryCard = React.memo(
                     <img
                       src={`${item.poster}`}
                       alt={item.title}
-                      className="block w-full h-full object-cover transition-all duration-500 ease-in-out group-hover:scale-105 group-hover:blur-sm"
+                      className="block w-full h-full object-cover transition-all duration-500 ease-in-out group-hover:scale-105"
                     />
                     <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-center justify-center">
                       <div className="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
@@ -238,14 +238,14 @@ const CategoryCard = React.memo(
                   </div>
                   {(item.tvInfo?.rating === "18+" ||
                     item?.adultContent === true) && (
-                    <div className="text-white px-2 py-0.5 rounded-lg bg-red-600 absolute top-3 left-3 flex items-center justify-center text-[12px] font-bold">
+                    <div className="text-white px-2 py-0.5 rounded-xl bg-red-600 absolute top-3 left-3 flex items-center justify-center text-[12px] font-bold">
                       18+
                     </div>
                   )}
                   <div className="absolute bottom-0 left-0 right-0 p-2 bg-gradient-to-t from-black/80 via-black/50 to-transparent">
                     <div className="flex items-center justify-start w-full space-x-1 max-[478px]:space-x-0.5 z-[100] flex-wrap gap-y-1">
                       {item.tvInfo?.sub && (
-                        <div className="flex space-x-0.5 justify-center items-center bg-[#2a2a2a] rounded-[2px] px-1.5 text-white py-0.5 max-[478px]:py-0.5 max-[478px]:px-1">
+                        <div className="flex space-x-0.5 justify-center items-center bg-gradient-to-r from-white/10 to-white/5 border border-white/10 rounded-xl px-1.5 text-white py-0.5 max-[478px]:py-0.5 max-[478px]:px-1">
                           <FontAwesomeIcon
                             icon={faClosedCaptioning}
                             className="text-[10px]"
@@ -256,7 +256,7 @@ const CategoryCard = React.memo(
                         </div>
                       )}
                       {item.tvInfo?.dub && (
-                        <div className="flex space-x-0.5 justify-center items-center bg-[#2a2a2a] rounded-[2px] px-1.5 text-white py-0.5 max-[478px]:py-0.5 max-[478px]:px-1">
+                        <div className="flex space-x-0.5 justify-center items-center bg-gradient-to-r from-white/10 to-white/5 border border-white/10 rounded-xl px-1.5 text-white py-0.5 max-[478px]:py-0.5 max-[478px]:px-1">
                           <FontAwesomeIcon
                             icon={faMicrophone}
                             className="text-[10px]"
@@ -267,22 +267,22 @@ const CategoryCard = React.memo(
                         </div>
                       )}
                       {item.tvInfo?.showType && (
-                        <div className="bg-[#2a2a2a] text-white rounded-[2px] px-1.5 py-0.5 text-[10px] font-medium max-[478px]:py-0.5 max-[478px]:px-1 max-[478px]:hidden">
+                        <div className="bg-gradient-to-r from-white/10 to-white/5 border border-white/10 text-white rounded-xl px-1.5 py-0.5 text-[10px] font-medium max-[478px]:py-0.5 max-[478px]:px-1 max-[478px]:hidden">
                           {item.tvInfo.showType.split(" ").shift()}
                         </div>
                       )}
                       {item.releaseDate && (
-                        <div className="bg-[#2a2a2a] text-white rounded-[2px] px-1.5 py-0.5 text-[10px] font-medium max-[478px]:py-0.5 max-[478px]:px-1">
+                        <div className="bg-gradient-to-r from-white/10 to-white/5 border border-white/10 text-white rounded-xl px-1.5 py-0.5 text-[10px] font-medium max-[478px]:py-0.5 max-[478px]:px-1">
                           {item.releaseDate}
                         </div>
                       )}
                       {!item.tvInfo?.showType && item.type && (
-                        <div className="bg-[#2a2a2a] text-white rounded-[2px] px-1.5 py-0.5 text-[10px] font-medium max-[478px]:py-0.5 max-[478px]:px-1">
+                        <div className="bg-gradient-to-r from-white/10 to-white/5 border border-white/10 text-white rounded-xl px-1.5 py-0.5 text-[10px] font-medium max-[478px]:py-0.5 max-[478px]:px-1">
                           {item.type}
                         </div>
                       )}
                       {(item.tvInfo?.duration || item.duration) && (
-                        <div className="bg-[#2a2a2a] text-white rounded-[2px] px-1.5 py-0.5 text-[10px] font-medium max-[478px]:py-0.5 max-[478px]:px-1 max-[478px]:hidden">
+                        <div className="bg-gradient-to-r from-white/10 to-white/5 border border-white/10 text-white rounded-xl px-1.5 py-0.5 text-[10px] font-medium max-[478px]:py-0.5 max-[478px]:px-1 max-[478px]:hidden">
                           {item.tvInfo?.duration === "m" ||
                           item.tvInfo?.duration === "?" ||
                           item.duration === "m" ||
@@ -312,3 +312,5 @@ const CategoryCard = React.memo(
 CategoryCard.displayName = "CategoryCard";
 
 export default CategoryCard;
+
+

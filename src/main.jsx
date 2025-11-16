@@ -1,13 +1,16 @@
 import { LanguageProvider } from './context/LanguageContext';
+import { ThemeProvider } from './context/ThemeContext';
 import { createRoot } from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 import App from './App.jsx';
 import './index.css';
 
 createRoot(document.getElementById('root')).render(
-  <LanguageProvider>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
-  </LanguageProvider>
+  <ThemeProvider>
+    <LanguageProvider>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </LanguageProvider>
+  </ThemeProvider>
 );

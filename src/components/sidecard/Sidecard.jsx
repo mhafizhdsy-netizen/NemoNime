@@ -32,7 +32,7 @@ function Sidecard({ data, label, className }) {
       {label && (
         <h2 className="font-medium text-lg text-neutral-200 mb-4">{label}</h2>
       )}
-      <div className="flex flex-col space-y-2 max-h-[600px] overflow-y-auto pr-2 scrollbar-thin scrollbar-track-[#1a1a1a] scrollbar-thumb-[#2a2a2a] hover:scrollbar-thumb-[#333] scrollbar-thumb-rounded">
+      <div className="flex flex-col space-y-2 max-h-[600px] overflow-y-auto pr-2 scrollbar-thin scrollbar-track-white/5 scrollbar-track-rounded-xl scrollbar-thumb-white/10 hover:scrollbar-thumb-white/20 scrollbar-thumb-rounded-xl">
         {data &&
           data.map((item, index) => (
             <div

@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 
 const ToggleButton = ({ label, isActive, onClick }) => (
   <button 
-    className="flex items-center text-xs px-2 py-0.5 rounded transition-colors hover:bg-[#2a2a2a]" 
+    className="flex items-center text-xs px-2 py-0.5 rounded-lg transition-colors hover:bg-[#2a2a2a]" 
     onClick={onClick}
   >
     <span className="text-gray-300">{label}</span>

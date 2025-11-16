@@ -1,73 +1,296 @@
-.spotlight {
-  overflow: hidden;
+/* Modern Spotlight Styles */
+.spotlight-modern {
   position: relative;
   width: 100%;
   height: 100%;
+  overflow: hidden;
 }
 
-.spotlight-overlay {
+/* Enhanced Image with Parallax */
+.spotlight-image {
+  will-change: transform;
+}
+
+/* Modern Gradient Overlay - DARK ONLY */
+.spotlight-overlay-modern {
   background: linear-gradient(
-    90deg,
-    #0a0a0a 0%,
-    rgba(10, 10, 10, 0.7) 35%,
-    rgba(10, 10, 10, 0) 65%
-  ),
-  linear-gradient(
-    to top,
-    #0a0a0a 0%,
-    rgba(10, 10, 10, 0.7) 20%,
-    rgba(10, 10, 10, 0) 50%
+    to right,
+    rgba(18, 18, 18, 0.95) 0%,
+    rgba(18, 18, 18, 0.85) 25%,
+    rgba(18, 18, 18, 0.6) 50%,
+    rgba(18, 18, 18, 0.3) 75%,
+    transparent 100%
   );
   pointer-events: none;
 }
 
-@media only screen and (max-width: 1300px) {
-  .spotlight-overlay {
+/* Animated Glow Effect */
+.spotlight-glow {
+  background: radial-gradient(
+    circle at 30% 50%,
+    rgba(255, 107, 107, 0.15) 0%,
+    rgba(78, 205, 196, 0.1) 50%,
+    transparent 100%
+  );
+  animation: glow-shift 8s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes glow-shift {
+  0%, 100% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(1.1);
+  }
+}
+
+/* Spotlight Badge - PRIMARY PINK */
+.spotlight-badge {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: linear-gradient(135deg, rgba(233, 30, 99, 0.2), rgba(233, 30, 99, 0.1));
+  border: 1px solid rgba(233, 30, 99, 0.4);
+  border-radius: 9999px;
+  color: #E91E63;
+  backdrop-filter: blur(10px);
+  animation: badge-pulse 2s ease-in-out infinite;
+  width: fit-content;
+}
+
+@keyframes badge-pulse {
+  0%, 100% {
+    box-shadow: 0 0 10px rgba(233, 30, 99, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(233, 30, 99, 0.5);
+  }
+}
+
+/* Title with Gradient - PRIMARY PINK */
+.spotlight-title {
+  background: linear-gradient(to bottom, #E91E63 0%, #ffffff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
+  animation: title-fade-in 0.8s ease-out;
+}
+
+@keyframes title-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Info Tags - DARK ONLY WITH ROUNDED */
+.spotlight-info-tag {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0.75rem;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 0.875rem;
+  font-weight: 500;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+}
+
+.spotlight-info-tag:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+/* Quality Badge */
+.spotlight-quality-badge {
+  padding: 0.375rem 0.75rem;
+  background: linear-gradient(135deg, rgba(255, 217, 61, 0.2), rgba(255, 217, 61, 0.1));
+  border: 1px solid rgba(255, 217, 61, 0.4);
+  border-radius: 0.5rem;
+  color: #FFD93D;
+  font-size: 0.75rem;
+  font-weight: 700;
+  backdrop-filter: blur(10px);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Episode Badges */
+.spotlight-episode-badge {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.375rem 0.625rem;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 0.375rem;
+  color: white;
+  font-size: 0.75rem;
+  font-weight: 600;
+  backdrop-filter: blur(10px);
+}
+
+/* Description - DARK ONLY */
+.spotlight-description {
+  color: rgba(224, 224, 224, 0.9);
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+  animation: description-fade-in 1s ease-out 0.3s both;
+}
+
+@keyframes description-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Primary Button - PRIMARY PINK */
+.spotlight-btn-primary {
+  background: linear-gradient(135deg, #E91E63 0%, #C2185B 100%);
+  color: white;
+  box-shadow: 
+    0 10px 30px rgba(233, 30, 99, 0.4),
+    0 0 20px rgba(233, 30, 99, 0.2);
+  backdrop-filter: blur(10px);
+  position: relative;
+  overflow: hidden;
+}
+
+.spotlight-btn-primary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.5s ease;
+}
+
+.spotlight-btn-primary:hover::before {
+  left: 100%;
+}
+
+.spotlight-btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 
+    0 15px 40px rgba(233, 30, 99, 0.5),
+    0 0 30px rgba(233, 30, 99, 0.3);
+}
+
+.spotlight-btn-primary:active {
+  transform: translateY(0);
+}
+
+/* Secondary Button - DARK ONLY */
+.spotlight-btn-secondary {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  backdrop-filter: blur(10px);
+}
+
+.spotlight-btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.spotlight-btn-secondary:active {
+  transform: translateY(0);
+}
+
+/* Fade-in Animation */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.6s ease-out;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 1300px) {
+  .spotlight-overlay-modern {
     background: linear-gradient(
-      90deg,
-      #0a0a0a 0%,
-      rgba(10, 10, 10, 0.7) 35%,
-      rgba(10, 10, 10, 0) 65%
-    ),
-    linear-gradient(
-      to top,
-      #0a0a0a 0%,
-      rgba(10, 10, 10, 0.7) 20%,
-      rgba(10, 10, 10, 0) 50%
+      to right,
+      rgba(15, 15, 30, 0.95) 0%,
+      rgba(15, 15, 30, 0.8) 30%,
+      rgba(15, 15, 30, 0.5) 60%,
+      transparent 100%
     );
   }
 }
 
-@media only screen and (max-width: 1200px) {
-  .spotlight-overlay {
+@media (max-width: 900px) {
+  .spotlight-overlay-modern {
     background: linear-gradient(
-      90deg,
-      #0a0a0a 0%,
-      rgba(10, 10, 10, 0.7) 35%,
-      rgba(10, 10, 10, 0) 65%
-    ),
-    linear-gradient(
-      to top,
-      #0a0a0a 0%,
-      rgba(10, 10, 10, 0.7) 20%,
-      rgba(10, 10, 10, 0) 50%
+      to right,
+      rgba(15, 15, 30, 0.95) 0%,
+      rgba(15, 15, 30, 0.85) 40%,
+      rgba(15, 15, 30, 0.6) 70%,
+      transparent 100%
     );
   }
 }
 
-@media only screen and (max-width: 900px) {
-  .spotlight-overlay {
-    background: linear-gradient(
-      90deg,
-      #0a0a0a 0%,
-      rgba(10, 10, 10, 0.7) 35%,
-      rgba(10, 10, 10, 0) 65%
-    ),
-    linear-gradient(
-      to top,
-      #0a0a0a 0%,
-      rgba(10, 10, 10, 0.7) 20%,
-      rgba(10, 10, 10, 0) 50%
-    );
+@media (max-width: 768px) {
+  .spotlight-title {
+    text-shadow: 0 2px 15px rgba(0, 0, 0, 0.8);
+  }
+  
+  .spotlight-btn-primary,
+  .spotlight-btn-secondary {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  }
+  
+  .spotlight-badge {
+    padding: 0.375rem 0.75rem;
+    font-size: 0.75rem;
+  }
+}
+
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .spotlight-glow,
+  .spotlight-badge,
+  .spotlight-title,
+  .spotlight-description,
+  .spotlight-btn-primary::before {
+    animation: none;
+  }
+  
+  .spotlight-image {
+    transition: none;
+  }
+  
+  .spotlight-info-tag:hover,
+  .spotlight-btn-primary:hover,
+  .spotlight-btn-secondary:hover {
+    transform: none;
   }
 }

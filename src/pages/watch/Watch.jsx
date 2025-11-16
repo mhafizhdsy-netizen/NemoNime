@@ -222,12 +222,12 @@ export default function Watch() {
     ]);
   }, [animeId, animeInfo]);
   return (
-    <div className="w-full min-h-screen bg-[#0a0a0a]">
-      <div className="w-full max-w-[1920px] mx-auto pt-16 pb-6 w-full max-[1200px]:pt-12">
+    <div className="w-full min-h-screen bg-gradient-to-br from-[#0a0a0a] via-[#0f0f0f] to-[#0a0a0a]">
+      <div className="w-full max-w-[1920px] mx-auto pt-16 pb-6 px-4 max-[1200px]:pt-12 max-[1200px]:px-3">
         <div className="grid grid-cols-[minmax(0,70%),minmax(0,30%)] gap-6 w-full h-full max-[1200px]:flex max-[1200px]:flex-col">
           {/* Left Column - Player, Controls, Servers */}
           <div className="flex flex-col w-full gap-6">
-            <div ref={playerRef} className="player w-full h-fit bg-black flex flex-col rounded-xl overflow-hidden">
+            <div ref={playerRef} className="player w-full h-fit bg-gradient-to-br from-black via-[#0a0a0a] to-black flex flex-col rounded-xl overflow-hidden shadow-2xl border border-white/5">
               {/* Video Container */}
               <div ref={videoContainerRef} className="w-full relative aspect-video bg-black">
                 {!buffering ? (["hd-1", "hd-4"].includes(activeServerName.toLowerCase()) ?
@@ -282,7 +282,7 @@ export default function Watch() {
               </div>
 
               {/* Controls Section */}
-              <div className="bg-[#121212]">
+              <div className="bg-gradient-to-b from-[#0f0f0f] to-[#121212] border-t border-white/5">
                 {!buffering && (
                   <div ref={controlsRef}>
                     <Watchcontrols
@@ -319,12 +319,14 @@ export default function Watch() {
                 {/* Next Episode Schedule */}
                 {nextEpisodeSchedule?.nextEpisodeSchedule && showNextEpisodeSchedule && (
                   <div className="px-3 pb-3">
-                    <div className="w-full p-3 rounded-lg bg-[#272727] flex items-center justify-between">
+                    <div className="w-full p-3 rounded-xl bg-gradient-to-r from-[#e91e63]/10 via-[#00bcd4]/10 to-[#e91e63]/10 border border-[#e91e63]/20 flex items-center justify-between backdrop-blur-sm shadow-lg">
                       <div className="flex items-center gap-x-3">
-                        <span className="text-[18px]">🚀</span>
+                        <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-[#e91e63] to-[#00bcd4] flex items-center justify-center shadow-lg">
+                          <span className="text-[18px]">🚀</span>
+                        </div>
                         <div>
-                          <span className="text-gray-400 text-sm">Next episode estimated at</span>
-                          <span className="ml-2 text-white text-sm font-medium">
+                          <span className="text-gray-300 text-sm font-medium">Next episode estimated at</span>
+                          <span className="ml-2 text-white text-sm font-semibold">
                             {new Date(
                               new Date(nextEpisodeSchedule.nextEpisodeSchedule).getTime() -
                               new Date().getTimezoneOffset() * 60000
@@ -341,7 +343,7 @@ export default function Watch() {
                         </div>
                       </div>
                       <button
-                        className="text-2xl text-gray-500 hover:text-white transition-colors"
+                        className="w-8 h-8 rounded-lg bg-white/5 hover:bg-white/10 flex items-center justify-center text-xl text-gray-400 hover:text-white transition-all duration-300 hover:rotate-90"
                         onClick={() => setShowNextEpisodeSchedule(false)}
                       >
                         ×
@@ -354,26 +356,29 @@ export default function Watch() {
 
             {/* Mobile-only Seasons Section */}
             {seasons?.length > 0 && (
-              <div className="hidden max-[1200px]:block bg-[#141414] rounded-lg p-4">
-                <h2 className="text-xl font-semibold mb-4 text-white">More Seasons</h2>
-                <div className="grid grid-cols-2 gap-2">
+              <div className="hidden max-[1200px]:block bg-gradient-to-br from-[#141414] to-[#0f0f0f] rounded-xl p-4 border border-white/5 shadow-xl">
+                <h2 className="text-xl font-bold mb-4 text-white flex items-center gap-2">
+                  <span className="w-1 h-6 bg-gradient-to-b from-[#e91e63] to-[#00bcd4] rounded-full"></span>
+                  More Seasons
+                </h2>
+                <div className="grid grid-cols-2 gap-3">
                   {seasons.map((season, index) => (
                     <Link
                       to={`/${season.id}`}
                       key={index}
-                      className={`relative w-full aspect-[3/1] rounded-lg overflow-hidden cursor-pointer group ${
+                      className={`relative w-full aspect-[3/1] rounded-xl overflow-hidden cursor-pointer group transition-all duration-300 ${
                         animeId === String(season.id)
-                          ? "ring-2 ring-white/40 shadow-lg shadow-white/10"
-                          : ""
+                          ? "ring-2 ring-[#e91e63] shadow-lg shadow-[#e91e63]/30 scale-[1.02]"
+                          : "hover:scale-[1.02] hover:shadow-lg hover:shadow-white/10"
                       }`}
                     >
                       <img
                         src={season.season_poster}
                         alt={season.season}
-                        className={`w-full h-full object-cover scale-150 ${
+                        className={`w-full h-full object-cover scale-150 transition-all duration-300 ${
                           animeId === String(season.id)
                             ? "opacity-50"
-                            : "opacity-40 group-hover:opacity-50 transition-opacity"
+                            : "opacity-40 group-hover:opacity-60"
                         }`}
                       />
                       {/* Dots Pattern Overlay */}
@@ -384,18 +389,22 @@ export default function Watch() {
                           backgroundSize: '3px 3px'
                         }}
                       />
-                      {/* Dark Gradient Overlay */}
-                      <div className={`absolute inset-0 z-20 bg-gradient-to-r ${
+                      {/* Gradient Overlay */}
+                      <div className={`absolute inset-0 z-20 transition-all duration-300 ${
                         animeId === String(season.id)
-                          ? "from-black/50 to-transparent"
-                          : "from-black/40 to-transparent"
+                          ? "bg-gradient-to-r from-[#e91e63]/30 via-black/50 to-transparent"
+                          : "bg-gradient-to-r from-black/50 to-transparent group-hover:from-[#e91e63]/20"
                       }`} />
+                      {/* Active Indicator */}
+                      {animeId === String(season.id) && (
+                        <div className="absolute top-2 right-2 z-40 w-2 h-2 rounded-full bg-[#e91e63] shadow-lg shadow-[#e91e63]/50 animate-pulse"></div>
+                      )}
                       {/* Title Container */}
                       <div className="absolute inset-0 z-30 flex items-center justify-center">
-                        <p className={`text-[14px] font-bold text-center px-2 transition-colors duration-300 ${
+                        <p className={`text-[14px] font-bold text-center px-2 transition-all duration-300 ${
                           animeId === String(season.id)
-                            ? "text-white"
-                            : "text-white/90 group-hover:text-white"
+                            ? "text-white drop-shadow-lg"
+                            : "text-white/90 group-hover:text-white group-hover:drop-shadow-lg"
                         }`}>
                           {season.season}
                         </p>
@@ -408,7 +417,7 @@ export default function Watch() {
 
             {/* Mobile-only Episodes Section */}
             <div className="hidden max-[1200px]:block">
-              <div ref={episodesRef} className="episodes flex-shrink-0 bg-[#141414] rounded-lg overflow-hidden">
+              <div ref={episodesRef} className="episodes flex-shrink-0 bg-gradient-to-br from-[#141414] to-[#0f0f0f] rounded-xl overflow-hidden border border-white/5 shadow-xl">
                 {!episodes ? (
                   <div className="h-full flex items-center justify-center">
                     <BouncingLoader />
@@ -425,16 +434,19 @@ export default function Watch() {
             </div>
 
             {/* Anime Info Section */}
-            <div className="bg-[#141414] rounded-lg p-4">
+            <div className="bg-gradient-to-br from-[#141414] via-[#1a1a1a] to-[#141414] rounded-xl p-5 border border-white/5 shadow-xl">
               <div className="flex gap-x-6 max-[600px]:flex-row max-[600px]:gap-4">
                 {animeInfo && animeInfo?.poster ? (
-                  <img
-                    src={`${animeInfo?.poster}`}
-                    alt=""
-                    className="w-[120px] h-[180px] object-cover rounded-md max-[600px]:w-[100px] max-[600px]:h-[150px]"
-                  />
+                  <div className="relative group">
+                    <img
+                      src={`${animeInfo?.poster}`}
+                      alt=""
+                      className="w-[120px] h-[180px] object-cover rounded-xl max-[600px]:w-[100px] max-[600px]:h-[150px] shadow-lg border border-white/10"
+                    />
+                    <div className="absolute inset-0 rounded-xl bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  </div>
                 ) : (
-                  <Skeleton className="w-[120px] h-[180px] rounded-md max-[600px]:w-[100px] max-[600px]:h-[150px]" />
+                  <Skeleton className="w-[120px] h-[180px] rounded-xl max-[600px]:w-[100px] max-[600px]:h-[150px]" />
                 )}
                 <div className="flex flex-col gap-y-4 flex-1 max-[600px]:gap-y-2">
                   {animeInfo && animeInfo?.title ? (
@@ -460,7 +472,7 @@ export default function Watch() {
                       tags.map(
                         ({ condition, icon, text }, index) =>
                           condition && (
-                            <span key={index} className="px-3 py-1 bg-[#1a1a1a] rounded-full text-sm flex items-center gap-x-1 text-gray-300 max-[600px]:px-2 max-[600px]:py-0.5 max-[600px]:text-[11px]">
+                            <span key={index} className="px-3 py-1.5 bg-gradient-to-r from-white/10 to-white/5 border border-white/10 rounded-full text-sm flex items-center gap-x-1.5 text-gray-200 font-medium hover:from-[#e91e63]/20 hover:to-[#00bcd4]/20 hover:border-[#e91e63]/30 transition-all duration-300 max-[600px]:px-2 max-[600px]:py-0.5 max-[600px]:text-[11px]">
                               {icon && <FontAwesomeIcon icon={icon} className="text-[12px] max-[600px]:text-[10px]" />}
                               {text}
                             </span>
@@ -495,26 +507,29 @@ export default function Watch() {
 
             {/* Desktop-only Seasons Section */}
             {seasons?.length > 0 && (
-              <div className="bg-[#141414] rounded-lg p-4 max-[1200px]:hidden">
-                <h2 className="text-xl font-semibold mb-4 text-white">More Seasons</h2>
-                <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 sm:gap-4">
+              <div className="bg-gradient-to-br from-[#141414] to-[#0f0f0f] rounded-xl p-5 max-[1200px]:hidden border border-white/5 shadow-xl">
+                <h2 className="text-xl font-bold mb-4 text-white flex items-center gap-2">
+                  <span className="w-1 h-6 bg-gradient-to-b from-[#e91e63] to-[#00bcd4] rounded-full"></span>
+                  More Seasons
+                </h2>
+                <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4">
                   {seasons.map((season, index) => (
                     <Link
                       to={`/${season.id}`}
                       key={index}
-                      className={`relative w-full aspect-[3/1] rounded-lg overflow-hidden cursor-pointer group ${
+                      className={`relative w-full aspect-[3/1] rounded-xl overflow-hidden cursor-pointer group transition-all duration-300 ${
                         animeId === String(season.id)
-                          ? "ring-2 ring-white/40 shadow-lg shadow-white/10"
-                          : ""
+                          ? "ring-2 ring-[#e91e63] shadow-lg shadow-[#e91e63]/30 scale-[1.02]"
+                          : "hover:scale-[1.02] hover:shadow-lg hover:shadow-white/10"
                       }`}
                     >
                       <img
                         src={season.season_poster}
                         alt={season.season}
-                        className={`w-full h-full object-cover scale-150 ${
+                        className={`w-full h-full object-cover scale-150 transition-all duration-300 ${
                           animeId === String(season.id)
                             ? "opacity-50"
-                            : "opacity-40 group-hover:opacity-50 transition-opacity"
+                            : "opacity-40 group-hover:opacity-60"
                         }`}
                       />
                       {/* Dots Pattern Overlay */}
@@ -525,18 +540,22 @@ export default function Watch() {
                           backgroundSize: '3px 3px'
                         }}
                       />
-                      {/* Dark Gradient Overlay */}
-                      <div className={`absolute inset-0 z-20 bg-gradient-to-r ${
+                      {/* Gradient Overlay */}
+                      <div className={`absolute inset-0 z-20 transition-all duration-300 ${
                         animeId === String(season.id)
-                          ? "from-black/50 to-transparent"
-                          : "from-black/40 to-transparent"
+                          ? "bg-gradient-to-r from-[#e91e63]/30 via-black/50 to-transparent"
+                          : "bg-gradient-to-r from-black/50 to-transparent group-hover:from-[#e91e63]/20"
                       }`} />
+                      {/* Active Indicator */}
+                      {animeId === String(season.id) && (
+                        <div className="absolute top-2 right-2 z-40 w-2 h-2 rounded-full bg-[#e91e63] shadow-lg shadow-[#e91e63]/50 animate-pulse"></div>
+                      )}
                       {/* Title Container */}
                       <div className="absolute inset-0 z-30 flex items-center justify-center">
-                        <p className={`text-[14px] sm:text-[16px] font-bold text-center px-2 sm:px-4 transition-colors duration-300 ${
+                        <p className={`text-[14px] sm:text-[16px] font-bold text-center px-2 sm:px-4 transition-all duration-300 ${
                           animeId === String(season.id)
-                            ? "text-white"
-                            : "text-white/90 group-hover:text-white"
+                            ? "text-white drop-shadow-lg"
+                            : "text-white/90 group-hover:text-white group-hover:drop-shadow-lg"
                         }`}>
                           {season.season}
                         </p>
@@ -551,7 +570,7 @@ export default function Watch() {
           {/* Right Column - Episodes and Related (Desktop Only) */}
           <div className="flex flex-col gap-6 h-full max-[1200px]:hidden">
             {/* Episodes Section */}
-            <div ref={episodesRef} className="episodes flex-shrink-0 bg-[#141414] rounded-lg overflow-hidden">
+            <div ref={episodesRef} className="episodes flex-shrink-0 bg-gradient-to-br from-[#141414] to-[#0f0f0f] rounded-xl overflow-hidden border border-white/5 shadow-xl">
               {!episodes ? (
                 <div className="h-full flex items-center justify-center">
                   <BouncingLoader />
@@ -568,8 +587,11 @@ export default function Watch() {
 
             {/* Related Anime Section */}
             {animeInfo && animeInfo.related_data ? (
-              <div className="bg-[#141414] rounded-lg p-4">
-                <h2 className="text-xl font-semibold mb-4 text-white">Related Anime</h2>
+              <div className="bg-gradient-to-br from-[#141414] to-[#0f0f0f] rounded-xl p-5 border border-white/5 shadow-xl">
+                <h2 className="text-xl font-bold mb-4 text-white flex items-center gap-2">
+                  <span className="w-1 h-6 bg-gradient-to-b from-[#e91e63] to-[#00bcd4] rounded-full"></span>
+                  Related Anime
+                </h2>
                 <Sidecard
                   data={animeInfo.related_data}
                   className="!mt-0"
@@ -584,8 +606,11 @@ export default function Watch() {
 
           {/* Mobile-only Related Section */}
           {animeInfo && animeInfo.related_data && (
-            <div className="hidden max-[1200px]:block bg-[#141414] rounded-lg p-4">
-              <h2 className="text-xl font-semibold mb-4 text-white">Related Anime</h2>
+            <div className="hidden max-[1200px]:block bg-gradient-to-br from-[#141414] to-[#0f0f0f] rounded-xl p-4 border border-white/5 shadow-xl">
+              <h2 className="text-xl font-bold mb-4 text-white flex items-center gap-2">
+                <span className="w-1 h-6 bg-gradient-to-b from-[#e91e63] to-[#00bcd4] rounded-full"></span>
+                Related Anime
+              </h2>
               <Sidecard
                 data={animeInfo.related_data}
                 className="!mt-0"

@@ -157,7 +157,7 @@ function Episodelist({
                   className="text-[10px]"
                 />
                 {showDropDown && (
-                  <div className="absolute top-full mt-2 left-0 z-30 bg-[#2a2a2a] w-[150px] max-h-[200px] overflow-y-auto rounded-lg border border-[#3a3a3a] shadow-lg">
+                  <div className="absolute top-full mt-2 left-0 z-30 bg-[#2a2a2a] w-[150px] max-h-[200px] overflow-y-auto rounded-lg border border-[#3a3a3a] shadow-lg scrollbar-thin scrollbar-track-transparent scrollbar-track-rounded-xl scrollbar-thumb-white/10 hover:scrollbar-thumb-white/20 scrollbar-thumb-rounded-xl">
                     {generateRangeOptions(totalEpisodes).map((item, index) => (
                       <div
                         key={index}
@@ -202,7 +202,7 @@ function Episodelist({
         )}
       </div>
       
-      <div ref={listContainerRef} className="w-full flex-1 overflow-y-auto bg-[#1a1a1a] max-h-[calc(100vh-200px)] max-[1200px]:max-h-[400px]">
+      <div ref={listContainerRef} className="w-full flex-1 overflow-y-auto bg-[#1a1a1a] max-h-[calc(100vh-200px)] max-[1200px]:max-h-[400px] scrollbar-thin scrollbar-track-transparent scrollbar-track-rounded-xl scrollbar-thumb-white/10 hover:scrollbar-thumb-white/20 scrollbar-thumb-rounded-xl">
         <div
           className={`${
             totalEpisodes > 30

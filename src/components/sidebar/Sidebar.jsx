@@ -75,64 +75,101 @@ const Sidebar = ({ isOpen, onClose }) => {
         aria-modal="true"
       >
         <div className="sidebar-content">
-          {/* Header */}
+          {/* Header with Logo */}
           <div className="sidebar-header">
+            <div className="flex items-center gap-3 mb-4">
+              <img src="/logo.png" alt="Logo" className="h-8 w-auto" />
+              <div className="flex flex-col">
+                <span className="text-white font-bold text-lg">NimeNemo</span>
+                <span className="text-white/50 text-xs">Anime Streaming</span>
+              </div>
+            </div>
             <button
               onClick={onClose}
               className="close-button"
             >
               <FaChevronLeft className="text-sm" />
-              <span className="text-sm font-medium">Close Menu</span>
+              <span className="text-sm font-semibold">Close Menu</span>
             </button>
           </div>
 
           {/* Quick Actions */}
           <div className="quick-actions">
+            <h3 className="text-xs font-bold text-white/40 uppercase tracking-wider mb-3 px-2">Quick Access</h3>
             <div className="quick-actions-grid">
               <Link
                 to="/random"
                 className="quick-action-item"
               >
-                <FontAwesomeIcon icon={faRandom} className="text-lg" />
-                <span className="text-xs font-medium">Random</span>
+                <div className="quick-action-icon">
+                  <FontAwesomeIcon icon={faRandom} className="text-lg" />
+                </div>
+                <span className="text-xs font-semibold">Random</span>
               </Link>
               <Link
                 to="/movie"
                 className="quick-action-item"
               >
-                <FontAwesomeIcon icon={faFilm} className="text-lg" />
-                <span className="text-xs font-medium">Movie</span>
-              </Link>
-              <div className="quick-action-item">
-                <div className="language-switcher">
-                  {["EN", "JP"].map((lang) => (
-                    <button
-                      key={lang}
-                      onClick={() => toggleLanguage(lang)}
-                      className={`lang-button ${language === lang ? 'active' : ''}`}
-                    >
-                      {lang}
-                    </button>
-                  ))}
+                <div className="quick-action-icon">
+                  <FontAwesomeIcon icon={faFilm} className="text-lg" />
                 </div>
-                <span className="text-xs font-medium text-white/60">Language</span>
+                <span className="text-xs font-semibold">Movies</span>
+              </Link>
+              <Link
+                to="/most-popular"
+                className="quick-action-item"
+              >
+                <div className="quick-action-icon">
+                  <FontAwesomeIcon icon={faFire} className="text-lg" />
+                </div>
+                <span className="text-xs font-semibold">Popular</span>
+              </Link>
+            </div>
+          </div>
+
+          {/* Language Selector */}
+          <div className="language-section">
+            <h3 className="text-xs font-bold text-white/40 uppercase tracking-wider mb-3 px-2">Language</h3>
+            <div className="language-switcher-container">
+              <div className="language-switcher">
+                {["EN", "JP"].map((lang) => (
+                  <button
+                    key={lang}
+                    onClick={() => toggleLanguage(lang)}
+                    className={`lang-button ${language === lang ? 'active' : ''}`}
+                  >
+                    <span className="font-semibold">{lang}</span>
+                    <span className="text-[10px] opacity-70">{lang === 'EN' ? 'English' : '日本語'}</span>
+                  </button>
+                ))}
               </div>
             </div>
           </div>
 
           {/* Menu Items */}
           <nav className="menu-items">
+            <h3 className="text-xs font-bold text-white/40 uppercase tracking-wider mb-3 px-2">Browse</h3>
             {MENU_ITEMS.map((item, index) => (
               <Link
                 key={index}
                 to={item.path}
-                className="menu-item"
+                className={`menu-item ${location.pathname === item.path ? 'active' : ''}`}
               >
-                <FontAwesomeIcon icon={item.icon} className="text-lg w-5" />
-                <span className="font-medium">{item.name}</span>
+                <div className="menu-icon">
+                  <FontAwesomeIcon icon={item.icon} className="text-base" />
+                </div>
+                <span className="font-semibold text-sm">{item.name}</span>
               </Link>
             ))}
           </nav>
+
+          {/* Footer */}
+          <div className="sidebar-footer">
+            <div className="footer-content">
+              <p className="text-xs text-white/40">© 2024 NimeNemo</p>
+              <p className="text-[10px] text-white/30">All rights reserved</p>
+            </div>
+          </div>
         </div>
       </aside>
     </div>

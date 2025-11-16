@@ -7,15 +7,18 @@ import {
   faXmark,
 } from "@fortawesome/free-solid-svg-icons";
 import { useLanguage } from "@/src/context/LanguageContext";
+import { useTheme } from "@/src/context/ThemeContext";
 import { Link, useLocation } from "react-router-dom";
 import Sidebar from "../sidebar/Sidebar";
 import { SearchProvider } from "@/src/context/SearchContext";
 import WebSearch from "../searchbar/WebSearch";
 import MobileSearch from "../searchbar/MobileSearch";
+import ThemeToggle from "../theme-toggle/ThemeToggle";
 
 function Navbar() {
   const location = useLocation();
   const { language, toggleLanguage } = useLanguage();
+  const { theme } = useTheme();
   const [isNotHomePage, setIsNotHomePage] = useState(
     location.pathname !== "/" && location.pathname !== "/home"
   );
@@ -56,66 +59,110 @@ function Navbar() {
   return (
     <SearchProvider>
       <nav
-        className={`fixed top-0 left-0 w-full z-[1000000] transition-all duration-300 ease-in-out bg-[#0a0a0a]
-          ${isScrolled ? "bg-opacity-80 backdrop-blur-md shadow-lg" : "bg-opacity-100"}`}
+        role="navigation"
+        aria-label="Main navigation"
+        className={`fixed top-0 left-0 w-full z-[1000000] transition-all duration-300 ease-in-out
+          ${isScrolled 
+            ? "bg-[#0A0A0A]/95 backdrop-blur-xl shadow-2xl shadow-black/50 border-b border-white/5" 
+            : "bg-gradient-to-b from-[#121212] to-[#0A0A0A]"
+          }`}
       >
-        <div className="max-w-[1920px] mx-auto px-4 h-16 flex items-center justify-between">
+        {/* Skip to content link for accessibility */}
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[1000001] focus:bg-brand-primary focus:text-white focus:px-4 focus:py-2 focus:rounded-xl"
+        >
+          Skip to content
+        </a>
+        <div className="max-w-[1920px] mx-auto px-6 h-20 flex items-center justify-between max-md:h-16 max-md:px-4">
           {/* Left Section */}
-          <div className="flex items-center gap-8">
-            <div className="flex items-center gap-4">
-              <FontAwesomeIcon
-                icon={faBars}
-                className="text-xl text-gray-200 cursor-pointer hover:text-white transition-colors"
-                onClick={handleHamburgerClick}
+          <div className="flex items-center gap-6">
+            <button
+              onClick={handleHamburgerClick}
+              className="group relative text-xl text-gray-300 cursor-pointer hover:text-white transition-all duration-300 p-2.5 rounded-xl hover:bg-gradient-to-br hover:from-brand-primary/20 hover:to-brand-secondary/20 focus:outline-none focus:ring-2 focus:ring-brand-primary/50 hover:shadow-lg hover:shadow-brand-primary/20"
+              aria-label="Open navigation menu"
+              aria-expanded={isSidebarOpen}
+            >
+              <FontAwesomeIcon icon={faBars} className="transition-transform duration-300 group-hover:scale-110" />
+            </button>
+            <Link 
+              to="/home" 
+              className="flex items-center focus:outline-none focus:ring-2 focus:ring-brand-primary/50 rounded-xl transition-all duration-300 hover:scale-105"
+            >
+              <img 
+                src="/logo.png" 
+                alt="NimeNemo - Anime Streaming Platform" 
+                className="h-10 w-auto max-md:h-8 drop-shadow-2xl" 
               />
-              <Link to="/home" className="flex items-center">
-                <img src="/logo.png" alt="JustAnime Logo" className="h-9 w-auto" />
-              </Link>
-            </div>
+            </Link>
           </div>
 
           {/* Center Section - Search */}
           <div className="flex-1 flex justify-center items-center max-w-none mx-8 hidden md:flex">
-            <div className="flex items-center gap-2 w-[600px]">
+            <div className="flex items-center gap-3 w-[650px]">
               <WebSearch />
               <Link
                 to={location.pathname === "/random" ? "#" : "/random"}
                 onClick={handleRandomClick}
-                className="p-[10px] aspect-square bg-[#2a2a2a]/75 text-white/50 hover:text-white rounded-lg transition-colors flex items-center justify-center"
+                className="group relative p-3 aspect-square bg-gradient-to-br from-[#2a2a2a] to-[#1a1a1a] text-white/60 hover:text-white rounded-xl transition-all duration-300 flex items-center justify-center hover:shadow-lg hover:shadow-brand-primary/20 hover:from-brand-primary/20 hover:to-brand-secondary/20 border border-white/5 hover:border-brand-primary/30"
                 title="Random Anime"
               >
-                <FontAwesomeIcon icon={faRandom} className="text-lg" />
+                <FontAwesomeIcon icon={faRandom} className="text-lg transition-transform duration-300 group-hover:rotate-180 group-hover:scale-110" />
               </Link>
             </div>
           </div>
 
           {/* Language Toggle - Desktop */}
-            <div className="hidden md:flex items-center gap-2 bg-[#27272A] rounded-md p-1">
+          <div className="hidden md:flex items-center gap-3">
+            <div className="flex items-center gap-1.5 bg-gradient-to-br from-[#27272A] to-[#1a1a1a] rounded-xl p-1 border border-white/5 shadow-lg" role="group" aria-label="Language selection">
               {["EN", "JP"].map((lang) => (
                 <button
                   key={lang}
                   onClick={() => toggleLanguage(lang)}
-                  className={`px-3 py-1 text-sm font-medium rounded ${
+                  className={`px-4 py-2 text-sm font-semibold rounded-xl transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-brand-primary/50 ${
                     language === lang
-                      ? "bg-[#3F3F46] text-white"
-                      : "text-gray-400 hover:text-white"
+                      ? "bg-gradient-to-br from-brand-primary to-brand-primary/80 text-white shadow-lg shadow-brand-primary/30 scale-105"
+                      : "text-gray-400 hover:text-white hover:bg-white/10 hover:scale-105"
                   }`}
+                  aria-label={`Switch to ${lang === 'EN' ? 'English' : 'Japanese'}`}
+                  aria-pressed={language === lang}
+                >
+                  {lang}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Mobile Controls - Search & Language */}
+          <div className="md:hidden flex items-center gap-2">
+            {/* Language Toggle - Mobile */}
+            <div className="flex items-center gap-1 bg-gradient-to-br from-[#27272A] to-[#1a1a1a] rounded-xl p-0.5 border border-white/5" role="group" aria-label="Language selection">
+              {["EN", "JP"].map((lang) => (
+                <button
+                  key={lang}
+                  onClick={() => toggleLanguage(lang)}
+                  className={`px-2.5 py-1.5 text-xs font-semibold rounded-xl transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-brand-primary/50 ${
+                    language === lang
+                      ? "bg-gradient-to-br from-brand-primary to-brand-primary/80 text-white shadow-md shadow-brand-primary/30"
+                      : "text-gray-400 hover:text-white hover:bg-white/10"
+                  }`}
+                  aria-label={`Switch to ${lang === 'EN' ? 'English' : 'Japanese'}`}
+                  aria-pressed={language === lang}
                 >
                   {lang}
                 </button>
               ))}
             </div>
 
-          {/* Mobile Search Icon */}
-          <div className="md:hidden flex items-center">
+            {/* Search Icon - Mobile */}
             <button
               onClick={() => setIsMobileSearchOpen(!isMobileSearchOpen)}
-              className="p-[10px] aspect-square bg-[#2a2a2a]/75 text-white/50 hover:text-white rounded-lg transition-colors flex items-center justify-center w-[38px] h-[38px]"
+              className="group p-2.5 aspect-square bg-gradient-to-br from-[#2a2a2a] to-[#1a1a1a] text-white/60 hover:text-white rounded-xl transition-all duration-300 flex items-center justify-center w-[38px] h-[38px] border border-white/5 hover:border-brand-primary/30 hover:shadow-lg hover:shadow-brand-primary/20"
               title={isMobileSearchOpen ? "Close Search" : "Search Anime"}
             >
               <FontAwesomeIcon 
                 icon={isMobileSearchOpen ? faXmark : faMagnifyingGlass} 
-                className="w-[18px] h-[18px] transition-transform duration-200"
+                className="w-[16px] h-[16px] transition-all duration-300 group-hover:scale-110"
                 style={{ transform: isMobileSearchOpen ? 'rotate(90deg)' : 'rotate(0deg)' }}
               />
             </button>
@@ -124,7 +171,7 @@ function Navbar() {
 
         {/* Mobile Search Dropdown */}
         {isMobileSearchOpen && (
-          <div className="md:hidden bg-[#18181B] shadow-lg">
+          <div className="md:hidden bg-gradient-to-b from-[#1A1A1A] to-[#0A0A0A] shadow-2xl shadow-black/50 border-t border-white/5">
             <MobileSearch onClose={() => setIsMobileSearchOpen(false)} />
         </div>
         )}

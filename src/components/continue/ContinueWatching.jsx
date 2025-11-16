@@ -45,10 +45,10 @@ const ContinueWatching = () => {
         </div>
 
         <div className="flex gap-x-3 pr-2 max-[350px]:hidden">
-          <button className="continue-btn-prev bg-gray-800 text-gray-300 p-3 rounded-lg hover:bg-gray-700 hover:text-white transition-all duration-300 shadow-lg">
+          <button className="continue-btn-prev bg-gradient-to-r from-[#e91e63]/20 to-[#00bcd4]/20 border border-[#e91e63]/30 text-white p-3 rounded-xl hover:from-[#e91e63]/30 hover:to-[#00bcd4]/30 hover:border-[#e91e63]/50 transition-all duration-300 shadow-lg hover:shadow-[#e91e63]/20">
             <FaChevronLeft className="text-sm" />
           </button>
-          <button className="continue-btn-next bg-gray-800 text-gray-300 p-3 rounded-lg hover:bg-gray-700 hover:text-white transition-all duration-300 shadow-lg">
+          <button className="continue-btn-next bg-gradient-to-r from-[#e91e63]/20 to-[#00bcd4]/20 border border-[#e91e63]/30 text-white p-3 rounded-xl hover:from-[#e91e63]/30 hover:to-[#00bcd4]/30 hover:border-[#e91e63]/50 transition-all duration-300 shadow-lg hover:shadow-[#e91e63]/20">
             <FaChevronRight className="text-sm" />
           </button>
         </div>
@@ -78,9 +78,9 @@ const ContinueWatching = () => {
               key={index}
               className="text-center flex justify-center items-center"
             >
-              <div className="w-full h-auto pb-[140%] relative inline-block overflow-hidden rounded-lg shadow-lg group">
+              <div className="w-full h-auto pb-[140%] relative inline-block overflow-hidden rounded-xl shadow-lg group">
                 <button
-                  className="absolute top-3 right-3 bg-black/70 text-gray-300 w-8 h-8 flex items-center justify-center rounded-lg text-sm z-10 font-medium hover:bg-white hover:text-black transition-all duration-300"
+                  className="absolute top-3 right-3 bg-black/70 text-gray-300 w-8 h-8 flex items-center justify-center rounded-xl text-sm z-10 font-medium hover:bg-white hover:text-black transition-all duration-300"
                   onClick={() => removeFromWatchList(item.episodeId)}
                 >
                   ✖
@@ -93,7 +93,7 @@ const ContinueWatching = () => {
                   <img
                     src={`${item?.poster}`}
                     alt={item?.title}
-                    className="block w-full h-full object-cover transition-all duration-500 ease-in-out group-hover:scale-105 group-hover:blur-sm"
+                    className="block w-full h-full object-cover transition-all duration-500 ease-in-out group-hover:scale-105"
                     title={item?.title}
                     loading="lazy"
                   />
@@ -107,7 +107,7 @@ const ContinueWatching = () => {
                   </div>
                 </Link>
                 {item?.adultContent === true && (
-                  <div className="text-white px-2 py-0.5 rounded-lg bg-red-600 absolute top-3 left-3 flex items-center justify-center text-[12px] font-bold">
+                  <div className="text-white px-2 py-0.5 rounded-xl bg-red-600 absolute top-3 left-3 flex items-center justify-center text-[12px] font-bold">
                     18+
                   </div>
                 )}
@@ -131,3 +131,4 @@ const ContinueWatching = () => {
 };
 
 export default ContinueWatching;
+

@@ -16,9 +16,9 @@ function CategoryCardLoader({ className, showLabelSkeleton = true, gridClass }) 
             <div className="w-full relative">
               <Skeleton className="w-full pb-[140%] rounded-lg" />
               <div className="absolute left-3 bottom-3 flex items-center gap-1.5 flex-wrap">
-                <Skeleton className="w-[40px] h-[20px] rounded-[2px]" />
-                <Skeleton className="w-[40px] h-[20px] rounded-[2px]" />
-                <Skeleton className="w-[40px] h-[20px] rounded-[2px]" />
+                <Skeleton className="w-[40px] h-[20px] rounded-lg" />
+                <Skeleton className="w-[40px] h-[20px] rounded-lg" />
+                <Skeleton className="w-[40px] h-[20px] rounded-lg" />
               </div>
             </div>
             <Skeleton className="mt-3 w-[90%] h-[20px] rounded-md" />
@@ -30,4 +30,5 @@ function CategoryCardLoader({ className, showLabelSkeleton = true, gridClass }) 
 }
 
 export default CategoryCardLoader;
+
 

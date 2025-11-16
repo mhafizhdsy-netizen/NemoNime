@@ -49,120 +49,125 @@ function Topten({ data, className }) {
   };
 
   return (
-    <div className={`flex flex-col space-y-4 ${className}`}>
-      <div className="flex justify-between items-center max-[350px]:flex-col max-[350px]:gap-y-2 max-[350px]:items-start">
-        <h1 className="font-bold text-2xl text-white tracking-tight">Top 10</h1>
-        <ul className="flex justify-between w-fit bg-[#1a1a1a] rounded-lg overflow-hidden shadow-lg">
+    <div className={`bg-gradient-to-br from-[#141414] to-[#0f0f0f] rounded-xl p-5 border border-white/5 shadow-xl ${className}`}>
+      <div className="flex flex-col gap-3 mb-4">
+        <div className="flex items-center gap-3">
+          <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-[#e91e63]/20 to-[#00bcd4]/20 flex items-center justify-center border border-[#e91e63]/30">
+            <span className="text-xl font-bold text-[#e91e63]">🏆</span>
+          </div>
+          <h2 className="text-xl font-bold text-white">Top 10</h2>
+        </div>
+        <div className="flex gap-1.5 w-full">
           {["today", "week", "month"].map((period) => (
-            <li
+            <button
               key={period}
-              className={`cursor-pointer p-1.5 px-4 transition-all duration-200 ${
+              className={`flex-1 relative px-4 py-2.5 rounded-lg text-sm font-semibold transition-all duration-300 ${
                 activePeriod === period
-                  ? "bg-white text-black font-medium"
-                  : "text-gray-400 hover:text-white hover:bg-[#2a2a2a]"
+                  ? "bg-gradient-to-r from-[#e91e63] to-[#00bcd4] text-white shadow-lg shadow-[#e91e63]/20 scale-[1.02]"
+                  : "bg-white/5 text-gray-400 hover:text-white hover:bg-white/10 border border-white/10"
               }`}
               onClick={() => handlePeriodChange(period)}
             >
-              {period.charAt(0).toUpperCase() + period.slice(1)}
-            </li>
+              {activePeriod === period && (
+                <div className="absolute inset-0 rounded-lg bg-gradient-to-r from-[#e91e63]/30 to-[#00bcd4]/30 blur-lg -z-10"></div>
+              )}
+              <span className="relative z-10">{period.charAt(0).toUpperCase() + period.slice(1)}</span>
+            </button>
           ))}
-        </ul>
+        </div>
       </div>
 
-      <div className="flex flex-col space-y-3 bg-[#1a1a1a] p-3 pt-6 rounded-lg shadow-lg">
+      <div className="flex flex-col space-y-2 max-h-[600px] overflow-y-auto pr-2 scrollbar-thin scrollbar-track-white/5 scrollbar-track-rounded-xl scrollbar-thumb-white/10 hover:scrollbar-thumb-white/20 scrollbar-thumb-rounded-xl">
         {currentData &&
           currentData.map((item, index) => (
-            <div
-              key={index}
-              className="flex items-center gap-x-3 group"
-              ref={(el) => (cardRefs.current[index] = el)}
-            >
-              <h1
-                className={`font-bold text-2xl transition-colors ${
-                  index < 3
-                    ? "text-white border-b-2 border-white pb-0.5"
-                    : "text-gray-600"
-                } max-[350px]:hidden`}
+            <div key={index} className="group" ref={(el) => (cardRefs.current[index] = el)}>
+              <Link
+                to={`/${item.id}`}
+                onClick={() => handleNavigate(item.id)}
+                className="block"
               >
-                {`${index + 1 < 10 ? "0" : ""}${index + 1}`}
-              </h1>
-              <div
-                style={{
-                  borderBottom:
-                    index + 1 < 10
-                      ? "1px solid rgba(255, 255, 255, .1)"
-                      : "none",
-                }}
-                className="flex pb-3 relative container items-center group-hover:bg-[#2a2a2a] transition-colors duration-200 rounded-lg p-1.5"
-              >
-                <img
-                  src={`${item.poster}`}
-                  alt={item.title}
-                  className="w-[55px] h-[70px] rounded-lg object-cover flex-shrink-0 cursor-pointer shadow-md transition-transform duration-200 group-hover:scale-[1.02]"
-                  onClick={() => navigate(`/watch/${item.id}`)}
-                  onMouseEnter={() => handleMouseEnter(item, index)}
-                  onMouseLeave={handleMouseLeave}
-                />
-
-                {/* Tooltip positioned near image */}
-                {hoveredItem === item.id + index &&
-                  window.innerWidth > 1024 && (
-                    <div
-                      className={`absolute ${tooltipPosition} ${tooltipHorizontalPosition} 
-                      ${
-                        tooltipPosition === "top-1/2"
-                          ? "translate-y-[50px]"
-                          : "translate-y-[-50px]"
-                      } 
-                      z-[100000] transform transition-all duration-300 ease-in-out 
-                      ${
-                        hoveredItem === item.id + index
-                          ? "opacity-100 translate-y-0"
-                          : "opacity-0 translate-y-2"
-                      }`}
-                      onMouseEnter={() => {
-                        if (hoverTimeout) clearTimeout(hoverTimeout);
+                <div className="flex items-start gap-3 p-2 rounded-xl transition-all duration-300 hover:bg-gradient-to-r hover:from-[#e91e63]/10 hover:to-[#00bcd4]/10 hover:border hover:border-[#e91e63]/20">
+                  <div className="relative">
+                    <img
+                      src={`${item.poster}`}
+                      alt={item.title}
+                      className="w-[50px] h-[70px] rounded-xl object-cover cursor-pointer"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        navigate(`/watch/${item.id}`);
                       }}
+                      onMouseEnter={() => handleMouseEnter(item, index)}
                       onMouseLeave={handleMouseLeave}
-                    >
-                      <Qtip id={item.id} />
+                    />
+                    <div className={`absolute top-0 left-0 bg-gradient-to-r ${
+                      index < 3 
+                        ? "from-[#e91e63] to-[#00bcd4]" 
+                        : "from-white/80 to-white/60"
+                    } text-white text-xs font-bold px-1.5 py-0.5 rounded-br-xl shadow-lg`}>
+                      #{index + 1}
                     </div>
-                  )}
 
-                <div className="flex flex-col ml-3 space-y-1.5">
-                  <Link
-                    to={`/${item.id}`}
-                    className="text-[0.95em] font-medium text-gray-200 hover:text-white transform transition-all ease-out line-clamp-1 max-[478px]:line-clamp-2 max-[478px]:text-[14px]"
-                    onClick={() => handleNavigate(item.id)}
-                  >
-                    {language === "EN" ? item.title : item.japanese_title}
-                  </Link>
-                  <div className="flex flex-wrap items-center w-fit space-x-2 max-[350px]:gap-y-[3px]">
-                    {item.tvInfo?.sub && (
-                      <div className="flex space-x-1 justify-center items-center bg-white bg-opacity-10 backdrop-blur-sm rounded-md px-1.5 py-0.5 transition-colors duration-200 hover:bg-opacity-20">
-                        <FontAwesomeIcon
-                          icon={faClosedCaptioning}
-                          className="text-[11px] text-gray-300"
-                        />
-                        <p className="text-[11px] font-medium text-gray-300">
-                          {item.tvInfo.sub}
-                        </p>
-                      </div>
-                    )}
-                    {item.tvInfo?.dub && (
-                      <div className="flex space-x-1 justify-center items-center bg-white bg-opacity-10 backdrop-blur-sm rounded-md px-1.5 py-0.5 transition-colors duration-200 hover:bg-opacity-20">
-                        <FontAwesomeIcon
-                          icon={faMicrophone}
-                          className="text-[11px] text-gray-300"
-                        />
-                        <p className="text-[11px] font-medium text-gray-300">
-                          {item.tvInfo.dub}
-                        </p>
-                      </div>
-                    )}
+                    {/* Tooltip positioned near image */}
+                    {hoveredItem === item.id + index &&
+                      window.innerWidth > 1024 && (
+                        <div
+                          className={`absolute ${tooltipPosition} ${tooltipHorizontalPosition} 
+                          ${
+                            tooltipPosition === "top-1/2"
+                              ? "translate-y-[50px]"
+                              : "translate-y-[-50px]"
+                          } 
+                          z-[100000] transform transition-all duration-300 ease-in-out 
+                          ${
+                            hoveredItem === item.id + index
+                              ? "opacity-100 translate-y-0"
+                              : "opacity-0 translate-y-2"
+                          }`}
+                          onMouseEnter={() => {
+                            if (hoverTimeout) clearTimeout(hoverTimeout);
+                          }}
+                          onMouseLeave={handleMouseLeave}
+                        >
+                          <Qtip id={item.id} />
+                        </div>
+                      )}
+                  </div>
+                  <div className="flex flex-col gap-1.5 flex-1 min-w-0">
+                    <span className="text-sm font-medium text-gray-200 group-hover:text-white transition-colors line-clamp-2">
+                      {language === "EN" ? item.title : item.japanese_title}
+                    </span>
+                    <div className="flex flex-wrap items-center gap-2">
+                      {item.tvInfo?.sub && (
+                        <div className="flex items-center gap-1 px-1.5 py-0.5 bg-gradient-to-r from-white/10 to-white/5 border border-white/10 rounded-xl text-gray-300">
+                          <FontAwesomeIcon
+                            icon={faClosedCaptioning}
+                            className="text-[10px]"
+                          />
+                          <span className="text-[10px] font-medium">
+                            {item.tvInfo.sub}
+                          </span>
+                        </div>
+                      )}
+                      {item.tvInfo?.dub && (
+                        <div className="flex items-center gap-1 px-1.5 py-0.5 bg-gradient-to-r from-white/10 to-white/5 border border-white/10 rounded-xl text-gray-300">
+                          <FontAwesomeIcon
+                            icon={faMicrophone}
+                            className="text-[10px]"
+                          />
+                          <span className="text-[10px] font-medium">
+                            {item.tvInfo.dub}
+                          </span>
+                        </div>
+                      )}
+                      {item.tvInfo?.showType && (
+                        <span className="text-xs text-gray-400">
+                          {item.tvInfo.showType}
+                        </span>
+                      )}
+                    </div>
                   </div>
                 </div>
-              </div>
+              </Link>
             </div>
           ))}
       </div>
@@ -171,3 +176,4 @@ function Topten({ data, className }) {
 }
 
 export default React.memo(Topten);
+

@@ -11,12 +11,14 @@ const Trending = ({ trending, className }) => {
   const { language } = useLanguage();
 
   return (
-    <div className={`bg-[#141414] rounded-lg p-4 ${className}`}>
-      <div className="flex items-center gap-2 mb-4">
-        <FontAwesomeIcon icon={faFire} className="text-white/90" />
-        <h2 className="text-xl font-semibold text-white">Trending Now</h2>
+    <div className={`bg-gradient-to-br from-[#141414] to-[#0f0f0f] rounded-xl p-5 border border-white/5 shadow-xl ${className}`}>
+      <div className="flex items-center gap-3 mb-4">
+        <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-[#e91e63]/20 to-[#00bcd4]/20 flex items-center justify-center border border-[#e91e63]/30">
+          <FontAwesomeIcon icon={faFire} className="text-[#e91e63]" />
+        </div>
+        <h2 className="text-xl font-bold text-white">Trending Now</h2>
       </div>
-      <div className="flex flex-col space-y-2 max-h-[600px] overflow-y-auto pr-2 scrollbar-thin scrollbar-track-[#1a1a1a] scrollbar-thumb-[#2a2a2a] hover:scrollbar-thumb-[#333] scrollbar-thumb-rounded">
+      <div className="flex flex-col space-y-2 max-h-[600px] overflow-y-auto pr-2 scrollbar-thin scrollbar-track-white/5 scrollbar-track-rounded-xl scrollbar-thumb-white/10 hover:scrollbar-thumb-white/20 scrollbar-thumb-rounded-xl">
         {trending &&
           trending.map((item, index) => (
             <div key={index} className="group">
@@ -25,14 +27,14 @@ const Trending = ({ trending, className }) => {
                 onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
                 className="block"
               >
-                <div className="flex items-start gap-3 p-2 rounded-lg transition-colors hover:bg-[#1a1a1a]">
+                <div className="flex items-start gap-3 p-2 rounded-xl transition-all duration-300 hover:bg-gradient-to-r hover:from-[#e91e63]/10 hover:to-[#00bcd4]/10 hover:border hover:border-[#e91e63]/20">
                   <div className="relative">
                     <img
                       src={item.poster}
                       alt={item.title}
-                      className="w-[50px] h-[70px] rounded object-cover"
+                      className="w-[50px] h-[70px] rounded-xl object-cover"
                     />
-                    <div className="absolute top-0 left-0 bg-white/90 text-black text-xs font-bold px-1.5 rounded-br">
+                    <div className="absolute top-0 left-0 bg-gradient-to-r from-[#e91e63] to-[#00bcd4] text-white text-xs font-bold px-1.5 py-0.5 rounded-br-xl shadow-lg">
                       #{index + 1}
                     </div>
                   </div>
@@ -42,7 +44,7 @@ const Trending = ({ trending, className }) => {
                     </span>
                     <div className="flex flex-wrap items-center gap-2">
                       {item.tvInfo?.sub && (
-                        <div className="flex items-center gap-1 px-1.5 py-0.5 bg-[#2a2a2a] rounded text-gray-300">
+                        <div className="flex items-center gap-1 px-1.5 py-0.5 bg-gradient-to-r from-white/10 to-white/5 border border-white/10 rounded-xl text-gray-300">
                           <FontAwesomeIcon
                             icon={faClosedCaptioning}
                             className="text-[10px]"
@@ -53,7 +55,7 @@ const Trending = ({ trending, className }) => {
                         </div>
                       )}
                       {item.tvInfo?.dub && (
-                        <div className="flex items-center gap-1 px-1.5 py-0.5 bg-[#2a2a2a] rounded text-gray-300">
+                        <div className="flex items-center gap-1 px-1.5 py-0.5 bg-gradient-to-r from-white/10 to-white/5 border border-white/10 rounded-xl text-gray-300">
                           <FontAwesomeIcon
                             icon={faMicrophone}
                             className="text-[10px]"
@@ -80,3 +82,4 @@ const Trending = ({ trending, className }) => {
 };
 
 export default Trending;
+

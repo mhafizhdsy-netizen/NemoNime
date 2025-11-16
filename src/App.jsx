@@ -16,10 +16,8 @@ import "./App.css";
 import Search from "./pages/search/Search";
 import Watch from "./pages/watch/Watch";
 import Producer from "./components/producer/Producer";
-import SplashScreen from "./components/splashscreen/SplashScreen";
-import Terms from "./pages/terms/Terms";
-import DMCA from "./pages/dmca/DMCA";
-import Contact from "./pages/contact/Contact";
+import AboutUs from "./pages/contact/Contact";
+import FeedbackButton from "./components/feedback/FeedbackButton";
 
 function App() {
   const location = useLocation();
@@ -29,25 +27,20 @@ function App() {
     window.scrollTo(0, 0);
   }, [location]);
 
-  // Check if the current route is for the splash screen
-  const isSplashScreen = location.pathname === "/";
-
   return (
     <HomeInfoProvider>
       <div className="app-container px-4 lg:px-10">
         <main className="content max-w-[2048px] mx-auto w-full">
-          {!isSplashScreen && <Navbar />}
+          <Navbar />
           <Routes>
-            <Route path="/" element={<SplashScreen />} />
+            <Route path="/" element={<Home />} />
             <Route path="/home" element={<Home />} />
             <Route path="/:id" element={<AnimeInfo />} />
             <Route path="/watch/:id" element={<Watch />} />
             <Route path="/random" element={<AnimeInfo random={true} />} />
             <Route path="/404-not-found-page" element={<Error error="404" />} />
             <Route path="/error-page" element={<Error />} />
-            <Route path="/terms-of-service" element={<Terms />} />
-            <Route path="/dmca" element={<DMCA />} />
-            <Route path="/contact" element={<Contact />} />
+            <Route path="/about" element={<AboutUs />} />
             {/* Render category routes */}
             {categoryRoutes.map((path) => (
               <Route
@@ -71,10 +64,11 @@ function App() {
             {/* Catch-all route for 404 */}
             <Route path="*" element={<Error error="404" />} />
           </Routes>
-          {!isSplashScreen && <Footer />}
+          <Footer />
         </main>
         <Analytics />
         <SpeedInsights />
+        <FeedbackButton />
       </div>
     </HomeInfoProvider>
   );

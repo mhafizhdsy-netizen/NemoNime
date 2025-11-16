@@ -5,8 +5,10 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["Inter", "sans-serif"],
-        heading: ["Outfit", "sans-serif"],
+        sans: ["Inter", "system-ui", "sans-serif"],
+        heading: ["Inter", "sans-serif"],
+        display: ["Poppins", "Inter", "sans-serif"],
+        mono: ["JetBrains Mono", "monospace"],
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -19,8 +21,22 @@ export default {
         "ultra-wide": "1660px",
       },
       colors: {
+        // Brand colors - NEW VIBRANT COLOR SCHEMA
+        brand: {
+          primary: "#E91E63",      // Vibrant Pink
+          secondary: "#00BCD4",    // Cyan
+          accent: "#FFC107",       // Amber
+          tertiary: "#9C27B0",     // Purple
+        },
+        // Background colors
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
+        // Surface colors
+        surface: {
+          DEFAULT: "hsl(var(--surface))",
+          elevated: "hsl(var(--surface-elevated))",
+        },
+        // Component colors
         card: {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
@@ -51,9 +67,15 @@ export default {
         },
         success: {
           DEFAULT: "hsl(var(--success))",
+          foreground: "hsl(var(--success-foreground))",
         },
         warning: {
           DEFAULT: "hsl(var(--warning))",
+          foreground: "hsl(var(--warning-foreground))",
+        },
+        error: {
+          DEFAULT: "hsl(var(--error))",
+          foreground: "hsl(var(--error-foreground))",
         },
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
