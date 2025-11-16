@@ -4,6 +4,10 @@ export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
+      fontFamily: {
+        sans: ["Inter", "sans-serif"],
+        heading: ["Outfit", "sans-serif"],
+      },
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
@@ -12,7 +16,7 @@ export default {
       screens: {
         "custom-md": "600px",
         "custom-xl": "1200px",
-        "ultra-wide":"1660px",
+        "ultra-wide": "1660px",
       },
       colors: {
         background: "hsl(var(--background))",
@@ -44,6 +48,12 @@ export default {
         destructive: {
           DEFAULT: "hsl(var(--destructive))",
           foreground: "hsl(var(--destructive-foreground))",
+        },
+        success: {
+          DEFAULT: "hsl(var(--success))",
+        },
+        warning: {
+          DEFAULT: "hsl(var(--warning))",
         },
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
