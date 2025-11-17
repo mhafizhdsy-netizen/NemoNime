@@ -136,14 +136,14 @@ const Sidebar = ({ isOpen, onClose }) => {
             </div>
           </div>
 
-          {/* Language Selector */}
-          <div className="language-section">
+          {/* Language Selector - Hidden on Desktop */}
+          <div className="language-section md:hidden">
             <h3 className="text-xs font-bold text-white/40 uppercase tracking-wider mb-3 px-2">Language</h3>
             <div className="language-switcher-container">
-              <div className="language-switcher">
+              <div className="language-switcher-pill">
                 {/* Sliding Background */}
                 <div 
-                  className="language-slider"
+                  className="language-slider-pill"
                   style={{
                     transform: language === 'EN' ? 'translateX(0)' : 'translateX(100%)',
                   }}
@@ -152,10 +152,9 @@ const Sidebar = ({ isOpen, onClose }) => {
                   <button
                     key={lang}
                     onClick={() => toggleLanguage(lang)}
-                    className={`lang-button ${language === lang ? 'active' : ''}`}
+                    className={`lang-button-pill ${language === lang ? 'active' : ''}`}
                   >
-                    <span className="font-semibold">{lang}</span>
-                    <span className="text-[10px] opacity-70">{lang === 'EN' ? 'English' : '日本語'}</span>
+                    <span className="font-bold text-xs">{lang}</span>
                   </button>
                 ))}
               </div>

@@ -33,7 +33,7 @@ function Suggestion({ keyword, className, onSuggestionClick }) {
     <div
       className={`bg-zinc-900 ${className} flex ${
         loading ? "justify-center py-4" : "justify-start"
-      } ${!suggestion ? "p-2" : "justify-start"} items-center rounded-lg`}
+      } ${!suggestion ? "p-2" : "justify-start"} items-center rounded-xl`}
       style={{ 
         boxShadow: "0 8px 32px rgba(0, 0, 0, 0.2)",
         border: "1px solid rgba(255, 255, 255, 0.05)"
@@ -60,7 +60,7 @@ function Suggestion({ keyword, className, onSuggestionClick }) {
             >
               <img
                 src={`${item.poster}`}
-                className="w-[45px] h-[65px] flex-shrink-0 object-cover rounded-md shadow-lg"
+                className="w-[45px] h-[65px] flex-shrink-0 object-cover rounded-lg shadow-lg"
                 alt=""
                 onError={(e) => {
                   e.target.src = "https://i.postimg.cc/HnHKvHpz/no-avatar.jpg";
@@ -97,7 +97,7 @@ function Suggestion({ keyword, className, onSuggestionClick }) {
           ))}
           {!loading && hasFetched && (
             <Link
-              className="w-full flex py-2.5 justify-center items-center bg-zinc-800 hover:bg-zinc-700 transition-all duration-200 rounded-b-lg"
+              className="w-full flex py-2.5 justify-center items-center bg-zinc-800 hover:bg-zinc-700 transition-all duration-200 rounded-b-xl"
               to={`/search?keyword=${encodeURIComponent(keyword)}`}
               onClick={onSuggestionClick}
             >

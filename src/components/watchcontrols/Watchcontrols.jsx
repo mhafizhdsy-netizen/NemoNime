@@ -4,13 +4,13 @@ import { useEffect, useState } from "react";
 
 const ToggleButton = ({ label, isActive, onClick }) => (
   <button 
-    className="flex items-center text-xs px-2 py-0.5 rounded-lg transition-colors hover:bg-[#2a2a2a]" 
+    className="flex items-center text-xs px-3 py-1.5 rounded-xl transition-all duration-300 hover:bg-[#2a2a2a] border border-transparent hover:border-white/10" 
     onClick={onClick}
   >
-    <span className="text-gray-300">{label}</span>
+    <span className="text-gray-300 font-medium">{label}</span>
     <span
-      className={`ml-1.5 ${
-        isActive ? "text-white" : "text-gray-500"
+      className={`ml-2 font-bold ${
+        isActive ? "text-[#00bcd4]" : "text-gray-500"
       }`}
     >
       {isActive ? "ON" : "OFF"}
@@ -45,7 +45,7 @@ export default function WatchControls({
   }, [episodeId, episodes]);
 
   return (
-    <div className="w-full flex justify-between items-center px-3 py-2 border-b border-gray-800">
+    <div className="w-full flex justify-between items-center px-4 py-3 border-b border-gray-800/50 bg-gradient-to-r from-[#1a1a1a] to-[#0f0f0f]">
       <div className="flex gap-x-2">
         <ToggleButton
           label="Auto Play"
@@ -73,10 +73,10 @@ export default function WatchControls({
             }
           }}
           disabled={currentEpisodeIndex <= 0}
-          className={`w-7 h-7 flex items-center justify-center rounded transition-colors ${
+          className={`w-9 h-9 flex items-center justify-center rounded-xl transition-all duration-300 border ${
             currentEpisodeIndex <= 0 
-              ? "text-gray-600 cursor-not-allowed" 
-              : "text-gray-300 hover:text-white"
+              ? "text-gray-600 cursor-not-allowed border-transparent bg-[#1a1a1a]" 
+              : "text-gray-300 hover:text-white border-white/10 hover:border-[#00bcd4]/50 hover:bg-[#2a2a2a]"
           }`}
         >
           <FontAwesomeIcon icon={faBackward} className="text-[14px]" />
@@ -90,10 +90,10 @@ export default function WatchControls({
             }
           }}
           disabled={currentEpisodeIndex >= episodes?.length - 1}
-          className={`w-7 h-7 flex items-center justify-center rounded transition-colors ${
+          className={`w-9 h-9 flex items-center justify-center rounded-xl transition-all duration-300 border ${
             currentEpisodeIndex >= episodes?.length - 1 
-              ? "text-gray-600 cursor-not-allowed" 
-              : "text-gray-300 hover:text-white"
+              ? "text-gray-600 cursor-not-allowed border-transparent bg-[#1a1a1a]" 
+              : "text-gray-300 hover:text-white border-white/10 hover:border-[#00bcd4]/50 hover:bg-[#2a2a2a]"
           }`}
         >
           <FontAwesomeIcon icon={faForward} className="text-[14px]" />

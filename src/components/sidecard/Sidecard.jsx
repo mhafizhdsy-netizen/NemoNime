@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faClosedCaptioning,
@@ -6,26 +6,9 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { useLanguage } from "@/src/context/LanguageContext";
 import { Link } from "react-router-dom";
-import useToolTipPosition from "@/src/hooks/useToolTipPosition";
-import Qtip from "../qtip/Qtip";
 
 function Sidecard({ data, label, className }) {
   const { language } = useLanguage();
-  const [hoverTimeout, setHoverTimeout] = useState(null);
-  const handleMouseEnter = (item, index) => {
-    const timeout = setTimeout(() => {
-      setHoveredItem(item.id + index);
-    }, 400);
-    setHoverTimeout(timeout);
-  };
-  const handleMouseLeave = () => {
-    clearTimeout(hoverTimeout);
-    setHoveredItem(null);
-  };
-
-  const [hoveredItem, setHoveredItem] = useState(null);
-  const { tooltipPosition, tooltipHorizontalPosition, cardRefs } =
-    useToolTipPosition(hoveredItem, data);
 
   return (
     <div className={`flex flex-col ${className}`}>
@@ -38,9 +21,6 @@ function Sidecard({ data, label, className }) {
             <div
               key={index}
               className="group"
-              ref={(el) => (cardRefs.current[index] = el)}
-              onMouseEnter={() => handleMouseEnter(item, index)}
-              onMouseLeave={handleMouseLeave}
             >
               <Link
                 to={`/${item.id}`}
@@ -48,21 +28,6 @@ function Sidecard({ data, label, className }) {
                 className="block"
               >
                 <div className="flex items-start gap-3 p-2 rounded-lg transition-colors hover:bg-[#1f1f1f]">
-                  {hoveredItem === item.id + index && window.innerWidth > 1024 && (
-                    <div
-                      className={`absolute ${tooltipPosition} ${tooltipHorizontalPosition} ${
-                        tooltipPosition === "top-1/2"
-                          ? "translate-y-[50px]"
-                          : "translate-y-[-50px]"
-                      } z-[100000] transform transition-all duration-300 ease-in-out ${
-                        hoveredItem === item.id + index
-                          ? "opacity-100 translate-y-0"
-                          : "opacity-0 translate-y-2"
-                      }`}
-                    >
-                      <Qtip id={item.id} />
-                    </div>
-                  )}
                   <img
                     src={`${item.poster}`}
                     alt={item.title}

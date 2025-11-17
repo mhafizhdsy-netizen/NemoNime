@@ -88,6 +88,7 @@ function AnimeInfo({ random = false }) {
   const [seasons, setSeasons] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [isInfoExpanded, setIsInfoExpanded] = useState(false);
   const { homeInfo } = useHomeInfo();
   const { id: currentId } = useParams();
   const navigate = useNavigate();
@@ -170,12 +171,14 @@ function AnimeInfo({ random = false }) {
           />
         </div>
         
-        {/* Dots Pattern Overlay */}
+        {/* Dots Pattern Overlay - Always on top of image */}
         <div 
           className="absolute inset-0 z-[1]"
           style={{
-            backgroundImage: 'radial-gradient(circle, rgba(255, 255, 255, 0.08) 1px, transparent 1px)',
-            backgroundSize: '20px 20px'
+            backgroundImage: 'radial-gradient(circle, rgba(255, 255, 255, 0.04) 0.5px, transparent 0.5px), radial-gradient(circle, rgba(255, 255, 255, 0.03) 0.5px, transparent 0.5px)',
+            backgroundSize: '12px 12px, 24px 24px',
+            backgroundPosition: '0 0, 6px 6px',
+            pointerEvents: 'none'
           }}
         ></div>
         
@@ -241,25 +244,37 @@ function AnimeInfo({ random = false }) {
             {/* Info */}
             <div className="flex-1 space-y-5 max-md:text-center max-md:space-y-4">
               {/* Title */}
-              <div className="space-y-1">
-                <h1 className="text-5xl font-bold leading-tight max-md:text-3xl">
+              <div className="space-y-3">
+                <h1 className="text-3xl font-bold leading-tight">
                   {language === "EN" ? title : japanese_title}
                 </h1>
-                <div className="flex items-center gap-2 text-sm text-white/50 max-md:justify-center flex-wrap">
-                  {japanese_title && language === "EN" && (
-                    <span>{japanese_title}</span>
+                {japanese_title && language === "EN" && (
+                  <p className="text-sm text-white/50 max-md:text-center">{japanese_title}</p>
+                )}
+                
+                {/* Info Badges - Clean Transparent with Color Indicators */}
+                <div className="flex items-center gap-2 max-md:justify-center flex-wrap">
+                  {info.tvInfo?.rating && (
+                    <div className="flex items-center h-8 px-3 bg-[#e91e63]/10 backdrop-blur-sm rounded-full border-l-2 border-l-[#e91e63] border-y border-r border-white/20 text-white text-xs font-semibold">
+                      {info.tvInfo.rating}
+                    </div>
                   )}
-                  {info?.Aired && (
-                    <>
-                      <span>•</span>
-                      <span>{info.Aired.split(' to ')[0]}</span>
-                    </>
+                  {info.tvInfo?.quality && (
+                    <div className="flex items-center h-8 px-3 bg-[#FFD93D]/10 backdrop-blur-sm rounded-full border-l-2 border-l-[#FFD93D] border-y border-r border-white/20 text-white text-xs font-semibold uppercase tracking-wide">
+                      {info.tvInfo.quality}
+                    </div>
                   )}
-                  {info?.Duration && (
-                    <>
-                      <span>•</span>
-                      <span>{info.Duration}</span>
-                    </>
+                  {(info.tvInfo?.sub || info.tvInfo?.episodeInfo?.sub) && (
+                    <div className="flex items-center gap-1.5 h-8 px-3 bg-[#4caf50]/10 backdrop-blur-sm rounded-full border-l-2 border-l-[#4caf50] border-y border-r border-white/20 text-white text-xs font-semibold">
+                      <FontAwesomeIcon icon={faClosedCaptioning} className="text-[10px] text-[#4caf50]" />
+                      <span>{info.tvInfo?.sub || info.tvInfo?.episodeInfo?.sub}</span>
+                    </div>
+                  )}
+                  {(info.tvInfo?.dub || info.tvInfo?.episodeInfo?.dub) && (
+                    <div className="flex items-center gap-1.5 h-8 px-3 bg-[#ff9800]/10 backdrop-blur-sm rounded-full border-l-2 border-l-[#ff9800] border-y border-r border-white/20 text-white text-xs font-semibold">
+                      <FontAwesomeIcon icon={faMicrophone} className="text-[10px] text-[#ff9800]" />
+                      <span>{info.tvInfo?.dub || info.tvInfo?.episodeInfo?.dub}</span>
+                    </div>
                   )}
                 </div>
               </div>
@@ -287,25 +302,57 @@ function AnimeInfo({ random = false }) {
                     const subscribed = isSubscribed(animeInfo.id);
                     if (subscribed) {
                       removeNotification(animeInfo.id);
-                      alert('Notification disabled for this anime');
+                      // Show toast notification
+                      const toast = document.createElement('div');
+                      toast.className = 'fixed top-24 right-4 z-[100000] animate-slide-in';
+                      toast.innerHTML = `
+                        <div class="flex items-center gap-3 px-4 py-3 rounded-xl border backdrop-blur-xl shadow-2xl bg-yellow-500/20 border-yellow-500/50 text-yellow-400">
+                          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                          </svg>
+                          <p class="text-sm font-medium">Notifications disabled for ${animeInfo.title}</p>
+                        </div>
+                      `;
+                      document.body.appendChild(toast);
+                      setTimeout(() => {
+                        toast.remove();
+                      }, 3000);
                     } else {
                       const success = await addNotification({
                         id: animeInfo.id,
                         title: animeInfo.title,
                         poster: animeInfo.poster
                       });
-                      if (success) {
-                        alert('You will be notified when new episodes are released!');
+                      
+                      if (!success) {
+                        // Show error toast
+                        const toast = document.createElement('div');
+                        toast.className = 'fixed top-24 right-4 z-[100000] animate-slide-in';
+                        toast.innerHTML = `
+                          <div class="flex items-center gap-3 px-4 py-3 rounded-xl border backdrop-blur-xl shadow-2xl bg-red-500/20 border-red-500/50 text-red-400">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                            </svg>
+                            <p class="text-sm font-medium">Please enable notifications in your browser settings</p>
+                          </div>
+                        `;
+                        document.body.appendChild(toast);
+                        setTimeout(() => {
+                          toast.remove();
+                        }, 4000);
                       }
                     }
                   }}
-                  className={`w-12 h-12 flex items-center justify-center border rounded-xl transition-all hover:scale-105 ${
+                  className={`w-12 h-12 flex items-center justify-center border rounded-xl transition-all hover:scale-105 relative ${
                     isSubscribed(animeInfo.id)
-                      ? 'bg-[#e91e63]/20 border-[#e91e63]/50 text-[#e91e63]'
+                      ? 'bg-[#e91e63]/20 border-[#e91e63]/50 text-[#e91e63] animate-pulse'
                       : 'bg-white/5 hover:bg-white/10 border-white/20 text-white'
                   }`}
-                  title={isSubscribed(animeInfo.id) ? 'Notifications enabled' : 'Get notified when new episode releases'}
+                  title={isSubscribed(animeInfo.id) ? 'Click to disable notifications' : 'Get notified when new episodes release'}
                 >
+                  {isSubscribed(animeInfo.id) && (
+                    <span className="absolute -top-1 -right-1 w-3 h-3 bg-[#e91e63] rounded-full animate-ping"></span>
+                  )}
                   <svg className="w-5 h-5" fill={isSubscribed(animeInfo.id) ? 'currentColor' : 'none'} stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
                   </svg>
@@ -362,16 +409,36 @@ function AnimeInfo({ random = false }) {
                   )}
                 </div>
               )}
-            </div>
-          </div>
 
-          {/* Detailed Info Section */}
-          <div className="mt-12 max-md:mt-8">
-            <div className="bg-gradient-to-br from-[#141414] to-[#0f0f0f] rounded-2xl p-6 border border-white/5 shadow-xl">
-              <h2 className="text-xl font-bold mb-6 text-white flex items-center gap-2">
-                <span className="w-1 h-6 bg-gradient-to-b from-[#e91e63] to-[#00bcd4] rounded-full"></span>
-                Anime Information
-              </h2>
+              {/* Detailed Info Section - Collapsible - Moved here below genres */}
+              <div className="mt-6 max-md:mt-4">
+            <div className="bg-gradient-to-br from-[#141414] to-[#0f0f0f] rounded-2xl border border-white/5 shadow-xl overflow-hidden">
+              <button
+                onClick={() => setIsInfoExpanded(!isInfoExpanded)}
+                className="w-full flex items-center justify-between p-6 hover:bg-white/5 transition-all duration-300 group"
+              >
+                <div className="flex items-center gap-3">
+                  <span className="w-1 h-6 bg-gradient-to-b from-[#e91e63] to-[#00bcd4] rounded-full"></span>
+                  <h2 className="text-xl font-bold text-white">Anime Information</h2>
+                </div>
+                <svg
+                  className={`w-6 h-6 text-white/70 group-hover:text-white transition-all duration-300 ${
+                    isInfoExpanded ? 'rotate-180' : ''
+                  }`}
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+              
+              <div
+                className={`transition-all duration-500 ease-in-out ${
+                  isInfoExpanded ? 'max-h-[2000px] opacity-100' : 'max-h-0 opacity-0'
+                } overflow-hidden`}
+              >
+                <div className="px-6 pb-6">
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {/* Left Column */}
@@ -486,23 +553,27 @@ function AnimeInfo({ random = false }) {
                 </div>
               </div>
 
-              {/* Full Genre List */}
-              {info?.Genres && info.Genres.length > 5 && (
-                <div className="mt-6 pt-6 border-t border-white/10">
-                  <span className="text-white/40 text-xs font-medium uppercase tracking-wider block mb-3">All Genres</span>
-                  <div className="flex flex-wrap gap-2">
-                    {info.Genres.map((genre, index) => (
-                      <Link
-                        key={index}
-                        to={`/genre/${genre.split(" ").join("-")}`}
-                        className="px-3 py-1.5 bg-white/5 hover:bg-[#e91e63]/20 border border-white/10 hover:border-[#e91e63]/40 rounded-lg text-xs font-medium text-white/80 hover:text-white transition-all"
-                      >
-                        {genre}
-                      </Link>
-                    ))}
-                  </div>
+                  {/* Full Genre List */}
+                  {info?.Genres && info.Genres.length > 5 && (
+                    <div className="mt-6 pt-6 border-t border-white/10">
+                      <span className="text-white/40 text-xs font-medium uppercase tracking-wider block mb-3">All Genres</span>
+                      <div className="flex flex-wrap gap-2">
+                        {info.Genres.map((genre, index) => (
+                          <Link
+                            key={index}
+                            to={`/genre/${genre.split(" ").join("-")}`}
+                            className="px-3 py-1.5 bg-white/5 hover:bg-[#e91e63]/20 border border-white/10 hover:border-[#e91e63]/40 rounded-lg text-xs font-medium text-white/80 hover:text-white transition-all"
+                          >
+                            {genre}
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
+                  )}
                 </div>
-              )}
+              </div>
+            </div>
+              </div>
             </div>
           </div>
         </div>

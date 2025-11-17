@@ -1,255 +1,122 @@
-<p align="center">
-  <div align="center">
-    <a href="https://NeoNime.vercel.app">
-      <img alt="NeoNime" src="https://github.com/tejaspanchall/JustAnime/blob/main/public/footer.png" width="280"/>
-    </a>
-  </div>
-  <h1 align="center">NeoNime</h1>
-  <h3 align="center">Experience Anime Streaming, Reimagined! ✨</h3>
-  <p align="center">
-    <a href="https://github.com/tejaspanchall/JustAnime">
-      <img src="https://img.shields.io/github/stars/tejaspanchall/JustAnime?style=for-the-badge&logo=github&color=e91e63" alt="Github Stars">
-    </a>
-    <img src="https://img.shields.io/github/issues/tejaspanchall/JustAnime?style=for-the-badge&logo=github&color=00bcd4" alt="Github Issues">
-    <a href="https://github.com/tejaspanchall/JustAnime">
-      <img src="https://img.shields.io/github/forks/tejaspanchall/JustAnime?style=for-the-badge&logo=github&color=e91e63" alt="Github Forks" />
-    </a>
-    <img src="https://img.shields.io/github/license/tejaspanchall/JustAnime?style=for-the-badge&color=00bcd4" alt="License" />
-  </p>
-</p>
 
-<p align="center">
-  <a href="https://discord.gg/P3yqksmGun">
-    <img src="https://img.shields.io/badge/Join%20Discord-5865F2?style=for-the-badge&logo=discord&logoColor=white" alt="Join Discord">
-  </a>
-  <a href="https://NeoNime.vercel.app">
-    <img src="https://img.shields.io/badge/Live%20Demo-e91e63?style=for-the-badge&logo=vercel&logoColor=white" alt="Live Demo">
-  </a>
-</p>
+ime Teame NeoNth ❤️ by th
+Made wipp)
 
 ---
+el.aNime.verc(https://Neoel.app]oNime.vercsite**: [Ne
+- **Webssues)ime/iall/JustAnaspanchom/tej/github.cs](https:/rt bugepossues**: [RGun)
+- **Igg/P3yqksmd.cordisy](https://munitur com*: [Join o**Discord*
 
-## 🎯 About
+- rtppo## Suect
 
-**NeoNime** is a modern, open-source anime streaming platform built with cutting-edge web technologies. Stream thousands of anime titles with both subtitles and dubs, completely free and ad-free. Built using React, Vite, and Tailwind CSS, powered by the [ANIME API](https://github.com/itzzzme/anime-api).
+this projimprove ave helped tors who hontribu c
+- Alltame dathe anioviding - For pr/anime-api) com/itzzzme://github.ttpsPI](h[ANIME Ats
 
-### ✨ Why NeoNime?
+- gmencknowled A
+##
+ails.r detle fo(LICENSE) fiSE]he [LICENee t- sIT License he Msed under t licenect iss projThiicense
 
-- 🚀 **Lightning Fast** - Optimized performance with Vite and React
-- 🎨 **Modern UI/UX** - Beautiful gradient design with smooth animations
-- 📱 **Fully Responsive** - Perfect experience on any device
-- 🎬 **No Ads** - Uninterrupted streaming experience
-- 🔍 **Smart Search** - Intuitive search with suggestions
-- 🌙 **Dark Mode** - Easy on the eyes, optimized for night viewing
 
----
 
-## 🌟 Features
+## Lquestl Re. Open a Pul
+5ng-feature`)amazin feature/ush origi (`git pbranchhe o t)
+4. Push t'`tureng feam 'Add amazicommit -nges (`git ur chayot  Commiure`)
+3.ating-feature/amazt -b feeckouit chh (`grancre bour featu2. Create ysitory
+repo1. Fork the 
 
-### 🎭 Content
+ull Request. a Pitree to subme feel fase! Plecomions are welbut
+Contributing
+Contrinime)
 
-- ✅ **Extensive Library** - Thousands of anime titles
-- 🎤 **Sub & Dub Support** - Watch in your preferred language
-- 🔥 **Trending Now** - Stay updated with popular anime
-- 🏆 **Top 10** - Daily, weekly, and monthly rankings
-- 📅 **Release Schedule** - Never miss new episodes
-- 🎲 **Random Anime** - Discover something new
-- 🎯 **Genre Filtering** - Browse by your favorite genres
-- 🔍 **A-Z List** - Alphabetical browsing
+## l/JustAalaspanch.com/tej/githubo=https:/ploy?repdem/render.co)](https://tton.svgo-render-budeploy-timages/render.com/ps://](htty to Rendereploender
+[![Dy to Rplo# Denime)
 
-### 📺 Watch Page
+##chall/JustAspanub.com/teja//giths:-url=httpitoryone?repos/clcel.com/newhttps://vern)](el.com/buttorc//veps:](httVercelploy with 
+[![Deto VercelDeploy # oyment
 
-- 🎬 **Multiple Servers** - Backup options for reliability
-- 🎥 **HD Quality** - High-definition streaming
-- ⏭️ **Auto Play** - Seamless episode transitions
-- ⚡ **Skip Intro/Outro** - Jump straight to the action
-- 🔄 **Auto Next** - Binge-watch without interruption
-- 📊 **Continue Watching** - Pick up where you left off
-- 🎭 **Related Anime** - Discover similar titles
-- 💫 **Recommended** - Personalized suggestions
-- 📺 **Multiple Seasons** - Easy season navigation
-- ⏰ **Episode Schedule** - Upcoming episode notifications
+##
 
-### 🎨 User Experience
-
-- 🎯 **Intuitive Navigation** - Easy to find what you want
-- 📱 **Mobile Optimized** - Perfect on phones and tablets
-- ⚡ **Fast Loading** - Optimized performance
-- 🎨 **Modern Design** - Beautiful gradient UI
-- 🔄 **Smooth Animations** - Polished interactions
-- 👥 **Character Info** - Detailed character & voice actor information
-- 🎬 **Producer Pages** - Browse by studio
-
----
-
-## 📸 Screenshots
-
-<div align="center">
-  <img src="https://github.com/tejaspanchall/JustAnime/blob/main/public/home.PNG" alt="Home Page" width="90%">
-  <p><i>Modern home page with trending anime and categories</i></p>
-</div>
-
-<details>
-<summary>📱 View More Screenshots</summary>
-
-<div align="center">
-  <br/>
-  <img src="https://github.com/tejaspanchall/JustAnime/blob/main/public/info.PNG" alt="Anime Info Page" width="90%">
-  <p><i>Detailed anime information page</i></p>
-  <br/>
-  <img src="https://github.com/tejaspanchall/JustAnime/blob/main/public/char.PNG" alt="Characters & Voice Actors" width="90%">
-  <p><i>Character and voice actor information</i></p>
-  <br/>
-  <img src="https://github.com/tejaspanchall/JustAnime/blob/main/public/watch.PNG" alt="Watch Page" width="90%">
-  <p><i>Feature-rich video player with multiple options</i></p>
-</div>
-
-</details>
-
----
-
-## 🛠️ Tech Stack
-
-- **Frontend Framework:** React 18
-- **Build Tool:** Vite
-- **Styling:** Tailwind CSS
-- **Routing:** React Router v6
-- **Video Player:** Artplayer
-- **Icons:** Font Awesome, React Icons
-- **API:** Custom Anime API
-- **Deployment:** Vercel
-
----
-
-## 🚀 Getting Started
-
-### Prerequisites
-
-- Node.js (v16 or higher)
-- npm or yarn package manager
-
-### Installation
-
-1. **Clone the repository**
-```bash
-git clone https://github.com/tejaspanchall/JustAnime.git
-cd JustAnime
+## Depluild
+``` run b`bash
+npmion
+``ctodufor Pr
+### Build 173
+st:5calhoen http://lo
+5. Op
 ```
+ev
+npm run dbash```r
+ervement srt develop
 
-2. **Install dependencies**
-```bash
-npm install
-# or
-yarn install
+4. Sta_urls
+```kupKER_URL=bac_WORVITE_url
+piRL=your_aPI_U
+VITE_Aon:
+```envti configuraAPIour .env` with yEdit `
+
+e .env
+```env.examplsh
+cp .```ba
+nt variablesmeup environ
+3. Set tall
 ```
+ ins```bash
+npmndencies
+pestall de
 
-3. **Set up environment variables**
+2. Inme
+```cd JustAni.git
+ll/JustAnimetejaspanchaub.com/s://githttpne hsh
+git cloba``ry
+`the repositoe on. Clllation
 
-Create a `.env` file in the root directory. Refer to [.env.example](https://github.com/tejaspanchall/JustAnime/blob/main/.env.example) for required variables.
+1Insta###  yarn
 
-```env
-VITE_API_BASE_URL=your_api_url_here
-```
+- npm orv16+)
+s (es
+- Node.jequisit Prer###tarted
 
-4. **Start the development server**
-```bash
-npm run dev
-# or
-yarn dev
-```
+ S
+## Gettingient
+TTP cl* - HAxios* **yer
+-la p** - Videoayer- **Artplgation
+vi** - Naact Router
+- **RengS** - Stylid CS
+- **Tailwin Build toolite** -ary
+- **VI libr8** - U**React 1
+- ech Stack
+ings
 
-5. **Open your browser**
+## Tatommunity rores and c scAL M*Ratings** -ir
+- * aesod new epis when** - Knowedulech**Episode S
+- tion studioy producrowse bfo** - B **Studio In
+-ilsor detace actnd voi Character a** -r Profiles**Characte
+- ationme informComplete ani* - ed Pages*ail
+- **Detormationnf
 
-Navigate to `http://localhost:5173` to see the app running.
+### Igiewintable vforcommized for  Optide** -ark Moice
+- **Don any dev Perfect Design** -sponsive *Retitles
+- * Japanese nglish andetween E Switch b Toggle** -agengu **Laisodes
+-f new epfied o notiet Gns** -io Notificatr
+- **Pushate watch le tove anim* - Saatchlist*- **Weatures
+# User Ft off
 
-### Build for Production
+## you lefsume where Reing** -tinue Watch- **Cone action
+t to thaightr so** - JumpOutrIntro/*Skip ions
+- * transitepisodes Seamles** - ay- **Auto Pluage
+ng laferredr preh in youub** - WatcSub & Dlity
+- **abieliions for rup opts** - BackrverSeltiple  **Mu
+-o playbackideh-quality ving** - HigD Stream*Hce
+- *ch Experienw
 
-```bash
-npm run build
-# or
-yarn build
-```
+### Watthing neomecover s - Dis**Random**g
+- rowsinal bAlphabetic - -Z List**- **Agories
+atete coriur fav by yoBrowseGenres** - **
+-  rankingsnthlyekly, and mo Daily, we0** -
+- **Top 1ight nowar r popul See what's* -**Trending*
+- ionstime suggesth real-itle wit anime by t* - Findearch*overy
+- **Sontent Discs
 
-The optimized production build will be in the `dist` folder.
+### Cre# Featund CSS.
 
----
-
-## 🌐 Deployment
-
-### Deploy to Vercel
-
-Host your own instance of NeoNime on Vercel with one click:
-
-[![Deploy to Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/tejaspanchall/JustAnime)
-
-### Deploy to Render
-
-Host your own instance on Render:
-
-[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/tejaspanchall/JustAnime)
-
----
-
-## 🤝 Contributing
-
-We welcome contributions! Here's how you can help:
-
-### Reporting Issues
-
-Found a bug or have a suggestion? [Open an issue](https://github.com/tejaspanchall/JustAnime/issues/new) with:
-- Clear description of the problem
-- Steps to reproduce
-- Expected vs actual behavior
-- Screenshots (if applicable)
-- Your environment details
-
-### Pull Requests
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Make your changes
-4. Commit your changes (`git commit -m 'Add amazing feature'`)
-5. Push to the branch (`git push origin feature/amazing-feature`)
-6. Open a Pull Request
-
-**Guidelines:**
-- Follow the existing code style
-- Write clear commit messages
-- Add tests if applicable
-- Update documentation as needed
-- Ensure all tests pass
-
----
-
-## 📝 License
-
-This project is open source and available under the [MIT License](LICENSE).
-
----
-
-## 🙏 Acknowledgments
-
-- [ANIME API](https://github.com/itzzzme/anime-api) for providing the anime data
-- All contributors who have helped improve this project
-- The anime community for their support and feedback
-
----
-
-## 📞 Contact & Support
-
-- **Discord:** [Join our community](https://discord.gg/P3yqksmGun)
-- **Issues:** [GitHub Issues](https://github.com/tejaspanchall/JustAnime/issues)
-- **Website:** [NeoNime.vercel.app](https://NeoNime.vercel.app)
-
----
-
-## ⭐ Show Your Support
-
-If you like this project, please consider giving it a ⭐ on GitHub!
-
-<div align="center">
-  <h3>Made with ❤️ by the NeoNime Team</h3>
-  <p><b>Enjoy streaming anime the way it should be! 🍿✨</b></p>
-</div>
-
-
+#ilwite, and Ta React, Viithuilt wtform blareaming p - ime st

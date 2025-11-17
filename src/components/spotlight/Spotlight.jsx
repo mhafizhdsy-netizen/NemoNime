@@ -17,7 +17,9 @@ const Spotlight = ({ spotlights }) => {
               spaceBetween={0}
               slidesPerView={1}
               loop={true}
-              allowTouchMove={false}
+              allowTouchMove={true}
+              touchRatio={1}
+              threshold={10}
               navigation={{
                 nextEl: ".button-next",
                 prevEl: ".button-prev",
@@ -29,6 +31,7 @@ const Spotlight = ({ spotlights }) => {
               autoplay={{
                 delay: 3000,
                 disableOnInteraction: false,
+                pauseOnMouseEnter: true,
               }}
               modules={[Navigation, Autoplay, Pagination]}
               className="h-[450px] max-[1390px]:h-full rounded-2xl overflow-hidden relative"

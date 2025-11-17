@@ -57,3 +57,50 @@
     height: 20px;
   }
 }
+
+/* Double Tap Gesture Indicators */
+.art-layer[data-name="backwardIcon"],
+.art-layer[data-name="forwardIcon"] {
+  pointer-events: none;
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.art-layer[data-name="backwardIcon"] svg,
+.art-layer[data-name="forwardIcon"] svg {
+  filter: drop-shadow(0 4px 12px rgba(233, 30, 99, 0.6));
+  width: 60px;
+  height: 60px;
+}
+
+@media screen and (max-width: 768px) {
+  .art-layer[data-name="backwardIcon"] svg,
+  .art-layer[data-name="forwardIcon"] svg {
+    width: 50px;
+    height: 50px;
+  }
+}
+
+/* Touch Areas for Double Tap */
+.art-layer[data-name="rewind"],
+.art-layer[data-name="forward"] {
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+}
+
+/* Ripple Effect on Double Tap */
+@keyframes ripple {
+  0% {
+    transform: scale(0.8);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1.5);
+    opacity: 0;
+  }
+}
+
+.art-layer[data-name="backwardIcon"].active,
+.art-layer[data-name="forwardIcon"].active {
+  animation: ripple 0.6s ease-out;
+}

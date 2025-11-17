@@ -52,13 +52,14 @@ function AnimeCard({ item, path = '', className }) {
   };
 
   return (
-    <div className={cn('anime-card-wrapper', className)}>
-      <div
-        ref={cardRef}
-        className="anime-card-3d anime-card-glow"
-        onMouseMove={handleMouseMove}
-        onMouseLeave={handleMouseLeave}
-      >
+    <>
+      <div className={cn('anime-card-wrapper', className)}>
+        <div
+          ref={cardRef}
+          className="anime-card-3d anime-card-glow"
+          onMouseMove={handleMouseMove}
+          onMouseLeave={handleMouseLeave}
+        >
         <div
           className="relative w-full pb-[140%] rounded-xl overflow-hidden cursor-pointer group"
           onClick={handleClick}
@@ -166,22 +167,24 @@ function AnimeCard({ item, path = '', className }) {
           </div>
         </div>
 
-        {/* Title */}
+        {/* Title - Hidden on Desktop, shown on Mobile */}
         <Link
           to={`/${item.id}`}
-          className="block mt-3 text-white font-semibold hover:text-brand-primary transition-colors line-clamp-1"
+          className="block mt-3 text-white font-semibold hover:text-brand-primary transition-colors line-clamp-1 md:hidden"
         >
           {language === 'EN' ? item.title : item.japanese_title}
         </Link>
 
-        {/* Description (optional) */}
+        {/* Description - Hidden on Desktop, shown on Mobile */}
         {item.description && (
-          <p className="mt-2 text-sm text-gray-400 line-clamp-2">
+          <p className="mt-2 text-sm text-gray-400 line-clamp-2 md:hidden">
             {item.description}
           </p>
         )}
+        </div>
       </div>
-    </div>
+
+    </>
   );
 }
 

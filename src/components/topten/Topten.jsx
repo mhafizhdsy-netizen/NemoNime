@@ -6,14 +6,10 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { useLanguage } from "@/src/context/LanguageContext";
 import { Link, useNavigate } from "react-router-dom";
-import useToolTipPosition from "@/src/hooks/useToolTipPosition";
-import Qtip from "../qtip/Qtip";
 
 function Topten({ data, className }) {
   const { language } = useLanguage();
   const [activePeriod, setActivePeriod] = useState("today");
-  const [hoveredItem, setHoveredItem] = useState(null);
-  const [hoverTimeout, setHoverTimeout] = useState(null);
   const navigate = useNavigate();
 
   const handlePeriodChange = (period) => {
@@ -31,22 +27,6 @@ function Topten({ data, className }) {
       : activePeriod === "week"
       ? data.week
       : data.month;
-
-  const { tooltipPosition, tooltipHorizontalPosition, cardRefs } =
-    useToolTipPosition(hoveredItem, currentData);
-
-  const handleMouseEnter = (item, index) => {
-    if (hoverTimeout) clearTimeout(hoverTimeout);
-    setHoveredItem(item.id + index);
-  };
-
-  const handleMouseLeave = () => {
-    setHoverTimeout(
-      setTimeout(() => {
-        setHoveredItem(null);
-      }, 300) // Small delay to prevent flickering
-    );
-  };
 
   return (
     <div className={`bg-gradient-to-br from-[#141414] to-[#0f0f0f] rounded-xl p-5 border border-white/5 shadow-xl ${className}`}>
@@ -80,7 +60,7 @@ function Topten({ data, className }) {
       <div className="flex flex-col space-y-2 max-h-[600px] overflow-y-auto pr-2 scrollbar-thin scrollbar-track-white/5 scrollbar-track-rounded-xl scrollbar-thumb-white/10 hover:scrollbar-thumb-white/20 scrollbar-thumb-rounded-xl">
         {currentData &&
           currentData.map((item, index) => (
-            <div key={index} className="group" ref={(el) => (cardRefs.current[index] = el)}>
+            <div key={index} className="group">
               <Link
                 to={`/${item.id}`}
                 onClick={() => handleNavigate(item.id)}
@@ -96,8 +76,6 @@ function Topten({ data, className }) {
                         e.preventDefault();
                         navigate(`/watch/${item.id}`);
                       }}
-                      onMouseEnter={() => handleMouseEnter(item, index)}
-                      onMouseLeave={handleMouseLeave}
                     />
                     <div className={`absolute top-0 left-0 bg-gradient-to-r ${
                       index < 3 
@@ -106,31 +84,6 @@ function Topten({ data, className }) {
                     } text-white text-xs font-bold px-1.5 py-0.5 rounded-br-xl shadow-lg`}>
                       #{index + 1}
                     </div>
-
-                    {/* Tooltip positioned near image */}
-                    {hoveredItem === item.id + index &&
-                      window.innerWidth > 1024 && (
-                        <div
-                          className={`absolute ${tooltipPosition} ${tooltipHorizontalPosition} 
-                          ${
-                            tooltipPosition === "top-1/2"
-                              ? "translate-y-[50px]"
-                              : "translate-y-[-50px]"
-                          } 
-                          z-[100000] transform transition-all duration-300 ease-in-out 
-                          ${
-                            hoveredItem === item.id + index
-                              ? "opacity-100 translate-y-0"
-                              : "opacity-0 translate-y-2"
-                          }`}
-                          onMouseEnter={() => {
-                            if (hoverTimeout) clearTimeout(hoverTimeout);
-                          }}
-                          onMouseLeave={handleMouseLeave}
-                        >
-                          <Qtip id={item.id} />
-                        </div>
-                      )}
                   </div>
                   <div className="flex flex-col gap-1.5 flex-1 min-w-0">
                     <span className="text-sm font-medium text-gray-200 group-hover:text-white transition-colors line-clamp-2">

@@ -125,7 +125,7 @@ export default function IframePlayer({
 
       {/* Powered by NeoNime Logo */}
       <div 
-        className="absolute top-2 right-2 flex items-center gap-2 bg-[#1F2020] px-2 py-1.5 rounded-lg pointer-events-none z-[100] transition-opacity duration-500"
+        className="absolute top-2 right-2 flex items-center gap-2 bg-[#1F2020]/90 backdrop-blur-sm px-3 py-2 rounded-xl border border-white/10 pointer-events-none z-[100] transition-all duration-500 shadow-lg"
         style={{ opacity: iframeLoaded ? 1 : 0 }}
       >
         <span className="text-white text-xs font-bold">Powered by</span>

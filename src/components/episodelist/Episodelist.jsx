@@ -138,7 +138,7 @@ function Episodelist({
 
   return (
     <div className="flex flex-col w-full h-full">
-      <div className="sticky top-0 z-10 flex items-center justify-between px-4 py-2.5 bg-[#1a1a1a] border-b border-[#2a2a2a] max-[600px]:px-2">
+      <div className="sticky top-0 z-10 flex items-center justify-between px-4 py-3 bg-gradient-to-r from-[#1a1a1a] to-[#0f0f0f] border-b border-[#2a2a2a]/50 max-[600px]:px-2 rounded-t-xl">
         <div className="flex items-center gap-4 max-[600px]:gap-2">
           <h1 className="text-[14px] font-semibold text-white max-[600px]:text-[13px]">Episodes</h1>
           {totalEpisodes > 100 && (
@@ -157,7 +157,7 @@ function Episodelist({
                   className="text-[10px]"
                 />
                 {showDropDown && (
-                  <div className="absolute top-full mt-2 left-0 z-30 bg-[#2a2a2a] w-[150px] max-h-[200px] overflow-y-auto rounded-lg border border-[#3a3a3a] shadow-lg scrollbar-thin scrollbar-track-transparent scrollbar-track-rounded-xl scrollbar-thumb-white/10 hover:scrollbar-thumb-white/20 scrollbar-thumb-rounded-xl">
+                  <div className="absolute top-full mt-2 left-0 z-30 bg-[#2a2a2a] w-[150px] max-h-[200px] overflow-y-auto rounded-xl border border-[#3a3a3a] shadow-lg scrollbar-thin scrollbar-track-transparent scrollbar-track-rounded-xl scrollbar-thumb-white/10 hover:scrollbar-thumb-white/20 scrollbar-thumb-rounded-xl">
                     {generateRangeOptions(totalEpisodes).map((item, index) => (
                       <div
                         key={index}
@@ -186,7 +186,7 @@ function Episodelist({
         
         {totalEpisodes > 100 && (
           <div className="flex items-center min-w-[180px] max-[600px]:min-w-[120px]">
-            <div className="w-full flex items-center gap-2 px-3 py-1.5 bg-[#2a2a2a] rounded-lg border border-[#3a3a3a] focus-within:border-gray-500 transition-colors max-[600px]:px-2 max-[600px]:py-1">
+            <div className="w-full flex items-center gap-2 px-3 py-1.5 bg-[#2a2a2a] rounded-xl border border-[#3a3a3a] focus-within:border-[#00bcd4]/50 transition-all duration-300 max-[600px]:px-2 max-[600px]:py-1">
               <FontAwesomeIcon
                 icon={faMagnifyingGlass}
                 className="text-[12px] text-gray-400"
@@ -227,7 +227,7 @@ function Episodelist({
                     <div
                       key={item?.id}
                       ref={isActive ? activeEpisodeRef : null}
-                      className={`flex items-center justify-center rounded-lg h-[35px] text-[13px] font-medium cursor-pointer transition-all max-[600px]:h-[30px] max-[600px]:text-[12px] ${
+                      className={`flex items-center justify-center rounded-xl h-[35px] text-[13px] font-medium cursor-pointer transition-all max-[600px]:h-[30px] max-[600px]:text-[12px] ${
                         item?.filler
                           ? isActive
                             ? "bg-white text-black"

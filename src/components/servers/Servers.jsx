@@ -104,10 +104,10 @@ function Servers({
                   {rawServers.map((item, index) => (
                     <div
                       key={index}
-                      className={`px-6 py-[5px] rounded-lg cursor-pointer ${
+                      className={`px-6 py-[5px] rounded-xl cursor-pointer transition-all duration-300 border ${
                         activeServerId === item?.data_id
-                          ? "bg-[#e0e0e0] text-black"
-                          : "bg-[#373737] text-white"
+                          ? "bg-gradient-to-r from-[#e91e63] to-[#00bcd4] text-white border-transparent shadow-lg"
+                          : "bg-[#373737] text-white border-white/10 hover:border-white/20 hover:bg-[#404040]"
                       } max-[700px]:px-3 max-[600px]:px-2 max-[600px]:py-1`}
                       onClick={() => handleServerSelect(item)}
                     >
@@ -134,10 +134,10 @@ function Servers({
                   {subServers.map((item, index) => (
                     <div
                       key={index}
-                      className={`px-6 py-[5px] rounded-lg cursor-pointer ${
+                      className={`px-6 py-[5px] rounded-xl cursor-pointer transition-all duration-300 border ${
                         activeServerId === item?.data_id
-                          ? "bg-[#e0e0e0] text-black"
-                          : "bg-[#373737] text-white"
+                          ? "bg-gradient-to-r from-[#e91e63] to-[#00bcd4] text-white border-transparent shadow-lg"
+                          : "bg-[#373737] text-white border-white/10 hover:border-white/20 hover:bg-[#404040]"
                       } max-[700px]:px-3 max-[600px]:px-2 max-[600px]:py-1`}
                       onClick={() => handleServerSelect(item)}
                     >
@@ -164,10 +164,10 @@ function Servers({
                   {dubServers.map((item, index) => (
                     <div
                       key={index}
-                      className={`px-6 py-[5px] rounded-lg cursor-pointer ${
+                      className={`px-6 py-[5px] rounded-xl cursor-pointer transition-all duration-300 border ${
                         activeServerId === item?.data_id
-                          ? "bg-[#e0e0e0] text-black"
-                          : "bg-[#373737] text-white"
+                          ? "bg-gradient-to-r from-[#e91e63] to-[#00bcd4] text-white border-transparent shadow-lg"
+                          : "bg-[#373737] text-white border-white/10 hover:border-white/20 hover:bg-[#404040]"
                       } max-[700px]:px-3 max-[600px]:px-2 max-[600px]:py-1`}
                       onClick={() => handleServerSelect(item)}
                     >
