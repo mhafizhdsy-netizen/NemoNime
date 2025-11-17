@@ -1,10 +1,11 @@
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faClosedCaptioning,
   faMicrophone,
   faPlay,
+  faStar,
 } from '@fortawesome/free-solid-svg-icons';
 import { useLanguage } from '@/src/context/LanguageContext';
 import { cn } from '@/lib/utils';
@@ -14,6 +15,7 @@ function AnimeCard({ item, path = '', className }) {
   const { language } = useLanguage();
   const navigate = useNavigate();
   const cardRef = useRef(null);
+  const [ratingClicked, setRatingClicked] = useState(false);
 
   const handleMouseMove = (e) => {
     if (!cardRef.current) return;
@@ -71,6 +73,27 @@ function AnimeCard({ item, path = '', className }) {
 
           {/* Overlay */}
           <div className="card-overlay" />
+
+          {/* Rating Badge */}
+          {item.rating && (
+            <div 
+              className={`absolute top-3 right-3 z-10 px-2.5 py-1 rounded-xl bg-gradient-to-r from-yellow-500 to-orange-500 text-white text-xs font-bold flex items-center gap-1 shadow-lg cursor-pointer overflow-hidden ${
+                ratingClicked ? 'animate-rating-click' : ''
+              } hover:scale-110 transition-transform duration-200`}
+              onClick={(e) => {
+                e.stopPropagation();
+                setRatingClicked(true);
+                setTimeout(() => setRatingClicked(false), 600);
+              }}
+            >
+              {/* Ripple Effect */}
+              {ratingClicked && (
+                <span className="absolute inset-0 bg-white/30 rounded-xl animate-ripple"></span>
+              )}
+              <FontAwesomeIcon icon={faStar} className={`text-[10px] relative z-10 ${ratingClicked ? 'animate-star-pulse' : ''}`} />
+              <span className="relative z-10">{item.rating}</span>
+            </div>
+          )}
 
           {/* 18+ Badge */}
           {(item.tvInfo?.rating === '18+' || item?.adultContent === true) && (

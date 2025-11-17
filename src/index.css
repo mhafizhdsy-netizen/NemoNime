@@ -12,6 +12,22 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Language Toggle Animation */
+@keyframes wiggle {
+  0%, 100% {
+    transform: rotate(0deg) scale(1);
+  }
+  25% {
+    transform: rotate(-5deg) scale(1.05);
+  }
+  50% {
+    transform: rotate(5deg) scale(1.1);
+  }
+  75% {
+    transform: rotate(-3deg) scale(1.05);
+  }
+}
+
 /* Dark theme styles - MAXIMUM CONTRAST */
 :root.dark {
   color-scheme: dark;

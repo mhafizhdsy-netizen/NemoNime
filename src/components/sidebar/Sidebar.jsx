@@ -1,13 +1,14 @@
 import { FaChevronLeft } from "react-icons/fa";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faFilm, faRandom, faHome, faClock, faFire, faTv, faPlay, faCirclePlay, faFilePen } from "@fortawesome/free-solid-svg-icons";
+import { faFilm, faRandom, faHome, faClock, faFire, faTv, faPlay, faCirclePlay, faFilePen, faBookmark } from "@fortawesome/free-solid-svg-icons";
 import { useLanguage } from "@/src/context/LanguageContext";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import "./Sidebar.css";
 
 const MENU_ITEMS = [
   { name: "Home", path: "/home", icon: faHome },
+  { name: "My Watchlist", path: "/watchlist", icon: faBookmark },
   { name: "Recently Added", path: "/recently-added", icon: faCirclePlay },
   { name: "Top Upcoming", path: "/top-upcoming", icon: faFilePen },
   { name: "Subbed Anime", path: "/subbed-anime", icon: faFilePen },
@@ -24,6 +25,14 @@ const Sidebar = ({ isOpen, onClose }) => {
   const { language, toggleLanguage } = useLanguage();
   const location = useLocation();
   const scrollPosition = useRef(0);
+  const [currentDateTime, setCurrentDateTime] = useState(new Date());
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentDateTime(new Date());
+    }, 1000);
+    return () => clearInterval(timer);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -80,7 +89,7 @@ const Sidebar = ({ isOpen, onClose }) => {
             <div className="flex items-center gap-3 mb-4">
               <img src="/logo.png" alt="Logo" className="h-8 w-auto" />
               <div className="flex flex-col">
-                <span className="text-white font-bold text-lg">NimeNemo</span>
+                <span className="text-white font-bold text-lg">NeoNime</span>
                 <span className="text-white/50 text-xs">Anime Streaming</span>
               </div>
             </div>
@@ -132,6 +141,13 @@ const Sidebar = ({ isOpen, onClose }) => {
             <h3 className="text-xs font-bold text-white/40 uppercase tracking-wider mb-3 px-2">Language</h3>
             <div className="language-switcher-container">
               <div className="language-switcher">
+                {/* Sliding Background */}
+                <div 
+                  className="language-slider"
+                  style={{
+                    transform: language === 'EN' ? 'translateX(0)' : 'translateX(100%)',
+                  }}
+                />
                 {["EN", "JP"].map((lang) => (
                   <button
                     key={lang}
@@ -166,8 +182,18 @@ const Sidebar = ({ isOpen, onClose }) => {
           {/* Footer */}
           <div className="sidebar-footer">
             <div className="footer-content">
-              <p className="text-xs text-white/40">© 2024 NimeNemo</p>
+              <p className="text-xs text-white/40">© {currentDateTime.getFullYear()} NeoNime</p>
               <p className="text-[10px] text-white/30">All rights reserved</p>
+              <p className="text-[9px] text-white/20 font-mono mt-1">
+                {currentDateTime.toLocaleString('en-US', {
+                  month: 'short',
+                  day: 'numeric',
+                  hour: '2-digit',
+                  minute: '2-digit',
+                  second: '2-digit',
+                  hour12: true
+                })}
+              </p>
             </div>
           </div>
         </div>

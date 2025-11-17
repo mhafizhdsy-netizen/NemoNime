@@ -1,6 +1,45 @@
 # Changelog
 
-All notable changes to the NimeNemo UI/UX will be documented in this file.
+All notable changes to the NeoNime UI/UX will be documented in this file.
+
+## [2.1.0] - 2024-11-17
+
+### Enhanced
+- **Language Toggle Animation**: Added wiggle animation and scale effects when switching languages
+- **Watch Page Layout**: Adjusted Watchlist and Download buttons position (added pt-2 spacing)
+- **Banner Component**: Added dots pattern overlay for visual depth
+- **Banner Shading**: Strengthened gradient overlay for better text readability (darker shading)
+- **AnimeInfo Hero Banner**: Complete redesign with dots pattern, stronger shading, and animated glow effect
+- **Hero Banner Gradient**: Enhanced left-to-right gradient overlay for better content visibility
+- **Spotlight Loader**: Updated to match new Banner design with dots pattern and improved layout
+- **Skeleton Loading**: Improved consistency across all pages
+- **Footer Mobile Layout**: Quick Links and Browse sections now display side-by-side in 2 columns on mobile
+- **Carousel Pagination**: Improved dots positioning and styling for mobile devices
+
+### Added
+- **Realtime Copyright**: All copyright text now displays live date and time (updates every second)
+- **Footer DateTime**: Added realtime date/time display in footer with formatted timestamp
+- **Sidebar DateTime**: Added realtime date/time in sidebar footer
+- **Watchlist Skeleton Loader**: New loading state for Watchlist page matching actual layout
+- **Contact Skeleton Loader**: New loading state for Contact/About page with proper structure
+- **Loading States**: Added smooth loading transitions to Watchlist and Contact pages
+- **Animated Effects**: Added hover scale effect and glow animation to hero banners
+- **Pagination Background**: Added backdrop blur and dark background to carousel dots on mobile
+- **Wiggle Animation**: Custom keyframe animation for language toggle interaction
+- **Active State Animation**: Scale down effect on button press (active:scale-90/95)
+- **Player Logo Enhancement**: Improved "Powered by + Logo" visibility with hover interaction
+- **Download API Guide**: Comprehensive documentation for implementing anime download with quality selection
+- **Sidebar Language Slide**: Sliding background effect in sidebar language toggle
+- **Multi-Quality Download**: Download button with quality selection (Consumet API with Anify fallback)
+- **IframePlayer Logo**: "Powered by + Logo" watermark on iframe players
+
+### Fixed
+- **Skeleton Consistency**: All skeleton loaders now match their actual component layouts
+- **Loading Experience**: Smoother transitions between loading and loaded states
+- **Hero Banner Readability**: Improved text contrast with stronger dark overlays
+- **Mobile Footer Layout**: Quick Links and Browse now properly aligned in 2 columns on mobile
+- **Carousel Dots Mobile**: Repositioned to bottom (6-8px from bottom) below Watch Now button
+- **Pagination Visibility**: Enhanced background opacity and z-index for better visibility
 
 ## [2.0.0] - 2024-11-16
 
@@ -228,3 +267,4 @@ When making changes:
 - [Implementation Summary](./IMPLEMENTATION_SUMMARY.md)
 - [Quick Start Guide](./QUICK_START_GUIDE.md)
 - [Design System README](./src/design-system/README.md)
+

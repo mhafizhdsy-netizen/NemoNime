@@ -4,6 +4,8 @@ import {
   faPlay,
   faClosedCaptioning,
   faMicrophone,
+  faStar,
+  faInfo,
 } from "@fortawesome/free-solid-svg-icons";
 import { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
@@ -14,6 +16,8 @@ import Loader from "@/src/components/Loader/Loader";
 import Error from "@/src/components/error/Error";
 import { useLanguage } from "@/src/context/LanguageContext";
 import { useHomeInfo } from "@/src/context/HomeInfoContext";
+import { useWatchlist } from "@/src/context/WatchlistContext";
+import { useNotification } from "@/src/context/NotificationContext";
 import Voiceactor from "@/src/components/voiceactor/Voiceactor";
 
 function InfoItem({ label, value, isProducer = true }) {
@@ -87,6 +91,8 @@ function AnimeInfo({ random = false }) {
   const { homeInfo } = useHomeInfo();
   const { id: currentId } = useParams();
   const navigate = useNavigate();
+  const { addToWatchlist, removeFromWatchlist, isInWatchlist } = useWatchlist();
+  const { addNotification, removeNotification, isSubscribed } = useNotification();
   useEffect(() => {
     if (id === "404-not-found-page") {
       console.log("404 got!");
@@ -152,13 +158,361 @@ function AnimeInfo({ random = false }) {
   ];
 
   return (
-    <div className="min-h-screen bg-[#0a0a0a] text-white">
-      <div className="relative w-full overflow-hidden mt-[74px] max-md:mt-[60px]">
+    <div className="min-h-screen bg-gradient-to-br from-[#0a0a0a] via-[#0f0f0f] to-[#0a0a0a] text-white">
+      {/* Hero Banner - Enhanced Modern Design */}
+      <div className="relative w-full h-[500px] max-md:h-[350px] overflow-hidden">
+        {/* Background Image with Scale Effect */}
+        <div className="absolute inset-0">
+          <img
+            src={poster}
+            alt={`${title} Backdrop`}
+            className="w-full h-full object-cover object-center scale-105 transition-transform duration-700 hover:scale-110"
+          />
+        </div>
+        
+        {/* Dots Pattern Overlay */}
+        <div 
+          className="absolute inset-0 z-[1]"
+          style={{
+            backgroundImage: 'radial-gradient(circle, rgba(255, 255, 255, 0.08) 1px, transparent 1px)',
+            backgroundSize: '20px 20px'
+          }}
+        ></div>
+        
+        {/* Stronger Dark Gradient Overlay - Left to Right */}
+        <div 
+          className="absolute inset-0 z-[2]"
+          style={{
+            background: 'linear-gradient(to right, rgba(10, 10, 10, 0.98) 0%, rgba(10, 10, 10, 0.92) 25%, rgba(10, 10, 10, 0.75) 50%, rgba(10, 10, 10, 0.45) 75%, rgba(10, 10, 10, 0.15) 100%)'
+          }}
+        ></div>
+        
+        {/* Enhanced Bottom Fade */}
+        <div 
+          className="absolute inset-0 z-[3]"
+          style={{
+            background: 'linear-gradient(to bottom, rgba(10, 10, 10, 0) 0%, rgba(10, 10, 10, 0.3) 50%, rgba(10, 10, 10, 0.95) 100%)'
+          }}
+        ></div>
+        
+        {/* Animated Glow Effect */}
+        <div 
+          className="absolute inset-0 z-[1] opacity-0 hover:opacity-100 transition-opacity duration-500"
+          style={{
+            background: 'radial-gradient(circle at 30% 50%, rgba(233, 30, 99, 0.15) 0%, rgba(0, 188, 212, 0.1) 50%, transparent 100%)'
+          }}
+        ></div>
+      </div>
 
-        {/* Main Content */}
-        <div className="relative z-10 container mx-auto py-4 sm:py-6 lg:py-12">
-          {/* Mobile Layout */}
-          <div className="block md:hidden">
+      {/* Anime Info Section - Overlapping Hero */}
+      <div className="relative -mt-40 max-md:-mt-28 z-20">
+        <div className="container mx-auto px-4 max-w-7xl">
+          <div className="flex gap-8 max-md:flex-col max-md:items-center">
+            {/* Poster */}
+            <div className="flex-shrink-0">
+              <div className="relative w-[240px] aspect-[2/3] rounded-2xl overflow-hidden shadow-2xl border-2 border-white/10 max-md:w-[200px]">
+                <img
+                  src={poster}
+                  alt={`${title} Poster`}
+                  className="w-full h-full object-cover"
+                />
+                {animeInfo.adultContent && (
+                  <div className="absolute top-3 left-3 px-3 py-1.5 bg-red-500 rounded-lg text-xs font-bold shadow-lg">
+                    18+
+                  </div>
+                )}
+              </div>
+              
+              {/* Rating */}
+              {info?.["MAL Score"] && (
+                <div className="mt-4 flex items-center justify-center gap-1">
+                  {[...Array(5)].map((_, i) => (
+                    <FontAwesomeIcon
+                      key={i}
+                      icon={faStar}
+                      className={`text-base ${i < Math.floor(parseFloat(info["MAL Score"]) / 2) ? 'text-yellow-500' : 'text-gray-700'}`}
+                    />
+                  ))}
+                  <span className="text-xl font-bold ml-2">{info["MAL Score"]}</span>
+                </div>
+              )}
+            </div>
+
+            {/* Info */}
+            <div className="flex-1 space-y-5 max-md:text-center max-md:space-y-4">
+              {/* Title */}
+              <div className="space-y-1">
+                <h1 className="text-5xl font-bold leading-tight max-md:text-3xl">
+                  {language === "EN" ? title : japanese_title}
+                </h1>
+                <div className="flex items-center gap-2 text-sm text-white/50 max-md:justify-center flex-wrap">
+                  {japanese_title && language === "EN" && (
+                    <span>{japanese_title}</span>
+                  )}
+                  {info?.Aired && (
+                    <>
+                      <span>•</span>
+                      <span>{info.Aired.split(' to ')[0]}</span>
+                    </>
+                  )}
+                  {info?.Duration && (
+                    <>
+                      <span>•</span>
+                      <span>{info.Duration}</span>
+                    </>
+                  )}
+                </div>
+              </div>
+
+              {/* Action Buttons */}
+              <div className="flex gap-3 max-md:justify-center flex-wrap">
+                {/* Watch Now Button */}
+                {animeInfo?.animeInfo?.Status?.toLowerCase() !== "not-yet-aired" ? (
+                  <Link
+                    to={`/watch/${animeInfo.id}`}
+                    className="inline-flex items-center gap-2 px-6 py-3 bg-[#e91e63] hover:bg-[#e91e63]/90 rounded-xl text-white font-semibold transition-all hover:scale-105"
+                  >
+                    <FontAwesomeIcon icon={faPlay} className="text-sm" />
+                    <span>Watch Now</span>
+                  </Link>
+                ) : (
+                  <div className="inline-flex items-center gap-2 px-6 py-3 bg-gray-700/50 rounded-xl text-white/70 font-semibold">
+                    <span>Not Yet Aired</span>
+                  </div>
+                )}
+                
+                {/* Notification Bell Button */}
+                <button 
+                  onClick={async () => {
+                    const subscribed = isSubscribed(animeInfo.id);
+                    if (subscribed) {
+                      removeNotification(animeInfo.id);
+                      alert('Notification disabled for this anime');
+                    } else {
+                      const success = await addNotification({
+                        id: animeInfo.id,
+                        title: animeInfo.title,
+                        poster: animeInfo.poster
+                      });
+                      if (success) {
+                        alert('You will be notified when new episodes are released!');
+                      }
+                    }
+                  }}
+                  className={`w-12 h-12 flex items-center justify-center border rounded-xl transition-all hover:scale-105 ${
+                    isSubscribed(animeInfo.id)
+                      ? 'bg-[#e91e63]/20 border-[#e91e63]/50 text-[#e91e63]'
+                      : 'bg-white/5 hover:bg-white/10 border-white/20 text-white'
+                  }`}
+                  title={isSubscribed(animeInfo.id) ? 'Notifications enabled' : 'Get notified when new episode releases'}
+                >
+                  <svg className="w-5 h-5" fill={isSubscribed(animeInfo.id) ? 'currentColor' : 'none'} stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
+                  </svg>
+                </button>
+
+                {/* Add to Watchlist Button */}
+                <button 
+                  onClick={() => {
+                    const inList = isInWatchlist(animeInfo.id);
+                    if (inList) {
+                      removeFromWatchlist(animeInfo.id);
+                    } else {
+                      addToWatchlist({
+                        id: animeInfo.id,
+                        title: animeInfo.title,
+                        poster: animeInfo.poster,
+                        episodeId: null,
+                        episodeNum: 1
+                      });
+                    }
+                  }}
+                  className={`w-12 h-12 flex items-center justify-center border rounded-xl transition-all hover:scale-105 ${
+                    isInWatchlist(animeInfo.id)
+                      ? 'bg-[#00bcd4]/20 border-[#00bcd4]/50 text-[#00bcd4]'
+                      : 'bg-white/5 hover:bg-white/10 border-white/20 text-white'
+                  }`}
+                  title={isInWatchlist(animeInfo.id) ? 'Remove from watchlist' : 'Add to watchlist'}
+                >
+                  <svg className="w-5 h-5" fill={isInWatchlist(animeInfo.id) ? 'currentColor' : 'none'} stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z" />
+                  </svg>
+                </button>
+              </div>
+
+              {/* Synopsis */}
+              {info?.Overview && (
+                <div className="space-y-3">
+                  <p className="text-white/60 leading-relaxed text-sm line-clamp-3 max-w-4xl">
+                    {info.Overview}
+                  </p>
+                  {/* Genre Tags */}
+                  {info?.Genres && (
+                    <div className="flex flex-wrap gap-2 max-md:justify-center">
+                      {info.Genres.slice(0, 5).map((genre, index) => (
+                        <Link
+                          key={index}
+                          to={`/genre/${genre.split(" ").join("-")}`}
+                          className="px-3 py-1 bg-[#e91e63]/20 hover:bg-[#e91e63]/30 border border-[#e91e63]/40 rounded-full text-xs font-medium text-white/90 transition-all"
+                        >
+                          {genre}
+                        </Link>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              )}
+            </div>
+          </div>
+
+          {/* Detailed Info Section */}
+          <div className="mt-12 max-md:mt-8">
+            <div className="bg-gradient-to-br from-[#141414] to-[#0f0f0f] rounded-2xl p-6 border border-white/5 shadow-xl">
+              <h2 className="text-xl font-bold mb-6 text-white flex items-center gap-2">
+                <span className="w-1 h-6 bg-gradient-to-b from-[#e91e63] to-[#00bcd4] rounded-full"></span>
+                Anime Information
+              </h2>
+              
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {/* Left Column */}
+                <div className="space-y-4">
+                  {info?.Japanese && (
+                    <div className="flex flex-col gap-1">
+                      <span className="text-white/40 text-xs font-medium uppercase tracking-wider">Japanese Title</span>
+                      <span className="text-white text-sm">{info.Japanese}</span>
+                    </div>
+                  )}
+                  {info?.Synonyms && (
+                    <div className="flex flex-col gap-1">
+                      <span className="text-white/40 text-xs font-medium uppercase tracking-wider">Synonyms</span>
+                      <span className="text-white text-sm">{info.Synonyms}</span>
+                    </div>
+                  )}
+                  {info?.Aired && (
+                    <div className="flex flex-col gap-1">
+                      <span className="text-white/40 text-xs font-medium uppercase tracking-wider">Aired</span>
+                      <span className="text-white text-sm">{info.Aired}</span>
+                    </div>
+                  )}
+                  {info?.Premiered && (
+                    <div className="flex flex-col gap-1">
+                      <span className="text-white/40 text-xs font-medium uppercase tracking-wider">Premiered</span>
+                      <span className="text-white text-sm">{info.Premiered}</span>
+                    </div>
+                  )}
+                  {info?.Duration && (
+                    <div className="flex flex-col gap-1">
+                      <span className="text-white/40 text-xs font-medium uppercase tracking-wider">Duration</span>
+                      <span className="text-white text-sm">{info.Duration}</span>
+                    </div>
+                  )}
+                </div>
+
+                {/* Right Column */}
+                <div className="space-y-4">
+                  {info?.Status && (
+                    <div className="flex flex-col gap-1">
+                      <span className="text-white/40 text-xs font-medium uppercase tracking-wider">Status</span>
+                      <span className="text-white text-sm">{info.Status}</span>
+                    </div>
+                  )}
+                  {info?.["MAL Score"] && (
+                    <div className="flex flex-col gap-1">
+                      <span className="text-white/40 text-xs font-medium uppercase tracking-wider">MAL Score</span>
+                      <div className="flex items-center gap-2">
+                        <span className="text-white text-sm font-semibold">{info["MAL Score"]}</span>
+                        <div className="flex gap-0.5">
+                          {[...Array(5)].map((_, i) => (
+                            <FontAwesomeIcon
+                              key={i}
+                              icon={faStar}
+                              className={`text-xs ${i < Math.floor(parseFloat(info["MAL Score"]) / 2) ? 'text-yellow-500' : 'text-gray-700'}`}
+                            />
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                  {info?.Studios && (
+                    <div className="flex flex-col gap-1">
+                      <span className="text-white/40 text-xs font-medium uppercase tracking-wider">Studios</span>
+                      <div className="text-white text-sm">
+                        {Array.isArray(info.Studios) ? (
+                          info.Studios.map((studio, index) => (
+                            <Link
+                              key={index}
+                              to={`/producer/${studio.replace(/[&'"^%$#@!()+=<>:;,.?/\\|{}[\]`~*_]/g, "").split(" ").join("-").replace(/-+/g, "-")}`}
+                              className="hover:text-[#e91e63] transition-colors"
+                            >
+                              {studio}{index < info.Studios.length - 1 && ", "}
+                            </Link>
+                          ))
+                        ) : (
+                          <Link
+                            to={`/producer/${info.Studios.replace(/[&'"^%$#@!()+=<>:;,.?/\\|{}[\]`~*_]/g, "").split(" ").join("-").replace(/-+/g, "-")}`}
+                            className="hover:text-[#e91e63] transition-colors"
+                          >
+                            {info.Studios}
+                          </Link>
+                        )}
+                      </div>
+                    </div>
+                  )}
+                  {info?.Producers && (
+                    <div className="flex flex-col gap-1">
+                      <span className="text-white/40 text-xs font-medium uppercase tracking-wider">Producers</span>
+                      <div className="text-white text-sm">
+                        {Array.isArray(info.Producers) ? (
+                          info.Producers.map((producer, index) => (
+                            <Link
+                              key={index}
+                              to={`/producer/${producer.replace(/[&'"^%$#@!()+=<>:;,.?/\\|{}[\]`~*_]/g, "").split(" ").join("-").replace(/-+/g, "-")}`}
+                              className="hover:text-[#e91e63] transition-colors"
+                            >
+                              {producer}{index < info.Producers.length - 1 && ", "}
+                            </Link>
+                          ))
+                        ) : (
+                          <Link
+                            to={`/producer/${info.Producers.replace(/[&'"^%$#@!()+=<>:;,.?/\\|{}[\]`~*_]/g, "").split(" ").join("-").replace(/-+/g, "-")}`}
+                            className="hover:text-[#e91e63] transition-colors"
+                          >
+                            {info.Producers}
+                          </Link>
+                        )}
+                      </div>
+                    </div>
+                  )}
+                </div>
+              </div>
+
+              {/* Full Genre List */}
+              {info?.Genres && info.Genres.length > 5 && (
+                <div className="mt-6 pt-6 border-t border-white/10">
+                  <span className="text-white/40 text-xs font-medium uppercase tracking-wider block mb-3">All Genres</span>
+                  <div className="flex flex-wrap gap-2">
+                    {info.Genres.map((genre, index) => (
+                      <Link
+                        key={index}
+                        to={`/genre/${genre.split(" ").join("-")}`}
+                        className="px-3 py-1.5 bg-white/5 hover:bg-[#e91e63]/20 border border-white/10 hover:border-[#e91e63]/40 rounded-lg text-xs font-medium text-white/80 hover:text-white transition-all"
+                      >
+                        {genre}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Main Content */}
+      <div className="relative z-10">
+        <div className="container mx-auto px-4 pt-8 pb-12 max-w-7xl">
+          {/* Additional Details - Hidden for now since info is in hero */}
+          <div className="hidden">
             <div className="flex flex-row gap-4">
               {/* Poster Section */}
               <div className="flex-shrink-0">
@@ -302,8 +656,8 @@ function AnimeInfo({ random = false }) {
             </div>
           </div>
 
-          {/* Desktop Layout - Existing Code */}
-          <div className="hidden md:block">
+          {/* Desktop Layout - Hidden */}
+          <div className="hidden">
             <div className="flex flex-row gap-6 lg:gap-10">
               {/* Poster Section */}
               <div className="flex-shrink-0">
@@ -447,8 +801,11 @@ function AnimeInfo({ random = false }) {
 
       {/* Seasons Section */}
       {seasons?.length > 0 && (
-        <div className="container mx-auto py-8 sm:py-12">
-          <h2 className="text-2xl font-bold mb-6 sm:mb-8 px-1">More Seasons</h2>
+        <div className="container mx-auto px-4 py-8 sm:py-12 max-w-7xl">
+          <div className="flex items-center gap-3 mb-6 sm:mb-8">
+            <span className="w-1 h-8 bg-gradient-to-b from-[#e91e63] to-[#00bcd4] rounded-full"></span>
+            <h2 className="text-2xl font-bold">More Seasons</h2>
+          </div>
           <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 sm:gap-4">
             {seasons.map((season, index) => (
               <Link
@@ -501,14 +858,14 @@ function AnimeInfo({ random = false }) {
 
       {/* Voice Actors Section */}
       {animeInfo?.charactersVoiceActors.length > 0 && (
-        <div className="container mx-auto py-12">
+        <div className="container mx-auto px-4 py-8 sm:py-12 max-w-7xl">
           <Voiceactor animeInfo={animeInfo} />
         </div>
       )}
 
       {/* Recommendations Section */}
       {animeInfo.recommended_data.length > 0 && (
-        <div className="container mx-auto py-12">
+        <div className="container mx-auto px-4 py-8 sm:py-12 max-w-7xl">
           <CategoryCard
             label="Recommended for you"
             data={animeInfo.recommended_data}

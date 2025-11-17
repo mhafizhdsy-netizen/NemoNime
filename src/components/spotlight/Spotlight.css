@@ -66,12 +66,16 @@
   border-radius: 50% !important;
   background-color: rgba(255, 255, 255, 0.5) !important;
   opacity: 1 !important;
+  transition: all 0.3s ease-in-out !important;
+  transform: scale(1) !important;
 }
 
 .swiper-pagination-bullet-active {
   background-color: #ffbade !important;
   width: 24px !important;
   border-radius: 12px !important;
+  transform: scale(1.1) !important;
+  box-shadow: 0 0 12px rgba(255, 186, 222, 0.6) !important;
 }
 
 .swiper-pagination {
@@ -87,18 +91,24 @@
   opacity: 1;
 }
 
-@media only screen and (max-width: 575px) {
+/* Tablet and below - position dots at bottom */
+@media only screen and (max-width: 768px) {
   .swiper-horizontal > .swiper-pagination-bullets {
-    bottom: 20px !important;
+    bottom: 2px !important;
     left: 50% !important;
     transform: translateX(-50%) !important;
     width: auto !important;
     display: flex !important;
-    gap: 4px;
+    gap: 6px;
     align-items: center;
     justify-content: center;
     flex-direction: row !important;
     height: auto !important;
+    padding: 6px 12px;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    z-index: 10;
   }
   .button-prev,
   .button-next {
@@ -108,9 +118,30 @@
   .swiper-pagination-bullet {
     width: 6px !important;
     height: 6px !important;
+    transition: all 0.3s ease-in-out !important;
   }
   .swiper-pagination-bullet-active {
-    width: 16px !important;
-    border-radius: 8px !important;
+    width: 18px !important;
+    border-radius: 9px !important;
+    transform: scale(1.1) !important;
+    box-shadow: 0 0 10px rgba(255, 186, 222, 0.7) !important;
+  }
+}
+
+/* Mobile - position dots at very bottom, below Watch Now button */
+@media only screen and (max-width: 480px) {
+  .swiper-horizontal > .swiper-pagination-bullets {
+    bottom: 1px !important;
+    gap: 4px;
+    padding: 5px 10px;
+    background: rgba(0, 0, 0, 0.6);
+  }
+  .swiper-pagination-bullet {
+    width: 5px !important;
+    height: 5px !important;
+  }
+  .swiper-pagination-bullet-active {
+    width: 14px !important;
+    border-radius: 7px !important;
   }
 }

@@ -164,6 +164,7 @@ export const useWatch = (animeId, initialEpisodeId) => {
     };
     fetchServers();
   }, [episodeId, episodes]);
+  
   // Fetch stream info only when episodeId, activeServerId, and servers are ready
   useEffect(() => {
     if (

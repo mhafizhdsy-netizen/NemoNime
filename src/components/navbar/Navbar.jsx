@@ -91,7 +91,7 @@ function Navbar() {
             >
               <img 
                 src="/logo.png" 
-                alt="NimeNemo - Anime Streaming Platform" 
+                alt="NeoNime - Anime Streaming Platform" 
                 className="h-10 w-auto max-md:h-8 drop-shadow-2xl" 
               />
             </Link>
@@ -114,15 +114,22 @@ function Navbar() {
 
           {/* Language Toggle - Desktop */}
           <div className="hidden md:flex items-center gap-3">
-            <div className="flex items-center gap-1.5 bg-gradient-to-br from-[#27272A] to-[#1a1a1a] rounded-xl p-1 border border-white/5 shadow-lg" role="group" aria-label="Language selection">
+            <div className="relative flex items-center gap-1.5 bg-gradient-to-br from-[#27272A] to-[#1a1a1a] rounded-xl p-1 border border-white/5 shadow-lg" role="group" aria-label="Language selection">
+              {/* Sliding Background */}
+              <div 
+                className="absolute top-1 bottom-1 w-[calc(50%-3px)] bg-gradient-to-br from-brand-primary to-brand-primary/80 rounded-xl shadow-lg shadow-brand-primary/30 transition-all duration-300 ease-out"
+                style={{
+                  left: language === 'EN' ? '4px' : 'calc(50% + 2px)',
+                }}
+              />
               {["EN", "JP"].map((lang) => (
                 <button
                   key={lang}
                   onClick={() => toggleLanguage(lang)}
-                  className={`px-4 py-2 text-sm font-semibold rounded-xl transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-brand-primary/50 ${
+                  className={`relative z-10 px-4 py-2 text-sm font-semibold rounded-xl transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-brand-primary/50 active:scale-95 ${
                     language === lang
-                      ? "bg-gradient-to-br from-brand-primary to-brand-primary/80 text-white shadow-lg shadow-brand-primary/30 scale-105"
-                      : "text-gray-400 hover:text-white hover:bg-white/10 hover:scale-105"
+                      ? "text-white scale-105"
+                      : "text-gray-400 hover:text-white hover:scale-105"
                   }`}
                   aria-label={`Switch to ${lang === 'EN' ? 'English' : 'Japanese'}`}
                   aria-pressed={language === lang}
@@ -136,15 +143,22 @@ function Navbar() {
           {/* Mobile Controls - Search & Language */}
           <div className="md:hidden flex items-center gap-2">
             {/* Language Toggle - Mobile */}
-            <div className="flex items-center gap-1 bg-gradient-to-br from-[#27272A] to-[#1a1a1a] rounded-xl p-0.5 border border-white/5" role="group" aria-label="Language selection">
+            <div className="relative flex items-center gap-1 bg-gradient-to-br from-[#27272A] to-[#1a1a1a] rounded-xl p-0.5 border border-white/5" role="group" aria-label="Language selection">
+              {/* Sliding Background - Mobile */}
+              <div 
+                className="absolute top-0.5 bottom-0.5 w-[calc(50%-2px)] bg-gradient-to-br from-brand-primary to-brand-primary/80 rounded-xl shadow-md shadow-brand-primary/30 transition-all duration-300 ease-out"
+                style={{
+                  left: language === 'EN' ? '2px' : 'calc(50% + 1px)',
+                }}
+              />
               {["EN", "JP"].map((lang) => (
                 <button
                   key={lang}
                   onClick={() => toggleLanguage(lang)}
-                  className={`px-2.5 py-1.5 text-xs font-semibold rounded-xl transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-brand-primary/50 ${
+                  className={`relative z-10 px-2.5 py-1.5 text-xs font-semibold rounded-xl transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-brand-primary/50 active:scale-90 ${
                     language === lang
-                      ? "bg-gradient-to-br from-brand-primary to-brand-primary/80 text-white shadow-md shadow-brand-primary/30"
-                      : "text-gray-400 hover:text-white hover:bg-white/10"
+                      ? "text-white"
+                      : "text-gray-400 hover:text-white"
                   }`}
                   aria-label={`Switch to ${lang === 'EN' ? 'English' : 'Japanese'}`}
                   aria-pressed={language === lang}

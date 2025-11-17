@@ -1,20 +1,31 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import website_name from '@/src/config/website.js';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faDiscord, faGithub } from "@fortawesome/free-brands-svg-icons";
-import { faPaperPlane, faChevronDown, faPlay, faClosedCaptioning, faMicrophone, faVideo, faRocket, faShieldAlt } from "@fortawesome/free-solid-svg-icons";
+import { faChevronDown, faPlay, faClosedCaptioning, faMicrophone, faVideo, faRocket, faShieldAlt } from "@fortawesome/free-solid-svg-icons";
+import Loader from '@/src/components/Loader/Loader';
 
 function AboutUs() {
   const [openFaq, setOpenFaq] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    // Simulate loading untuk smooth transition
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 300);
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (loading) return <Loader type="contact" />;
 
   const faqs = [
     {
-      question: "What is NimeNemo?",
-      answer: "NimeNemo is a free anime streaming platform that provides access to thousands of anime titles with both subtitles and dubs. We offer high-quality streaming with multiple server options to ensure the best viewing experience."
+      question: "What is NeoNime?",
+      answer: "NeoNime is a free anime streaming platform that provides access to thousands of anime titles with both subtitles and dubs. We offer high-quality streaming with multiple server options to ensure the best viewing experience."
     },
     {
-      question: "Is NimeNemo really free?",
-      answer: "Yes! NimeNemo is completely free to use. You can watch unlimited anime without any subscription fees or hidden charges. We believe anime should be accessible to everyone."
+      question: "Is NeoNime really free?",
+      answer: "Yes! NeoNime is completely free to use. You can watch unlimited anime without any subscription fees or hidden charges. We believe anime should be accessible to everyone."
     },
     {
       question: "Do I need to create an account?",
@@ -42,7 +53,7 @@ function AboutUs() {
     },
     {
       question: "Is the content legal?",
-      answer: "NimeNemo does not host any files. We aggregate streams from third-party services. All legal issues should be directed to the file hosts and providers."
+      answer: "NeoNime does not host any files. We aggregate streams from third-party services. All legal issues should be directed to the file hosts and providers."
     },
     {
       question: "How can I report an issue?",
@@ -170,31 +181,31 @@ function AboutUs() {
         </p>
         <div className="flex flex-wrap gap-4">
           <a
-            href="#"
+            href="https://whatsapp.com/channel/0029VajVvKSEquqWYa8Ov42C"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-white/5 to-white/10 hover:from-[#e91e63]/20 hover:to-[#00bcd4]/20 rounded-xl transition-all duration-300 group border border-white/10 hover:border-[#e91e63]/30"
+            className="flex items-center gap-3 px-6 py-3 bg-[#1a1a1a] hover:bg-[#252525] rounded-xl transition-all duration-300 border border-white/10 hover:border-white/20"
           >
-            <FontAwesomeIcon icon={faPaperPlane} className="text-xl text-white/60 group-hover:text-white transition-colors" />
-            <span className="text-white/70 group-hover:text-white font-medium transition-colors">Join our Telegram</span>
+            <span className="text-2xl">💬</span>
+            <span className="text-white font-medium">Join our WhatsApp Channel</span>
           </a>
           <a
-            href="#"
+            href="https://lynk.id/mhafizh"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-white/5 to-white/10 hover:from-[#e91e63]/20 hover:to-[#00bcd4]/20 rounded-xl transition-all duration-300 group border border-white/10 hover:border-[#e91e63]/30"
+            className="flex items-center gap-3 px-6 py-3 bg-[#1a1a1a] hover:bg-[#252525] rounded-xl transition-all duration-300 border border-white/10 hover:border-white/20"
           >
-            <FontAwesomeIcon icon={faDiscord} className="text-xl text-white/60 group-hover:text-white transition-colors" />
-            <span className="text-white/70 group-hover:text-white font-medium transition-colors">Join Discord Server</span>
+            <span className="text-2xl">👤</span>
+            <span className="text-white font-medium">My Bio</span>
           </a>
           <a
-            href="#"
+            href="https://github.com/mhafizhdsy-netizen"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-white/5 to-white/10 hover:from-[#e91e63]/20 hover:to-[#00bcd4]/20 rounded-xl transition-all duration-300 group border border-white/10 hover:border-[#e91e63]/30"
+            className="flex items-center gap-3 px-6 py-3 bg-[#1a1a1a] hover:bg-[#252525] rounded-xl transition-all duration-300 border border-white/10 hover:border-white/20"
           >
-            <FontAwesomeIcon icon={faGithub} className="text-xl text-white/60 group-hover:text-white transition-colors" />
-            <span className="text-white/70 group-hover:text-white font-medium transition-colors">GitHub</span>
+            <span className="text-2xl">🐙</span>
+            <span className="text-white font-medium">GitHub</span>
           </a>
         </div>
       </div>

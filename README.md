@@ -1,10 +1,10 @@
 <p align="center">
   <div align="center">
-    <a href="https://nimenemo.vercel.app">
-      <img alt="NimeNemo" src="https://github.com/tejaspanchall/JustAnime/blob/main/public/footer.png" width="280"/>
+    <a href="https://NeoNime.vercel.app">
+      <img alt="NeoNime" src="https://github.com/tejaspanchall/JustAnime/blob/main/public/footer.png" width="280"/>
     </a>
   </div>
-  <h1 align="center">NimeNemo</h1>
+  <h1 align="center">NeoNime</h1>
   <h3 align="center">Experience Anime Streaming, Reimagined! ✨</h3>
   <p align="center">
     <a href="https://github.com/tejaspanchall/JustAnime">
@@ -22,7 +22,7 @@
   <a href="https://discord.gg/P3yqksmGun">
     <img src="https://img.shields.io/badge/Join%20Discord-5865F2?style=for-the-badge&logo=discord&logoColor=white" alt="Join Discord">
   </a>
-  <a href="https://nimenemo.vercel.app">
+  <a href="https://NeoNime.vercel.app">
     <img src="https://img.shields.io/badge/Live%20Demo-e91e63?style=for-the-badge&logo=vercel&logoColor=white" alt="Live Demo">
   </a>
 </p>
@@ -31,9 +31,9 @@
 
 ## 🎯 About
 
-**NimeNemo** is a modern, open-source anime streaming platform built with cutting-edge web technologies. Stream thousands of anime titles with both subtitles and dubs, completely free and ad-free. Built using React, Vite, and Tailwind CSS, powered by the [ANIME API](https://github.com/itzzzme/anime-api).
+**NeoNime** is a modern, open-source anime streaming platform built with cutting-edge web technologies. Stream thousands of anime titles with both subtitles and dubs, completely free and ad-free. Built using React, Vite, and Tailwind CSS, powered by the [ANIME API](https://github.com/itzzzme/anime-api).
 
-### ✨ Why NimeNemo?
+### ✨ Why NeoNime?
 
 - 🚀 **Lightning Fast** - Optimized performance with Vite and React
 - 🎨 **Modern UI/UX** - Beautiful gradient design with smooth animations
@@ -178,7 +178,7 @@ The optimized production build will be in the `dist` folder.
 
 ### Deploy to Vercel
 
-Host your own instance of NimeNemo on Vercel with one click:
+Host your own instance of NeoNime on Vercel with one click:
 
 [![Deploy to Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/tejaspanchall/JustAnime)
 
@@ -239,7 +239,7 @@ This project is open source and available under the [MIT License](LICENSE).
 
 - **Discord:** [Join our community](https://discord.gg/P3yqksmGun)
 - **Issues:** [GitHub Issues](https://github.com/tejaspanchall/JustAnime/issues)
-- **Website:** [nimenemo.vercel.app](https://nimenemo.vercel.app)
+- **Website:** [NeoNime.vercel.app](https://NeoNime.vercel.app)
 
 ---
 
@@ -248,6 +248,8 @@ This project is open source and available under the [MIT License](LICENSE).
 If you like this project, please consider giving it a ⭐ on GitHub!
 
 <div align="center">
-  <h3>Made with ❤️ by the NimeNemo Team</h3>
+  <h3>Made with ❤️ by the NeoNime Team</h3>
   <p><b>Enjoy streaming anime the way it should be! 🍿✨</b></p>
 </div>
+
+

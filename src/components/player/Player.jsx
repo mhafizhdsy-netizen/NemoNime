@@ -384,11 +384,27 @@ export default function Player({
         leftAtRef.current = Math.floor(art.currentTime);
       });
 
+      // Logo will fade out after 3 seconds, then reappear on hover
       setTimeout(() => {
         art.layers[website_name].style.opacity = 0;
-      }, 2000);
+      }, 3000);
+      
+      // Show logo on hover
+      art.on('hover', (state) => {
+        if (state) {
+          art.layers[website_name].style.opacity = 1;
+        } else {
+          setTimeout(() => {
+            art.layers[website_name].style.opacity = 0;
+          }, 1000);
+        }
+      });
 
-      const defaultSubtitle = subtitles?.find((sub) => sub.label.toLowerCase() === "english");
+      // Priority: Indonesian > English
+      const defaultSubtitle = 
+        subtitles?.find((sub) => sub.label.toLowerCase().includes("indonesian") || sub.label.toLowerCase().includes("indonesia")) ||
+        subtitles?.find((sub) => sub.label.toLowerCase() === "english");
+      
       if (defaultSubtitle) {
         art.subtitle.switch(defaultSubtitle.file, {
           name: defaultSubtitle.label,
@@ -434,7 +450,10 @@ export default function Player({
           }, 300);
         });
       if (subtitles?.length > 0) {
-        const defaultEnglishSub =
+        // Priority: Indonesian > English
+        const defaultSub =
+          subtitles.find((sub) => (sub.label.toLowerCase().includes("indonesian") || sub.label.toLowerCase().includes("indonesia")) && sub.default) ||
+          subtitles.find((sub) => sub.label.toLowerCase().includes("indonesian") || sub.label.toLowerCase().includes("indonesia")) ||
           subtitles.find((sub) => sub.label.toLowerCase() === "english" && sub.default) ||
           subtitles.find((sub) => sub.label.toLowerCase() === "english");
 
@@ -442,7 +461,7 @@ export default function Player({
           name: "captions",
           icon: captionIcon,
           html: "Subtitle",
-          tooltip: defaultEnglishSub?.label || "default",
+          tooltip: defaultSub?.label || "default",
           position: "right",
           selector: [
             {
@@ -454,11 +473,15 @@ export default function Player({
                 return !item.switch;
               },
             },
-            ...subtitles.map((sub) => ({
-              default: sub.label.toLowerCase() === "english" && sub === defaultEnglishSub,
-              html: sub.label,
-              url: sub.file,
-            })),
+            ...subtitles.map((sub) => {
+              const isIndonesian = sub.label.toLowerCase().includes("indonesian") || sub.label.toLowerCase().includes("indonesia");
+              const isEnglish = sub.label.toLowerCase() === "english";
+              return {
+                default: (isIndonesian && sub === defaultSub) || (!subtitles.some(s => s.label.toLowerCase().includes("indonesian") || s.label.toLowerCase().includes("indonesia")) && isEnglish && sub === defaultSub),
+                html: sub.label,
+                url: sub.file,
+              };
+            }),
           ],
           onSelect: (item) => {
             art.subtitle.switch(item.url, { name: item.html });

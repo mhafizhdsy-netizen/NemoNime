@@ -11,16 +11,23 @@
   will-change: transform;
 }
 
-/* Modern Gradient Overlay - DARK ONLY */
+/* Modern Gradient Overlay - DARK ONLY with Stronger Shading */
 .spotlight-overlay-modern {
   background: linear-gradient(
     to right,
-    rgba(18, 18, 18, 0.95) 0%,
-    rgba(18, 18, 18, 0.85) 25%,
-    rgba(18, 18, 18, 0.6) 50%,
-    rgba(18, 18, 18, 0.3) 75%,
-    transparent 100%
+    rgba(10, 10, 10, 0.98) 0%,
+    rgba(10, 10, 10, 0.92) 25%,
+    rgba(10, 10, 10, 0.75) 50%,
+    rgba(10, 10, 10, 0.45) 75%,
+    rgba(10, 10, 10, 0.15) 100%
   );
+  pointer-events: none;
+}
+
+/* Dots Pattern Overlay */
+.spotlight-dots-pattern {
+  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+  background-size: 20px 20px;
   pointer-events: none;
 }
 
@@ -238,10 +245,10 @@
   .spotlight-overlay-modern {
     background: linear-gradient(
       to right,
-      rgba(15, 15, 30, 0.95) 0%,
-      rgba(15, 15, 30, 0.8) 30%,
-      rgba(15, 15, 30, 0.5) 60%,
-      transparent 100%
+      rgba(10, 10, 10, 0.98) 0%,
+      rgba(10, 10, 10, 0.88) 30%,
+      rgba(10, 10, 10, 0.65) 60%,
+      rgba(10, 10, 10, 0.2) 100%
     );
   }
 }
@@ -250,10 +257,10 @@
   .spotlight-overlay-modern {
     background: linear-gradient(
       to right,
-      rgba(15, 15, 30, 0.95) 0%,
-      rgba(15, 15, 30, 0.85) 40%,
-      rgba(15, 15, 30, 0.6) 70%,
-      transparent 100%
+      rgba(10, 10, 10, 0.98) 0%,
+      rgba(10, 10, 10, 0.92) 40%,
+      rgba(10, 10, 10, 0.75) 70%,
+      rgba(10, 10, 10, 0.3) 100%
     );
   }
 }

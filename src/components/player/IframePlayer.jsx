@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import { useEffect, useState } from "react";
 import BouncingLoader from "../ui/bouncingloader/Bouncingloader";
+import website_name from "@/src/config/website";
 
 export default function IframePlayer({
   episodeId,
@@ -121,6 +122,19 @@ export default function IframePlayer({
           setTimeout(() => setLoading(false), 1000);
         }}
       ></iframe>
+
+      {/* Powered by NeoNime Logo */}
+      <div 
+        className="absolute top-2 right-2 flex items-center gap-2 bg-[#1F2020] px-2 py-1.5 rounded-lg pointer-events-none z-[100] transition-opacity duration-500"
+        style={{ opacity: iframeLoaded ? 1 : 0 }}
+      >
+        <span className="text-white text-xs font-bold">Powered by</span>
+        <img 
+          src="/logo.png" 
+          alt={`${website_name} Logo`} 
+          className="h-5 object-contain" 
+        />
+      </div>
     </div>
   );
 }

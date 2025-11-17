@@ -3,6 +3,8 @@ import HomeLoader from "./Home.loader";
 import CategoryLoader from "./Category.loader";
 import AtoZLoader from "./AtoZ.loader";
 import ProducerLoader from "./Producer.loader";
+import WatchlistLoader from "./Watchlist.loader";
+import ContactLoader from "./Contact.loader";
 
 const Loader = ({ type }) => {
   switch (type) {
@@ -16,6 +18,10 @@ const Loader = ({ type }) => {
       return <ProducerLoader />;
     case "AtoZ":
       return <AtoZLoader />;
+    case "watchlist":
+      return <WatchlistLoader />;
+    case "contact":
+      return <ContactLoader />;
     default:
       return <div className="loading-skeleton default-skeleton"></div>;
   }

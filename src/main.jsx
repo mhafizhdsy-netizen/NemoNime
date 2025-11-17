@@ -1,5 +1,7 @@
 import { LanguageProvider } from './context/LanguageContext';
 import { ThemeProvider } from './context/ThemeContext';
+import { WatchlistProvider } from './context/WatchlistContext';
+import { NotificationProvider } from './context/NotificationContext';
 import { createRoot } from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 import App from './App.jsx';
@@ -8,9 +10,13 @@ import './index.css';
 createRoot(document.getElementById('root')).render(
   <ThemeProvider>
     <LanguageProvider>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
+      <WatchlistProvider>
+        <NotificationProvider>
+          <BrowserRouter>
+            <App />
+          </BrowserRouter>
+        </NotificationProvider>
+      </WatchlistProvider>
     </LanguageProvider>
   </ThemeProvider>
 );

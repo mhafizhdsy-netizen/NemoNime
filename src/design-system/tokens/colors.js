@@ -1,7 +1,7 @@
 /**
  * Design System - Color Tokens
  * HIGH CONTRAST SCHEMA - Maximum readability
- * Centralized color definitions for the NimeNemo application
+ * Centralized color definitions for the NeoNime application
  * Supports both dark and light themes
  */
 

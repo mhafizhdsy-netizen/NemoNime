@@ -61,20 +61,31 @@ function Servers({
           <BouncingLoader />
         </div>
       ) : servers ? (
-        <div className="w-full h-full rounded-lg grid grid-cols-[minmax(0,30%),minmax(0,70%)] overflow-hidden max-[800px]:grid-cols-[minmax(0,40%),minmax(0,60%)] max-[600px]:flex max-[600px]:flex-col max-[600px]:rounded-none max-[600px]:gap-2">
-          <div className="h-full bg-[#e0e0e0] px-6 text-black flex flex-col justify-center items-center gap-y-2 max-[600px]:bg-transparent max-[600px]:h-auto max-[600px]:text-white max-[600px]:py-1 max-[600px]:px-2">
-            <p className="text-center leading-5 font-medium text-[14px] max-[600px]:text-[13px] max-[600px]:mb-0">
-              You are watching:{" "}
-              <br className="max-[600px]:hidden" />
-              <span className="font-semibold max-[600px]:text-[#e0e0e0] max-[600px]:ml-1">
-                Episode {activeEpisodeNum}
-              </span>
-            </p>
-            <p className="leading-5 text-[14px] font-medium text-center max-[600px]:text-[12px] max-[600px]:hidden">
-              If the current server doesn&apos;t work, please try other servers
-              beside.
-            </p>
+        <div className="w-full h-full rounded-lg overflow-hidden max-[600px]:rounded-none">
+          {/* Modern Info Banner */}
+          <div className="w-full bg-gradient-to-r from-[#1a1a1a] via-[#252525] to-[#1a1a1a] border-b border-white/10 px-4 py-3 max-[600px]:px-3 max-[600px]:py-2">
+            <div className="flex items-center justify-between gap-4 max-[600px]:flex-col max-[600px]:items-start max-[600px]:gap-2">
+              {/* Episode Info */}
+              <div className="flex items-center gap-3">
+                <div className="flex items-center gap-2 px-3 py-1.5 bg-gradient-to-r from-[#e91e63]/20 to-[#00bcd4]/20 border border-[#e91e63]/30 rounded-xl backdrop-blur-sm shadow-lg shadow-[#e91e63]/10">
+                  <span className="text-[#e91e63] text-sm">▶</span>
+                  <span className="text-white text-sm font-semibold">Episode {activeEpisodeNum}</span>
+                </div>
+                <div className="h-6 w-px bg-white/20 max-[600px]:hidden"></div>
+                <span className="text-white/70 text-sm font-medium max-[600px]:hidden">Now Playing</span>
+              </div>
+              
+              {/* Server Info */}
+              <div className="flex items-center gap-2 px-3 py-1.5 bg-white/5 rounded-lg border border-white/10 max-[600px]:w-full max-[600px]:justify-center">
+                <svg className="w-4 h-4 text-[#00bcd4]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <span className="text-white/60 text-xs font-medium">Server not working? Try another below</span>
+              </div>
+            </div>
           </div>
+          
+          {/* Servers Grid */}
           <div className="bg-[#1f1f1f] flex flex-col max-[600px]:rounded-lg max-[600px]:p-2">
             {rawServers.length > 0 && (
               <div className={`servers px-2 flex items-center flex-wrap gap-y-1 ml-2 max-[600px]:py-1.5 max-[600px]:px-1 max-[600px]:ml-0 ${

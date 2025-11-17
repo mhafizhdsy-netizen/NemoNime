@@ -4,29 +4,54 @@ const SkeletonItems = ({ count, className }) => (
 );
 function SpotlightLoader() {
     return (
-        <section className="w-full h-[600px] max-[1390px]:h-[530px] max-[1300px]:h-[500px] max-md:h-[420px] relative">
+        <section className="w-full h-[450px] max-[1390px]:h-[400px] max-[1300px]:h-[350px] max-md:h-[300px] relative rounded-2xl overflow-hidden mt-[20px]">
+            {/* Background Skeleton */}
             <Skeleton className="absolute inset-0 w-full h-full rounded-none" />
-            <div className="absolute flex flex-col left-0 bottom-[100px] w-[55%] p-4 z-10 max-[1390px]:w-[45%] max-[1390px]:bottom-[10px] max-[1300px]:w-[600px] max-[1120px]:w-[60%] max-md:w-[90%] max-[300px]:w-full">
-                <Skeleton className="w-[450px] h-[32px] max-md:w-[200px] max-md:h-[24px]" />
-                <Skeleton className="w-[70%] h-[24px] mt-6 text-left max-[1300px]:mt-4 max-sm:w-[80%] max-[320px]:w-full max-md:h-[20px]" />
-                <div className="flex h-fit justify-center items-center w-fit space-x-5 mt-8 max-[1300px]:mt-6 max-md:hidden">
-                    <SkeletonItems count={2} className="w-[40px] h-[20px]" />
-                    <div className="flex space-x-3 w-fit">
-                        <Skeleton className="w-[90px] h-[20px]" />
-                        <div className='flex space-x-[2px] rounded-r-[5px] rounded-l-[5px] w-fit py-[1px] overflow-hidden'>
-                            <SkeletonItems count={2} className="w-[35px] h-[20px]" />
-                        </div>
-                    </div>
+            
+            {/* Dots Pattern Overlay */}
+            <div className="absolute inset-0 z-[1]" style={{
+                backgroundImage: 'radial-gradient(circle, rgba(255, 255, 255, 0.08) 1px, transparent 1px)',
+                backgroundSize: '20px 20px'
+            }}></div>
+            
+            {/* Gradient Overlay */}
+            <div className="absolute inset-0 z-[1]" style={{
+                background: 'linear-gradient(to right, rgba(10, 10, 10, 0.98) 0%, rgba(10, 10, 10, 0.92) 25%, rgba(10, 10, 10, 0.75) 50%, rgba(10, 10, 10, 0.45) 75%, rgba(10, 10, 10, 0.15) 100%)'
+            }}></div>
+            
+            <div className="absolute flex flex-col left-0 bottom-0 w-[55%] p-8 z-[2] max-[1390px]:w-[50%] max-[1300px]:w-[600px] max-[1120px]:w-[65%] max-md:w-[90%] max-md:p-6 max-[300px]:w-full">
+                {/* Badge */}
+                <div className="flex items-center gap-3 mb-4">
+                    <Skeleton className="w-[150px] h-[32px] rounded-full" />
+                    <Skeleton className="w-[60px] h-[32px] rounded-full" />
                 </div>
-                <div className="mt-6 max-[1300px]:w-[500px] flex flex-col gap-y-3 max-[1120px]:w-[90%] max-md:hidden">
-                    <Skeleton className="w-full h-[16px]" />
-                    <Skeleton className="w-[85%] h-[16px]" />
-                    <Skeleton className="w-[70%] h-[16px]" />
+                
+                {/* Title */}
+                <Skeleton className="w-[70%] h-[48px] mb-5 rounded-xl max-[1390px]:h-[45px] max-[1300px]:h-[36px] max-md:h-[28px] max-md:w-[80%]" />
+                
+                {/* Mobile Buttons */}
+                <div className="hidden max-md:flex max-md:mt-4 max-md:gap-x-3 max-md:w-full">
+                    <Skeleton className="flex-1 h-[40px] rounded-xl" />
+                    <Skeleton className="w-[50px] h-[40px] rounded-xl" />
                 </div>
-                <div className='flex gap-x-5 mt-10 max-md:mt-6 max-sm:w-full max-[320px]:flex-col max-[320px]:space-y-3'>
-                    <Skeleton className="w-[180px] h-[45px] max-[575px]:w-[130px] max-[575px]:h-[35px]" />
-                    <Skeleton className="w-[160px] h-[45px] max-[575px]:w-[130px] max-[575px]:h-[35px]" />
+                
+                {/* Info Tags */}
+                <div className="flex h-fit justify-start items-center flex-wrap gap-3 mt-5 max-[1300px]:mt-4 max-md:hidden">
+                    <SkeletonItems count={5} className="w-[80px] h-[32px] rounded-xl" />
                 </div>
+                
+                {/* Description */}
+                <div className="mt-4 flex flex-col gap-y-2 max-md:hidden">
+                    <Skeleton className="w-full h-[16px] rounded-xl" />
+                    <Skeleton className="w-[90%] h-[16px] rounded-xl" />
+                    <Skeleton className="w-[75%] h-[16px] rounded-xl" />
+                </div>
+            </div>
+            
+            {/* Desktop Action Buttons */}
+            <div className="absolute bottom-[50px] right-[40px] flex gap-x-4 z-[2] max-md:hidden">
+                <Skeleton className="w-[150px] h-[48px] rounded-xl" />
+                <Skeleton className="w-[130px] h-[48px] rounded-xl" />
             </div>
         </section >
     )

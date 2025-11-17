@@ -25,7 +25,10 @@ function Banner({ item, index }) {
         />
       </div>
       
-      {/* Enhanced Gradient Overlay */}
+      {/* Dots Pattern Overlay */}
+      <div className="spotlight-dots-pattern absolute inset-0 z-[1]"></div>
+      
+      {/* Enhanced Gradient Overlay with Stronger Shading */}
       <div className="spotlight-overlay-modern absolute inset-0 z-[1]"></div>
       
       {/* Animated Glow Effect */}

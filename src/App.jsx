@@ -18,6 +18,7 @@ import Watch from "./pages/watch/Watch";
 import Producer from "./components/producer/Producer";
 import AboutUs from "./pages/contact/Contact";
 import FeedbackButton from "./components/feedback/FeedbackButton";
+import Watchlist from "./pages/watchlist/Watchlist";
 
 function App() {
   const location = useLocation();
@@ -41,6 +42,7 @@ function App() {
             <Route path="/404-not-found-page" element={<Error error="404" />} />
             <Route path="/error-page" element={<Error />} />
             <Route path="/about" element={<AboutUs />} />
+            <Route path="/watchlist" element={<Watchlist />} />
             {/* Render category routes */}
             {categoryRoutes.map((path) => (
               <Route

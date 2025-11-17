@@ -1,7 +1,7 @@
-# NimeNemo Design System
+# NeoNime Design System
 
 ## Overview
-This design system provides a consistent, accessible, and modern UI foundation for the NimeNemo anime streaming platform.
+This design system provides a consistent, accessible, and modern UI foundation for the NeoNime anime streaming platform.
 
 ## Design Tokens
 
@@ -218,3 +218,4 @@ When adding new components or tokens:
 - [WCAG 2.1 Guidelines](https://www.w3.org/WAI/WCAG21/quickref/)
 - [Radix UI Primitives](https://www.radix-ui.com/)
 - [Lucide Icons](https://lucide.dev/)
+

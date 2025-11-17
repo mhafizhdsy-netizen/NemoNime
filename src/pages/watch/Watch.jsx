@@ -20,6 +20,8 @@ import SidecardLoader from "@/src/components/Loader/Sidecard.loader";
 import Watchcontrols from "@/src/components/watchcontrols/Watchcontrols";
 import useWatchControl from "@/src/hooks/useWatchControl";
 import Player from "@/src/components/player/Player";
+import DownloadButton from "@/src/components/download/DownloadButton";
+import WatchlistButton from "@/src/components/watchlist/WatchlistButton";
 
 export default function Watch() {
   const location = useLocation();
@@ -223,7 +225,7 @@ export default function Watch() {
   }, [animeId, animeInfo]);
   return (
     <div className="w-full min-h-screen bg-gradient-to-br from-[#0a0a0a] via-[#0f0f0f] to-[#0a0a0a]">
-      <div className="w-full max-w-[1920px] mx-auto pt-16 pb-6 px-4 max-[1200px]:pt-12 max-[1200px]:px-3">
+      <div className="w-full max-w-[1920px] mx-auto pt-24 pb-6 px-4 max-[1200px]:pt-20 max-[1200px]:px-3">
         <div className="grid grid-cols-[minmax(0,70%),minmax(0,30%)] gap-6 w-full h-full max-[1200px]:flex max-[1200px]:flex-col">
           {/* Left Column - Player, Controls, Servers */}
           <div className="flex flex-col w-full gap-6">
@@ -297,6 +299,32 @@ export default function Watch() {
                       episodeId={episodeId}
                       onButtonClick={(id) => setEpisodeId(id)}
                     />
+                  </div>
+                )}
+
+                {/* Watchlist and Download Buttons */}
+                {!buffering && animeInfo && (
+                  <div className="px-3 pb-3 pt-2">
+                    <div className="flex gap-3 flex-wrap">
+                      <WatchlistButton 
+                        anime={{
+                          id: animeId,
+                          title: animeInfo?.title,
+                          poster: animeInfo?.poster,
+                          episodeId: episodeId,
+                          episodeNum: activeEpisodeNum
+                        }}
+                      />
+                      {streamUrl && (
+                        <DownloadButton 
+                          streamUrl={streamUrl}
+                          episodeNum={activeEpisodeNum}
+                          animeTitle={animeInfo?.title}
+                          serverName={activeServerName}
+                          episodeId={episodeId}
+                        />
+                      )}
+                    </div>
                   </div>
                 )}
 
