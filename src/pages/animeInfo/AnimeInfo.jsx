@@ -19,6 +19,7 @@ import { useHomeInfo } from "@/src/context/HomeInfoContext";
 import { useWatchlist } from "@/src/context/WatchlistContext";
 import { useNotification } from "@/src/context/NotificationContext";
 import Voiceactor from "@/src/components/voiceactor/Voiceactor";
+import "./AnimeInfo.css";
 
 function InfoItem({ label, value, isProducer = true }) {
   return (
@@ -161,15 +162,21 @@ function AnimeInfo({ random = false }) {
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#0a0a0a] via-[#0f0f0f] to-[#0a0a0a] text-white">
       {/* Hero Banner - Enhanced Modern Design */}
-      <div className="relative w-full h-[500px] max-md:h-[350px] overflow-hidden">
+      <div className="cover-banner relative w-full h-[500px] max-md:h-[350px] overflow-hidden group">
         {/* Background Image with Scale Effect */}
         <div className="absolute inset-0">
           <img
             src={poster}
             alt={`${title} Backdrop`}
-            className="w-full h-full object-cover object-center scale-105 transition-transform duration-700 hover:scale-110"
+            className="w-full h-full object-cover object-center scale-105 transition-transform duration-700 group-hover:scale-110"
           />
         </div>
+        
+        {/* Breathing Glow Effect */}
+        <div className="cover-breathing-glow"></div>
+        
+        {/* Border Glow Effect */}
+        <div className="cover-border-glow"></div>
         
         {/* Dots Pattern Overlay - Always on top of image */}
         <div 

@@ -77,7 +77,39 @@ export default function Player({
       );
       setCurrentEpisodeIndex(newIndex);
     }
-  }, [episodeId, episodes]);
+    
+    // Update episode terakhir saat pindah episode
+    if (animeInfo && episodeId && episodeNum) {
+      const continueWatching = JSON.parse(localStorage.getItem("continueWatching")) || [];
+      const existingEntry = continueWatching.find((item) => item.data_id === animeInfo.data_id);
+      
+      // Update jika episode berbeda atau belum ada entry
+      if (!existingEntry || existingEntry.episodeId !== episodeId) {
+        const newEntry = {
+          id: animeInfo.id,
+          data_id: animeInfo.data_id,
+          episodeId,
+          episodeNum,
+          leftAt: 0, // Reset untuk episode baru
+          poster: animeInfo.poster,
+          title: animeInfo.title,
+          japanese_title: animeInfo.japanese_title,
+          adultContent: animeInfo.adultContent,
+          updatedAt: new Date().toISOString()
+        };
+        
+        const existingIndex = continueWatching.findIndex((item) => item.data_id === animeInfo.data_id);
+        if (existingIndex !== -1) {
+          continueWatching[existingIndex] = newEntry;
+        } else {
+          continueWatching.push({ ...newEntry, addedAt: new Date().toISOString() });
+        }
+        
+        localStorage.setItem("continueWatching", JSON.stringify(continueWatching));
+        console.log(`✅ Switched to Episode ${episodeNum}`);
+      }
+    }
+  }, [episodeId, episodes, animeInfo, episodeNum]);
   useEffect(() => {
     const applyChapterStyles = () => {
       const existingStyles = document.querySelectorAll(

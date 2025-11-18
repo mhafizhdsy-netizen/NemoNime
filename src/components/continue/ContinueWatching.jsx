@@ -9,6 +9,7 @@ import { FaHistory, FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import { useLanguage } from "@/src/context/LanguageContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlay } from "@fortawesome/free-solid-svg-icons";
+import "@/src/components/categorycard/CategoryCard.css";
 
 const ContinueWatching = () => {
   const [watchList, setWatchList] = useState([]);
@@ -88,30 +89,47 @@ const ContinueWatching = () => {
 
                 <Link
                   to={`/watch/${item?.id}?ep=${item.episodeId}`}
-                  className="inline-block bg-gray-900 absolute left-0 top-0 w-full h-full group"
+                  className="inline-block bg-gradient-to-br from-[#1a1a1a] to-[#0a0a0a] absolute left-0 top-0 w-full h-full group"
                 >
                   <img
                     src={`${item?.poster}`}
                     alt={item?.title}
-                    className="block w-full h-full object-cover transition-all duration-500 ease-in-out group-hover:scale-105"
+                    className="block w-full h-full object-cover transition-all duration-700 ease-in-out group-hover:scale-110"
                     title={item?.title}
                     loading="lazy"
                   />
-                  <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-center justify-center">
-                    <div className="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
-                      <FontAwesomeIcon
-                        icon={faPlay}
-                        className="text-[50px] text-white drop-shadow-lg max-[450px]:text-[36px]"
-                      />
+                  
+                  {/* Gradient Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-500 pointer-events-none" />
+                  
+                  {/* Glow Effect */}
+                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-t from-brand-primary/20 via-transparent to-transparent pointer-events-none" />
+                  
+                  {/* Enhanced Play Button with Glow */}
+                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 transform scale-50 group-hover:scale-100 pointer-events-none">
+                    <div className="relative">
+                      {/* Outer Glow Ring */}
+                      <div className="absolute inset-0 bg-gradient-to-r from-[#E91E63] via-[#F06292] to-[#ec4899] rounded-full blur-xl opacity-75 animate-pulse pointer-events-none"></div>
+                      {/* Play Button */}
+                      <div className="relative bg-gradient-to-br from-[#E91E63] to-[#F06292] rounded-full p-5 shadow-2xl shadow-[#E91E63]/50 backdrop-blur-sm border-2 border-white/30 pointer-events-none">
+                        <FontAwesomeIcon
+                          icon={faPlay}
+                          className="text-white text-3xl max-[450px]:text-2xl drop-shadow-2xl"
+                        />
+                      </div>
                     </div>
                   </div>
                 </Link>
+                
+                {/* 18+ Badge with Enhanced Styling */}
                 {item?.adultContent === true && (
-                  <div className="text-white px-2 py-0.5 rounded-xl bg-red-600 absolute top-3 left-3 flex items-center justify-center text-[12px] font-bold">
+                  <div className="absolute top-3 left-3 z-10 px-3 py-1.5 bg-gradient-to-r from-red-600 to-red-500 backdrop-blur-md rounded-full text-white text-xs font-bold shadow-2xl border border-red-400/50 animate-pulse pointer-events-none">
                     18+
                   </div>
                 )}
-                <div className="absolute bottom-0 left-0 right-0 p-3 pb-2 bg-gradient-to-t from-black/90 via-black/60 to-transparent">
+                
+                {/* Info Container - Slide Up on Hover */}
+                <div className="absolute bottom-0 left-0 right-0 p-3 pb-2 bg-gradient-to-t from-black/90 via-black/60 to-transparent transform translate-y-0 group-hover:translate-y-0 transition-all duration-500 pointer-events-none">
                   <p className="text-white text-[15px] font-bold text-left truncate mb-1.5 max-[450px]:text-sm drop-shadow-lg">
                     {language === "EN"
                       ? item?.title
@@ -121,6 +139,21 @@ const ContinueWatching = () => {
                     Episode {item.episodeNum}
                   </p>
                 </div>
+                
+                {/* Shimmer Effect */}
+                <div className="card-shine pointer-events-none"></div>
+                
+                {/* Radial Glow */}
+                <div className="corner-glow pointer-events-none"></div>
+                
+                {/* Animated Border Glow */}
+                <div className="absolute inset-0 rounded-xl border-2 border-transparent group-hover:border-[#E91E63]/50 transition-all duration-500 group-hover:shadow-[0_0_20px_rgba(233,30,99,0.5)] pointer-events-none" />
+                
+                {/* Corner Accents */}
+                <div className="absolute top-0 left-0 w-8 h-8 border-t-2 border-l-2 border-transparent group-hover:border-[#E91E63]/60 rounded-tl-xl transition-all duration-500 opacity-0 group-hover:opacity-100 pointer-events-none"></div>
+                <div className="absolute top-0 right-0 w-8 h-8 border-t-2 border-r-2 border-transparent group-hover:border-[#F06292]/60 rounded-tr-xl transition-all duration-500 opacity-0 group-hover:opacity-100 pointer-events-none"></div>
+                <div className="absolute bottom-0 left-0 w-8 h-8 border-b-2 border-l-2 border-transparent group-hover:border-[#ec4899]/60 rounded-bl-xl transition-all duration-500 opacity-0 group-hover:opacity-100 pointer-events-none"></div>
+                <div className="absolute bottom-0 right-0 w-8 h-8 border-b-2 border-r-2 border-transparent group-hover:border-[#FF4081]/60 rounded-br-xl transition-all duration-500 opacity-0 group-hover:opacity-100 pointer-events-none"></div>
               </div>
             </SwiperSlide>
           ))}

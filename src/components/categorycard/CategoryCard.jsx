@@ -99,12 +99,12 @@ const CategoryCard = React.memo(
               {itemsToRender.firstRow.map((item, index) => (
                 <div
                   key={index}
-                  className="flex flex-col category-card-container"
+                  className="flex flex-col transition-transform duration-300 ease-in-out hover:scale-[1.02]"
                   style={{ height: "fit-content" }}
                 >
-                  <div className="w-full h-auto pb-[140%] relative inline-block overflow-hidden rounded-xl shadow-lg group">
+                  <div className="w-full h-auto pb-[140%] relative inline-block overflow-hidden rounded-2xl shadow-lg group">
                     <div
-                      className="inline-block bg-gray-900 absolute left-0 top-0 w-full h-full group hover:cursor-pointer"
+                      className="inline-block bg-gradient-to-br from-[#1a1a1a] to-[#0a0a0a] absolute left-0 top-0 w-full h-full group hover:cursor-pointer"
                       onClick={() =>
                         navigate(
                           `${
@@ -118,86 +118,110 @@ const CategoryCard = React.memo(
                       <img
                         src={`${item.poster}`}
                         alt={item.title}
-                        className="block w-full h-full object-cover transition-all duration-500 ease-in-out group-hover:scale-105"
+                        className="block w-full h-full object-cover transition-all duration-700 ease-in-out group-hover:scale-110"
+                        loading="lazy"
                       />
-                      <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-center justify-center">
-                        <div className="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
-                          <FontAwesomeIcon
-                            icon={faPlay}
-                            className="text-[50px] text-white drop-shadow-lg max-[450px]:text-[36px]"
-                          />
+                      
+                      {/* Gradient Overlay */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-500 pointer-events-none" />
+                      
+                      {/* Glow Effect */}
+                      <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-t from-brand-primary/20 via-transparent to-transparent pointer-events-none" />
+                      
+                      {/* Shimmer Effect */}
+                      <div className="card-shine pointer-events-none"></div>
+                      
+                      {/* Radial Glow */}
+                      <div className="corner-glow pointer-events-none"></div>
+                      
+                      {/* Enhanced Play Button with Glow */}
+                      <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 transform scale-50 group-hover:scale-100 pointer-events-none">
+                        <div className="relative">
+                          {/* Outer Glow Ring */}
+                          <div className="absolute inset-0 bg-gradient-to-r from-[#E91E63] via-[#F06292] to-[#ec4899] rounded-full blur-xl opacity-75 animate-pulse pointer-events-none"></div>
+                          {/* Play Button */}
+                          <div className="relative bg-gradient-to-br from-[#E91E63] to-[#F06292] rounded-full p-5 shadow-2xl shadow-[#E91E63]/50 backdrop-blur-sm border-2 border-white/30 hover:scale-110 transition-transform duration-300 pointer-events-none">
+                            <FontAwesomeIcon
+                              icon={faPlay}
+                              className="text-white text-3xl max-[450px]:text-2xl drop-shadow-2xl"
+                            />
+                          </div>
                         </div>
                       </div>
                     </div>
-                    {(item.tvInfo?.rating === "18+" ||
-                      item?.adultContent === true) && (
-                      <div className="text-white px-2 py-0.5 rounded-xl bg-red-600 absolute top-3 left-3 flex items-center justify-center text-[12px] font-bold">
+                    
+                    {/* 18+ Badge with Enhanced Styling */}
+                    {(item.tvInfo?.rating === "18+" || item?.adultContent === true) && (
+                      <div className="absolute top-3 left-3 z-10 px-3 py-1.5 bg-gradient-to-r from-red-600 to-red-500 backdrop-blur-md rounded-full text-white text-xs font-bold shadow-2xl border border-red-400/50 animate-pulse">
                         18+
                       </div>
                     )}
-                    <div className="absolute bottom-0 left-0 right-0 p-3 pb-2 bg-gradient-to-t from-black/80 via-black/50 to-transparent">
-                      <div className="flex items-center justify-start w-full space-x-1.5 z-[100] flex-wrap gap-y-1.5">
+                    
+                    {/* Info Badges - Slide Up on Hover with Stagger */}
+                    <div className="absolute bottom-0 left-0 right-0 p-3 transform translate-y-4 group-hover:translate-y-0 transition-all duration-600 z-10">
+                      <div className="flex items-center justify-start w-full gap-2 flex-wrap opacity-0 group-hover:opacity-100 transition-opacity duration-600 delay-150">
                         {item.tvInfo?.sub && (
-                          <div className="flex space-x-0.5 justify-center items-center bg-gradient-to-r from-white/10 to-white/5 border border-white/10 rounded-xl px-2 text-white py-1">
-                            <FontAwesomeIcon
-                              icon={faClosedCaptioning}
-                              className="text-[11px]"
-                            />
-                            <p className="text-[11px] font-medium">
-                              {item.tvInfo.sub}
-                            </p>
+                          <div className="flex items-center gap-1.5 h-7 px-3 bg-gradient-to-r from-emerald-500/90 to-green-500/90 backdrop-blur-xl rounded-full border border-emerald-300/50 shadow-lg shadow-emerald-500/30 hover:scale-105 transition-transform duration-300">
+                            <FontAwesomeIcon icon={faClosedCaptioning} className="text-[10px] text-white drop-shadow-lg" />
+                            <span className="text-[10px] font-bold text-white drop-shadow-lg">{item.tvInfo.sub}</span>
                           </div>
                         )}
                         {item.tvInfo?.dub && (
-                          <div className="flex space-x-0.5 justify-center items-center bg-gradient-to-r from-white/10 to-white/5 border border-white/10 rounded-xl px-2 text-white py-1">
-                            <FontAwesomeIcon
-                              icon={faMicrophone}
-                              className="text-[11px]"
-                            />
-                            <p className="text-[11px] font-medium">
-                              {item.tvInfo.dub}
-                            </p>
+                          <div className="flex items-center gap-1.5 h-7 px-3 bg-gradient-to-r from-orange-500/90 to-amber-500/90 backdrop-blur-xl rounded-full border border-orange-300/50 shadow-lg shadow-orange-500/30 hover:scale-105 transition-transform duration-300">
+                            <FontAwesomeIcon icon={faMicrophone} className="text-[10px] text-white drop-shadow-lg" />
+                            <span className="text-[10px] font-bold text-white drop-shadow-lg">{item.tvInfo.dub}</span>
                           </div>
                         )}
                         {item.tvInfo?.showType && (
-                          <div className="bg-gradient-to-r from-white/10 to-white/5 border border-white/10 text-white rounded-xl px-2 py-1 text-[11px] font-medium">
-                            {item.tvInfo.showType.split(" ").shift()}
+                          <div className="h-7 px-3 flex items-center bg-gradient-to-r from-[#E91E63]/20 to-[#F06292]/20 backdrop-blur-xl rounded-full border border-[#E91E63]/40 shadow-md hover:scale-105 transition-transform duration-300 max-[478px]:hidden">
+                            <span className="text-[10px] font-bold text-white drop-shadow-lg">{item.tvInfo.showType.split(" ").shift()}</span>
                           </div>
                         )}
                         {item.releaseDate && (
-                          <div className="bg-gradient-to-r from-white/10 to-white/5 border border-white/10 text-white rounded-xl px-2 py-1 text-[11px] font-medium">
-                            {item.releaseDate}
+                          <div className="h-7 px-3 flex items-center bg-gradient-to-r from-[#F06292]/20 to-[#ec4899]/20 backdrop-blur-xl rounded-full border border-[#F06292]/40 shadow-md hover:scale-105 transition-transform duration-300">
+                            <span className="text-[10px] font-bold text-white drop-shadow-lg">{item.releaseDate}</span>
                           </div>
                         )}
                         {!item.tvInfo?.showType && item.type && (
-                          <div className="bg-gradient-to-r from-white/10 to-white/5 border border-white/10 text-white rounded-xl px-2 py-1 text-[11px] font-medium">
-                            {item.type}
+                          <div className="h-7 px-3 flex items-center bg-gradient-to-r from-[#FF4081]/20 to-[#E91E63]/20 backdrop-blur-xl rounded-full border border-[#FF4081]/40 shadow-md hover:scale-105 transition-transform duration-300">
+                            <span className="text-[10px] font-bold text-white drop-shadow-lg">{item.type}</span>
                           </div>
                         )}
                         {(item.tvInfo?.duration || item.duration) && (
-                          <div className="bg-gradient-to-r from-white/10 to-white/5 border border-white/10 text-white rounded-xl px-2 py-1 text-[11px] font-medium">
-                            {item.tvInfo?.duration === "m" ||
-                            item.tvInfo?.duration === "?" ||
-                            item.duration === "m" ||
-                            item.duration === "?"
-                              ? "N/A"
-                              : item.tvInfo?.duration || item.duration || "N/A"}
+                          <div className="h-7 px-3 flex items-center bg-gradient-to-r from-[#F48FB1]/20 to-[#F06292]/20 backdrop-blur-xl rounded-full border border-[#F48FB1]/40 shadow-md hover:scale-105 transition-transform duration-300 max-[478px]:hidden">
+                            <span className="text-[10px] font-bold text-white drop-shadow-lg">
+                              {item.tvInfo?.duration === "m" || item.tvInfo?.duration === "?" || item.duration === "m" || item.duration === "?" ? "N/A" : item.tvInfo?.duration || item.duration || "N/A"}
+                            </span>
                           </div>
                         )}
                       </div>
                     </div>
+                    
+                    {/* Animated Border Glow */}
+                    <div className="absolute inset-0 rounded-2xl border-2 border-transparent group-hover:border-[#E91E63]/50 transition-all duration-500 group-hover:shadow-[0_0_20px_rgba(233,30,99,0.5)] pointer-events-none" />
+                    
+                    {/* Corner Accents */}
+                    <div className="absolute top-0 left-0 w-8 h-8 border-t-2 border-l-2 border-transparent group-hover:border-[#E91E63]/60 rounded-tl-2xl transition-all duration-500 opacity-0 group-hover:opacity-100 pointer-events-none"></div>
+                    <div className="absolute top-0 right-0 w-8 h-8 border-t-2 border-r-2 border-transparent group-hover:border-[#F06292]/60 rounded-tr-2xl transition-all duration-500 opacity-0 group-hover:opacity-100 pointer-events-none"></div>
+                    <div className="absolute bottom-0 left-0 w-8 h-8 border-b-2 border-l-2 border-transparent group-hover:border-[#ec4899]/60 rounded-bl-2xl transition-all duration-500 opacity-0 group-hover:opacity-100 pointer-events-none"></div>
+                    <div className="absolute bottom-0 right-0 w-8 h-8 border-b-2 border-r-2 border-transparent group-hover:border-[#FF4081]/60 rounded-br-2xl transition-all duration-500 opacity-0 group-hover:opacity-100 pointer-events-none"></div>
                   </div>
-                  <Link
-                    to={`/${item.id}`}
-                    className="text-white font-semibold mt-3 item-title hover:text-white hover:cursor-pointer line-clamp-1"
+                  
+                  {/* Title Outside Card */}
+                  <div
+                    onClick={() =>
+                      navigate(
+                        `${
+                          path === "top-upcoming"
+                            ? `/${item.id}`
+                            : `/watch/${item.id}`
+                        }`
+                      )
+                    }
+                    className="text-white font-semibold mt-4 line-clamp-2 text-sm tracking-wide cursor-pointer hover:text-[#E91E63] transition-colors duration-300"
                   >
                     {language === "EN" ? item.title : item.japanese_title}
-                  </Link>
-                  {item.description && (
-                    <div className="line-clamp-3 text-[13px] font-light text-gray-400 mt-3 max-[1200px]:hidden">
-                      {item.description}
-                    </div>
-                  )}
+                  </div>
                 </div>
               ))}
             </div>
@@ -206,12 +230,12 @@ const CategoryCard = React.memo(
             {itemsToRender.remainingItems.map((item, index) => (
               <div
                 key={index}
-                className="flex flex-col transition-transform duration-300 ease-in-out"
+                className="flex flex-col transition-transform duration-300 ease-in-out hover:scale-[1.02]"
                 style={{ height: "fit-content" }}
               >
-                <div className="w-full h-auto pb-[140%] relative inline-block overflow-hidden rounded-xl shadow-lg group">
+                <div className="w-full h-auto pb-[140%] relative inline-block overflow-hidden rounded-2xl shadow-lg group">
                   <div
-                    className="inline-block bg-gray-900 absolute left-0 top-0 w-full h-full group hover:cursor-pointer"
+                    className="inline-block bg-gradient-to-br from-[#1a1a1a] to-[#0a0a0a] absolute left-0 top-0 w-full h-full group hover:cursor-pointer"
                     onClick={() =>
                       navigate(
                         `${
@@ -225,81 +249,110 @@ const CategoryCard = React.memo(
                     <img
                       src={`${item.poster}`}
                       alt={item.title}
-                      className="block w-full h-full object-cover transition-all duration-500 ease-in-out group-hover:scale-105"
+                      className="block w-full h-full object-cover transition-all duration-700 ease-in-out group-hover:scale-110"
+                      loading="lazy"
                     />
-                    <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-center justify-center">
-                      <div className="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
-                        <FontAwesomeIcon
-                          icon={faPlay}
-                          className="text-[50px] text-white drop-shadow-lg max-[450px]:text-[36px]"
-                        />
+                    
+                    {/* Gradient Overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-500 pointer-events-none" />
+                    
+                    {/* Glow Effect */}
+                    <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-t from-brand-primary/20 via-transparent to-transparent pointer-events-none" />
+                    
+                    {/* Shimmer Effect */}
+                    <div className="card-shine pointer-events-none"></div>
+                    
+                    {/* Radial Glow */}
+                    <div className="corner-glow pointer-events-none"></div>
+                    
+                    {/* Enhanced Play Button with Glow */}
+                    <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 transform scale-50 group-hover:scale-100 pointer-events-none">
+                      <div className="relative">
+                        {/* Outer Glow Ring */}
+                        <div className="absolute inset-0 bg-gradient-to-r from-[#E91E63] via-[#F06292] to-[#ec4899] rounded-full blur-xl opacity-75 animate-pulse pointer-events-none"></div>
+                        {/* Play Button */}
+                        <div className="relative bg-gradient-to-br from-[#E91E63] to-[#F06292] rounded-full p-5 shadow-2xl shadow-[#E91E63]/50 backdrop-blur-sm border-2 border-white/30 hover:scale-110 transition-transform duration-300 pointer-events-none">
+                          <FontAwesomeIcon
+                            icon={faPlay}
+                            className="text-white text-3xl max-[450px]:text-2xl drop-shadow-2xl"
+                          />
+                        </div>
                       </div>
                     </div>
                   </div>
-                  {(item.tvInfo?.rating === "18+" ||
-                    item?.adultContent === true) && (
-                    <div className="text-white px-2 py-0.5 rounded-xl bg-red-600 absolute top-3 left-3 flex items-center justify-center text-[12px] font-bold">
+                  
+                  {/* 18+ Badge with Enhanced Styling */}
+                  {(item.tvInfo?.rating === "18+" || item?.adultContent === true) && (
+                    <div className="absolute top-3 left-3 z-10 px-3 py-1.5 bg-gradient-to-r from-red-600 to-red-500 backdrop-blur-md rounded-full text-white text-xs font-bold shadow-2xl border border-red-400/50 animate-pulse">
                       18+
                     </div>
                   )}
-                  <div className="absolute bottom-0 left-0 right-0 p-2 bg-gradient-to-t from-black/80 via-black/50 to-transparent">
-                    <div className="flex items-center justify-start w-full space-x-1 max-[478px]:space-x-0.5 z-[100] flex-wrap gap-y-1">
+                  
+                  {/* Info Badges - Slide Up on Hover with Stagger */}
+                  <div className="absolute bottom-0 left-0 right-0 p-3 transform translate-y-4 group-hover:translate-y-0 transition-all duration-600 z-10">
+                    <div className="flex items-center justify-start w-full gap-2 flex-wrap opacity-0 group-hover:opacity-100 transition-opacity duration-600 delay-150">
                       {item.tvInfo?.sub && (
-                        <div className="flex space-x-0.5 justify-center items-center bg-gradient-to-r from-white/10 to-white/5 border border-white/10 rounded-xl px-1.5 text-white py-0.5 max-[478px]:py-0.5 max-[478px]:px-1">
-                          <FontAwesomeIcon
-                            icon={faClosedCaptioning}
-                            className="text-[10px]"
-                          />
-                          <p className="text-[10px] font-medium">
-                            {item.tvInfo.sub}
-                          </p>
+                        <div className="flex items-center gap-1.5 h-7 px-3 bg-gradient-to-r from-emerald-500/90 to-green-500/90 backdrop-blur-xl rounded-full border border-emerald-300/50 shadow-lg shadow-emerald-500/30 hover:scale-105 transition-transform duration-300">
+                          <FontAwesomeIcon icon={faClosedCaptioning} className="text-[10px] text-white drop-shadow-lg" />
+                          <span className="text-[10px] font-bold text-white drop-shadow-lg">{item.tvInfo.sub}</span>
                         </div>
                       )}
                       {item.tvInfo?.dub && (
-                        <div className="flex space-x-0.5 justify-center items-center bg-gradient-to-r from-white/10 to-white/5 border border-white/10 rounded-xl px-1.5 text-white py-0.5 max-[478px]:py-0.5 max-[478px]:px-1">
-                          <FontAwesomeIcon
-                            icon={faMicrophone}
-                            className="text-[10px]"
-                          />
-                          <p className="text-[10px] font-medium">
-                            {item.tvInfo.dub}
-                          </p>
+                        <div className="flex items-center gap-1.5 h-7 px-3 bg-gradient-to-r from-orange-500/90 to-amber-500/90 backdrop-blur-xl rounded-full border border-orange-300/50 shadow-lg shadow-orange-500/30 hover:scale-105 transition-transform duration-300">
+                          <FontAwesomeIcon icon={faMicrophone} className="text-[10px] text-white drop-shadow-lg" />
+                          <span className="text-[10px] font-bold text-white drop-shadow-lg">{item.tvInfo.dub}</span>
                         </div>
                       )}
                       {item.tvInfo?.showType && (
-                        <div className="bg-gradient-to-r from-white/10 to-white/5 border border-white/10 text-white rounded-xl px-1.5 py-0.5 text-[10px] font-medium max-[478px]:py-0.5 max-[478px]:px-1 max-[478px]:hidden">
-                          {item.tvInfo.showType.split(" ").shift()}
+                        <div className="h-7 px-3 flex items-center bg-gradient-to-r from-[#E91E63]/20 to-[#F06292]/20 backdrop-blur-xl rounded-full border border-[#E91E63]/40 shadow-md hover:scale-105 transition-transform duration-300 max-[478px]:hidden">
+                          <span className="text-[10px] font-bold text-white drop-shadow-lg">{item.tvInfo.showType.split(" ").shift()}</span>
                         </div>
                       )}
                       {item.releaseDate && (
-                        <div className="bg-gradient-to-r from-white/10 to-white/5 border border-white/10 text-white rounded-xl px-1.5 py-0.5 text-[10px] font-medium max-[478px]:py-0.5 max-[478px]:px-1">
-                          {item.releaseDate}
+                        <div className="h-7 px-3 flex items-center bg-gradient-to-r from-[#F06292]/20 to-[#ec4899]/20 backdrop-blur-xl rounded-full border border-[#F06292]/40 shadow-md hover:scale-105 transition-transform duration-300">
+                          <span className="text-[10px] font-bold text-white drop-shadow-lg">{item.releaseDate}</span>
                         </div>
                       )}
                       {!item.tvInfo?.showType && item.type && (
-                        <div className="bg-gradient-to-r from-white/10 to-white/5 border border-white/10 text-white rounded-xl px-1.5 py-0.5 text-[10px] font-medium max-[478px]:py-0.5 max-[478px]:px-1">
-                          {item.type}
+                        <div className="h-7 px-3 flex items-center bg-gradient-to-r from-[#FF4081]/20 to-[#E91E63]/20 backdrop-blur-xl rounded-full border border-[#FF4081]/40 shadow-md hover:scale-105 transition-transform duration-300">
+                          <span className="text-[10px] font-bold text-white drop-shadow-lg">{item.type}</span>
                         </div>
                       )}
                       {(item.tvInfo?.duration || item.duration) && (
-                        <div className="bg-gradient-to-r from-white/10 to-white/5 border border-white/10 text-white rounded-xl px-1.5 py-0.5 text-[10px] font-medium max-[478px]:py-0.5 max-[478px]:px-1 max-[478px]:hidden">
-                          {item.tvInfo?.duration === "m" ||
-                          item.tvInfo?.duration === "?" ||
-                          item.duration === "m" ||
-                          item.duration === "?"
-                            ? "N/A"
-                            : item.tvInfo?.duration || item.duration || "N/A"}
+                        <div className="h-7 px-3 flex items-center bg-gradient-to-r from-[#F48FB1]/20 to-[#F06292]/20 backdrop-blur-xl rounded-full border border-[#F48FB1]/40 shadow-md hover:scale-105 transition-transform duration-300 max-[478px]:hidden">
+                          <span className="text-[10px] font-bold text-white drop-shadow-lg">
+                            {item.tvInfo?.duration === "m" || item.tvInfo?.duration === "?" || item.duration === "m" || item.duration === "?" ? "N/A" : item.tvInfo?.duration || item.duration || "N/A"}
+                          </span>
                         </div>
                       )}
                     </div>
                   </div>
+                  
+                  {/* Animated Border Glow */}
+                  <div className="absolute inset-0 rounded-2xl border-2 border-transparent group-hover:border-[#E91E63]/50 transition-all duration-500 group-hover:shadow-[0_0_20px_rgba(233,30,99,0.5)] pointer-events-none" />
+                  
+                  {/* Corner Accents */}
+                  <div className="absolute top-0 left-0 w-8 h-8 border-t-2 border-l-2 border-transparent group-hover:border-[#E91E63]/60 rounded-tl-2xl transition-all duration-500 opacity-0 group-hover:opacity-100 pointer-events-none"></div>
+                  <div className="absolute top-0 right-0 w-8 h-8 border-t-2 border-r-2 border-transparent group-hover:border-[#F06292]/60 rounded-tr-2xl transition-all duration-500 opacity-0 group-hover:opacity-100 pointer-events-none"></div>
+                  <div className="absolute bottom-0 left-0 w-8 h-8 border-b-2 border-l-2 border-transparent group-hover:border-[#ec4899]/60 rounded-bl-2xl transition-all duration-500 opacity-0 group-hover:opacity-100 pointer-events-none"></div>
+                  <div className="absolute bottom-0 right-0 w-8 h-8 border-b-2 border-r-2 border-transparent group-hover:border-[#FF4081]/60 rounded-br-2xl transition-all duration-500 opacity-0 group-hover:opacity-100 pointer-events-none"></div>
                 </div>
-                <Link
-                  to={`/${item.id}`}
-                  className="text-white font-semibold mt-3 item-title hover:text-white hover:cursor-pointer line-clamp-1"
+                
+                {/* Title Outside Card */}
+                <div
+                  onClick={() =>
+                    navigate(
+                      `${
+                        path === "top-upcoming"
+                          ? `/${item.id}`
+                          : `/watch/${item.id}`
+                      }`
+                    )
+                  }
+                  className="text-white font-semibold mt-4 line-clamp-2 text-sm tracking-wide cursor-pointer hover:text-[#E91E63] transition-colors duration-300"
                 >
                   {language === "EN" ? item.title : item.japanese_title}
-                </Link>
+                </div>
               </div>
             ))}
           </div>

@@ -137,30 +137,8 @@ function Navbar() {
             </div>
           </div>
 
-          {/* Mobile Controls - Search & Language */}
+          {/* Mobile Controls - Search Only */}
           <div className="md:hidden flex items-center gap-2">
-            {/* Language Toggle - Mobile */}
-            <div className="language-switcher-pill" role="group" aria-label="Language selection">
-              {/* Sliding Background - Mobile */}
-              <div 
-                className="language-slider-pill"
-                style={{
-                  transform: language === 'EN' ? 'translateX(0)' : 'translateX(100%)',
-                }}
-              />
-              {["EN", "JP"].map((lang) => (
-                <button
-                  key={lang}
-                  onClick={() => toggleLanguage(lang)}
-                  className={`lang-button-pill ${language === lang ? 'active' : ''}`}
-                  aria-label={`Switch to ${lang === 'EN' ? 'English' : 'Japanese'}`}
-                  aria-pressed={language === lang}
-                >
-                  <span className="font-bold text-xs">{lang}</span>
-                </button>
-              ))}
-            </div>
-
             {/* Search Icon - Mobile */}
             <button
               onClick={() => setIsMobileSearchOpen(!isMobileSearchOpen)}

@@ -1,6 +1,7 @@
 .swiper {
   width: 100%;
 }
+
 .swiper-slide {
   font-size: 18px;
   display: -webkit-box;
@@ -11,6 +12,7 @@
   -webkit-box-align: center;
   -ms-flex-align: center;
 }
+
 .button-prev,
 .button-next {
   width: 36px;
@@ -110,16 +112,19 @@
     border-radius: 20px;
     z-index: 10;
   }
+
   .button-prev,
   .button-next {
     width: 32px;
     height: 32px;
   }
+
   .swiper-pagination-bullet {
     width: 6px !important;
     height: 6px !important;
     transition: all 0.3s ease-in-out !important;
   }
+
   .swiper-pagination-bullet-active {
     width: 18px !important;
     border-radius: 9px !important;
@@ -136,10 +141,12 @@
     padding: 5px 10px;
     background: rgba(0, 0, 0, 0.6);
   }
+
   .swiper-pagination-bullet {
     width: 5px !important;
     height: 5px !important;
   }
+
   .swiper-pagination-bullet-active {
     width: 14px !important;
     border-radius: 7px !important;

@@ -4,6 +4,11 @@
   width: 100%;
   height: 100%;
   overflow: hidden;
+  transition: transform 0.5s ease;
+}
+
+.spotlight-modern:hover {
+  transform: scale(1.005);
 }
 
 /* Enhanced Image with Parallax */
@@ -40,30 +45,63 @@
   }
 }
 
-/* Animated Glow Effect */
-.spotlight-glow {
-  background: radial-gradient(
-    circle at 30% 50%,
-    rgba(255, 107, 107, 0.15) 0%,
-    rgba(78, 205, 196, 0.1) 50%,
+/* Triangle Dot Pattern - Bottom Left Corner (Fade from Bottom to Top) */
+.spotlight-stars {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 450px;
+  height: 450px;
+  background-image: 
+    radial-gradient(circle, rgba(180, 180, 180, 0.5) 2px, transparent 2px);
+  background-size: 15px 15px;
+  background-position: 0 0;
+  clip-path: polygon(0 100%, 0 0, 100% 100%);
+  pointer-events: none;
+  opacity: 0.7;
+  mask-image: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(0, 0, 0, 0.9) 30%,
+    rgba(0, 0, 0, 0.6) 60%,
+    rgba(0, 0, 0, 0.3) 80%,
     transparent 100%
   );
-  animation: glow-shift 8s ease-in-out infinite;
+  -webkit-mask-image: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(0, 0, 0, 0.9) 30%,
+    rgba(0, 0, 0, 0.6) 60%,
+    rgba(0, 0, 0, 0.3) 80%,
+    transparent 100%
+  );
+}
+
+/* Responsive Triangle Pattern */
+@media (max-width: 768px) {
+  .spotlight-stars {
+    width: 280px;
+    height: 280px;
+    background-size: 12px 12px;
+  }
+}
+
+/* Vignette Effect - Dramatic Edge Darkening */
+.spotlight-vignette {
+  background: radial-gradient(
+    ellipse at center,
+    transparent 0%,
+    transparent 40%,
+    rgba(0, 0, 0, 0.3) 80%,
+    rgba(0, 0, 0, 0.6) 100%
+  );
   pointer-events: none;
+  opacity: 0.8;
 }
 
-@keyframes glow-shift {
-  0%, 100% {
-    opacity: 0.3;
-    transform: scale(1);
-  }
-  50% {
-    opacity: 0.5;
-    transform: scale(1.1);
-  }
-}
 
-/* Spotlight Badge - PRIMARY PINK */
+
+/* Spotlight Badge - PRIMARY PINK dengan Shadow Glow Blink */
 .spotlight-badge {
   display: flex;
   align-items: center;
@@ -74,16 +112,27 @@
   border-radius: 9999px;
   color: #E91E63;
   backdrop-filter: blur(10px);
-  animation: badge-pulse 2s ease-in-out infinite;
   width: fit-content;
+  box-shadow: 
+    0 0 20px rgba(233, 30, 99, 0.4),
+    0 0 40px rgba(233, 30, 99, 0.2),
+    0 4px 15px rgba(0, 0, 0, 0.3);
+  animation: badge-glow-blink 3s ease-in-out infinite;
 }
 
-@keyframes badge-pulse {
+@keyframes badge-glow-blink {
   0%, 100% {
-    box-shadow: 0 0 10px rgba(233, 30, 99, 0.3);
+    box-shadow: 
+      0 0 20px rgba(233, 30, 99, 0.4),
+      0 0 40px rgba(233, 30, 99, 0.2),
+      0 4px 15px rgba(0, 0, 0, 0.3);
   }
   50% {
-    box-shadow: 0 0 20px rgba(233, 30, 99, 0.5);
+    box-shadow: 
+      0 0 30px rgba(233, 30, 99, 0.7),
+      0 0 60px rgba(233, 30, 99, 0.4),
+      0 0 80px rgba(233, 30, 99, 0.2),
+      0 4px 20px rgba(0, 0, 0, 0.4);
   }
 }
 
@@ -292,7 +341,6 @@
 
 /* Reduce motion for accessibility */
 @media (prefers-reduced-motion: reduce) {
-  .spotlight-glow,
   .spotlight-badge,
   .spotlight-title,
   .spotlight-description,
@@ -300,13 +348,16 @@
     animation: none;
   }
   
-  .spotlight-image {
+  .spotlight-image,
+  .spotlight-modern {
     transition: none;
   }
   
   .spotlight-info-tag:hover,
   .spotlight-btn-primary:hover,
-  .spotlight-btn-secondary:hover {
+  .spotlight-btn-secondary:hover,
+  .spotlight-modern:hover {
     transform: none;
   }
 }
+

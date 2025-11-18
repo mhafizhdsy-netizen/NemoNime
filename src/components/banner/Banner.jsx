@@ -31,8 +31,11 @@ function Banner({ item, index }) {
       {/* Enhanced Gradient Overlay with Stronger Shading */}
       <div className="spotlight-overlay-modern absolute inset-0 z-[2]"></div>
       
-      {/* Animated Glow Effect */}
-      <div className="spotlight-glow absolute inset-0 z-[1] opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+      {/* Twinkling Stars */}
+      <div className="spotlight-stars absolute inset-0 z-[2]"></div>
+      
+      {/* Vignette Effect */}
+      <div className="spotlight-vignette absolute inset-0 z-[2]"></div>
       
       {/* Content Container */}
       <div className="absolute flex flex-col left-0 bottom-0 w-[55%] p-8 z-[2] max-[1390px]:w-[50%] max-[1300px]:w-[600px] max-[1120px]:w-[65%] max-md:w-[90%] max-md:p-6 max-[300px]:w-full">

@@ -4,10 +4,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash, faPlay, faClock, faCalendar } from '@fortawesome/free-solid-svg-icons';
 import { useState, useEffect } from 'react';
 import Loader from '@/src/components/Loader/Loader';
+import { getLastWatchedEpisode, formatTime } from '@/src/utils/watchProgress';
 
 function Watchlist() {
   const { watchlist, removeFromWatchlist, clearWatchlist } = useWatchlist();
   const [loading, setLoading] = useState(true);
+  const [watchProgress, setWatchProgress] = useState({});
 
   useEffect(() => {
     // Simulate loading untuk memberikan waktu context load
@@ -16,6 +18,18 @@ function Watchlist() {
     }, 300);
     return () => clearTimeout(timer);
   }, []);
+
+  useEffect(() => {
+    // Get watch progress untuk setiap anime di watchlist
+    const progress = {};
+    watchlist.forEach((item) => {
+      const lastWatched = getLastWatchedEpisode(item.id);
+      if (lastWatched) {
+        progress[item.id] = lastWatched;
+      }
+    });
+    setWatchProgress(progress);
+  }, [watchlist]);
 
   if (loading) return <Loader type="watchlist" />;
 
@@ -117,10 +131,19 @@ function Watchlist() {
                   {/* Dark Overlay on Hover */}
                   <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-all duration-300"></div>
                   
-                  {/* Episode Badge */}
+                  {/* Episode Badge - Show Last Watched if Available */}
                   <div className="absolute top-3 left-3 px-3 py-1.5 bg-gradient-to-r from-[#e91e63] to-[#00bcd4] rounded-xl shadow-lg">
-                    <span className="text-white text-xs font-bold">EP {item.episodeNum}</span>
+                    <span className="text-white text-xs font-bold">
+                      EP {watchProgress[item.id]?.episodeNum || item.episodeNum}
+                    </span>
                   </div>
+                  
+                  {/* Watching Indicator if has progress */}
+                  {watchProgress[item.id] && watchProgress[item.id].leftAt > 0 && (
+                    <div className="absolute top-3 left-20 px-2.5 py-1 bg-black/80 backdrop-blur-sm rounded-lg border border-[#e91e63]/30">
+                      <span className="text-[#e91e63] text-[10px] font-bold">WATCHING</span>
+                    </div>
+                  )}
 
                   {/* Delete Button */}
                   <button
@@ -157,7 +180,12 @@ function Watchlist() {
                   <div className="flex items-center gap-3 text-white/50 text-xs mb-3">
                     <div className="flex items-center gap-1.5">
                       <FontAwesomeIcon icon={faClock} className="text-[10px]" />
-                      <span>Episode {item.episodeNum}</span>
+                      <span>
+                        {watchProgress[item.id] 
+                          ? `Watching EP ${watchProgress[item.id].episodeNum}`
+                          : `Episode ${item.episodeNum}`
+                        }
+                      </span>
                     </div>
                     {item.addedAt && (
                       <>
@@ -170,13 +198,40 @@ function Watchlist() {
                     )}
                   </div>
 
+                  {/* Last Watched Info & Progress */}
+                  {watchProgress[item.id] && (
+                    <div className="mb-3">
+                      <div className="flex items-center justify-between text-xs text-white/60 mb-2">
+                        <span>Last watched:</span>
+                        <span className="text-[#e91e63] font-semibold">EP {watchProgress[item.id].episodeNum}</span>
+                      </div>
+                      {watchProgress[item.id].leftAt > 0 && (
+                        <div className="flex items-center gap-2">
+                          <div className="flex-1 h-1.5 bg-white/10 rounded-full overflow-hidden">
+                            <div 
+                              className="h-full bg-gradient-to-r from-[#e91e63] to-[#00bcd4] rounded-full transition-all duration-300"
+                              style={{ width: '100%' }}
+                              title={`Watched: ${formatTime(watchProgress[item.id].leftAt)}`}
+                            ></div>
+                          </div>
+                          <span className="text-[10px] text-white/50 font-medium min-w-[45px] text-right">
+                            {formatTime(watchProgress[item.id].leftAt)}
+                          </span>
+                        </div>
+                      )}
+                    </div>
+                  )}
+
                   {/* Action Button */}
                   <Link
-                    to={`/watch/${item.id}?ep=${item.episodeId}`}
+                    to={watchProgress[item.id] 
+                      ? `/watch/${item.id}?ep=${watchProgress[item.id].episodeId}`
+                      : `/watch/${item.id}?ep=${item.episodeId}`
+                    }
                     className="w-full flex items-center justify-center gap-2 px-4 py-2.5 bg-gradient-to-r from-[#e91e63]/10 to-[#00bcd4]/10 hover:from-[#e91e63]/20 hover:to-[#00bcd4]/20 border border-[#e91e63]/30 hover:border-[#e91e63]/50 rounded-xl text-white text-sm font-semibold transition-all group/btn"
                   >
                     <FontAwesomeIcon icon={faPlay} className="text-xs group-hover/btn:scale-110 transition-transform" />
-                    <span>Continue Watching</span>
+                    <span>{watchProgress[item.id] ? 'Continue Watching' : 'Start Watching'}</span>
                   </Link>
                 </div>
               </div>
