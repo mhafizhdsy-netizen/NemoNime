@@ -31,7 +31,7 @@ function AnimeInfoLoader() {
 
                                     {/* Tags */}
                                     <div className="flex flex-wrap gap-1.5">
-                                        <SkeletonItems count={4} className="w-[40px] h-[20px] rounded-md" />
+                                        <SkeletonItems count={4} className="w-[40px] h-[20px] rounded-full" />
                                     </div>
 
                                     {/* Overview */}
@@ -54,9 +54,9 @@ function AnimeInfoLoader() {
 
                                 {/* Genres */}
                                 <div className="pt-2 border-t border-white/10">
-                                    <Skeleton className="h-4 w-[60px] mb-2" />
+                                    <Skeleton className="h-4 w-[60px] mb-2 rounded-lg" />
                                     <div className="flex flex-wrap gap-1">
-                                        <SkeletonItems count={6} className="w-[60px] h-[22px] rounded-md" />
+                                        <SkeletonItems count={6} className="w-[60px] h-[22px] rounded-full" />
                                     </div>
                                 </div>
 
@@ -85,7 +85,7 @@ function AnimeInfoLoader() {
 
                                     {/* Tags */}
                                     <div className="flex flex-wrap gap-2">
-                                        <SkeletonItems count={4} className="w-[60px] h-[30px] rounded-xl" />
+                                        <SkeletonItems count={4} className="w-[60px] h-[30px] rounded-full" />
                                     </div>
 
                                     {/* Overview */}
@@ -104,9 +104,9 @@ function AnimeInfoLoader() {
 
                                         {/* Genres */}
                                         <div className="pt-3 border-t border-white/10">
-                                            <Skeleton className="h-5 w-[80px] mb-2" />
+                                            <Skeleton className="h-5 w-[80px] mb-2 rounded-lg" />
                                             <div className="flex flex-wrap gap-1.5">
-                                                <SkeletonItems count={8} className="w-[80px] h-[30px] rounded-lg" />
+                                                <SkeletonItems count={8} className="w-[80px] h-[30px] rounded-full" />
                                             </div>
                                         </div>
 
