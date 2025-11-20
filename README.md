@@ -1,122 +1,184 @@
+# NemoNime 🎬
 
-ime Teame NeoNth ❤️ by th
-Made wipp)
+Modern anime streaming platform built with React, Vite, and Tailwind CSS. Watch your favorite anime with a beautiful, responsive interface and powerful features.
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/mhafizhdsy-netizen/NemoNime)
+
+## ✨ Features
+
+### 🎥 Watch Experience
+- **HD Streaming** - High-quality video playback with HLS support
+- **Multiple Servers** - Backup options for uninterrupted viewing
+- **Sub & Dub** - Watch in your preferred language
+- **Auto Play** - Seamless episode transitions
+- **Skip Intro/Outro** - Jump straight to the action
+- **Continue Watching** - Resume where you left off
+- **Picture-in-Picture** - Watch while browsing
+
+### 📱 User Features
+- **Watchlist** - Save anime to watch later
+- **Push Notifications** - Get notified of new episodes
+- **Language Toggle** - Switch between English and Japanese titles
+- **Dark Mode** - Optimized for comfortable viewing
+- **Responsive Design** - Perfect on any device
+- **PWA Support** - Install as a native app
+
+### 🔍 Content Discovery
+- **Search** - Find anime by title with real-time suggestions
+- **Trending** - See what's popular right now
+- **Top 100** - Daily, weekly, and monthly rankings
+- **Genres** - Browse by your favorite categories
+- **A-Z List** - Alphabetical browsing
+- **Random** - Discover something new
+- **Schedule** - Track upcoming episode releases
+
+### 📊 Information
+- **Detailed Pages** - Complete anime information
+- **Character Profiles** - Character and voice actor details
+- **Studio Info** - Browse by production studio
+- **Episode Schedule** - Know when new episodes air
+- **Ratings** - MAL scores and community ratings
+
+## 🚀 Tech Stack
+
+- **React 18** - UI library
+- **Vite** - Build tool and dev server
+- **Tailwind CSS** - Utility-first styling
+- **React Router** - Navigation
+- **Artplayer** - Video player
+- **Axios** - HTTP client
+- **HLS.js** - Video streaming
+- **Swiper** - Touch slider
+- **Vercel Analytics** - Performance monitoring
+
+## 📦 Getting Started
+
+### Prerequisites
+
+- Node.js (v16 or higher)
+- npm or yarn
+
+### Installation
+
+1. Clone the repository
+```bash
+git clone https://github.com/mhafizhdsy-netizen/NemoNime.git
+cd NemoNime
+```
+
+2. Install dependencies
+```bash
+npm install
+```
+
+3. Set up environment variables
+```bash
+cp .env.example .env
+```
+
+Edit `.env` with your API configuration:
+```env
+VITE_API_URL=your_api_url
+VITE_WORKER_URL=your_worker_url
+```
+
+4. Start development server
+```bash
+npm run dev
+```
+
+5. Open http://localhost:5173
+
+### Build for Production
+
+```bash
+npm run build
+```
+
+The build output will be in the `dist` directory.
+
+## 🌐 Deployment
+
+### Deploy to Vercel
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/mhafizhdsy-netizen/NemoNime)
+
+1. Click the button above
+2. Connect your GitHub account
+3. Configure environment variables
+4. Deploy!
+
+### Deploy to Other Platforms
+
+The app can be deployed to any static hosting service:
+- Netlify
+- Cloudflare Pages
+- GitHub Pages
+- Railway
+- Render
+
+## 📁 Project Structure
+
+```
+NemoNime/
+├── public/              # Static assets
+├── src/
+│   ├── components/      # React components
+│   │   ├── ui/         # UI components
+│   │   ├── Loader/     # Loading skeletons
+│   │   ├── player/     # Video player
+│   │   └── ...
+│   ├── pages/          # Page components
+│   ├── context/        # React context
+│   ├── hooks/          # Custom hooks
+│   ├── utils/          # Utility functions
+│   ├── config/         # Configuration
+│   ├── App.jsx         # Main app component
+│   └── main.jsx        # Entry point
+├── .env.example        # Environment variables template
+├── vite.config.js      # Vite configuration
+└── tailwind.config.js  # Tailwind configuration
+```
+
+## 🎨 Features in Detail
+
+### Progressive Web App (PWA)
+Install NemoNime as a native app on your device for offline access and push notifications.
+
+### Watch Progress Tracking
+Your watch progress is automatically saved and synced across devices.
+
+### Smart Search
+Real-time search with suggestions as you type.
+
+### Episode Schedule
+Never miss a new episode with the built-in schedule tracker.
+
+## 🤝 Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+## 📝 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🙏 Acknowledgments
+
+- [ANIME API](https://github.com/itzzzme/anime-api) - For providing the anime data
+- All contributors who have helped improve this project
+- The anime community for their support
+
+## 📧 Support
+
+- **Website**: [NemoNime.vercel.app](https://NemoNime.vercel.app)
+- **Issues**: [Report bugs](https://github.com/mhafizhdsy-netizen/NemoNime/issues)
 
 ---
-el.aNime.verc(https://Neoel.app]oNime.vercsite**: [Ne
-- **Webssues)ime/iall/JustAnaspanchom/tej/github.cs](https:/rt bugepossues**: [RGun)
-- **Igg/P3yqksmd.cordisy](https://munitur com*: [Join o**Discord*
 
-- rtppo## Suect
-
-this projimprove ave helped tors who hontribu c
-- Alltame dathe anioviding - For pr/anime-api) com/itzzzme://github.ttpsPI](h[ANIME Ats
-
-- gmencknowled A
-##
-ails.r detle fo(LICENSE) fiSE]he [LICENee t- sIT License he Msed under t licenect iss projThiicense
-
-
-
-## Lquestl Re. Open a Pul
-5ng-feature`)amazin feature/ush origi (`git pbranchhe o t)
-4. Push t'`tureng feam 'Add amazicommit -nges (`git ur chayot  Commiure`)
-3.ating-feature/amazt -b feeckouit chh (`grancre bour featu2. Create ysitory
-repo1. Fork the 
-
-ull Request. a Pitree to subme feel fase! Plecomions are welbut
-Contributing
-Contrinime)
-
-## l/JustAalaspanch.com/tej/githubo=https:/ploy?repdem/render.co)](https://tton.svgo-render-budeploy-timages/render.com/ps://](htty to Rendereploender
-[![Dy to Rplo# Denime)
-
-##chall/JustAspanub.com/teja//giths:-url=httpitoryone?repos/clcel.com/newhttps://vern)](el.com/buttorc//veps:](httVercelploy with 
-[![Deto VercelDeploy # oyment
-
-##
-
-## Depluild
-``` run b`bash
-npmion
-``ctodufor Pr
-### Build 173
-st:5calhoen http://lo
-5. Op
-```
-ev
-npm run dbash```r
-ervement srt develop
-
-4. Sta_urls
-```kupKER_URL=bac_WORVITE_url
-piRL=your_aPI_U
-VITE_Aon:
-```envti configuraAPIour .env` with yEdit `
-
-e .env
-```env.examplsh
-cp .```ba
-nt variablesmeup environ
-3. Set tall
-```
- ins```bash
-npmndencies
-pestall de
-
-2. Inme
-```cd JustAni.git
-ll/JustAnimetejaspanchaub.com/s://githttpne hsh
-git cloba``ry
-`the repositoe on. Clllation
-
-1Insta###  yarn
-
-- npm orv16+)
-s (es
-- Node.jequisit Prer###tarted
-
- S
-## Gettingient
-TTP cl* - HAxios* **yer
--la p** - Videoayer- **Artplgation
-vi** - Naact Router
-- **RengS** - Stylid CS
-- **Tailwin Build toolite** -ary
-- **VI libr8** - U**React 1
-- ech Stack
-ings
-
-## Tatommunity rores and c scAL M*Ratings** -ir
-- * aesod new epis when** - Knowedulech**Episode S
-- tion studioy producrowse bfo** - B **Studio In
--ilsor detace actnd voi Character a** -r Profiles**Characte
-- ationme informComplete ani* - ed Pages*ail
-- **Detormationnf
-
-### Igiewintable vforcommized for  Optide** -ark Moice
-- **Don any dev Perfect Design** -sponsive *Retitles
-- * Japanese nglish andetween E Switch b Toggle** -agengu **Laisodes
--f new epfied o notiet Gns** -io Notificatr
-- **Pushate watch le tove anim* - Saatchlist*- **Weatures
-# User Ft off
-
-## you lefsume where Reing** -tinue Watch- **Cone action
-t to thaightr so** - JumpOutrIntro/*Skip ions
-- * transitepisodes Seamles** - ay- **Auto Pluage
-ng laferredr preh in youub** - WatcSub & Dlity
-- **abieliions for rup opts** - BackrverSeltiple  **Mu
--o playbackideh-quality ving** - HigD Stream*Hce
-- *ch Experienw
-
-### Watthing neomecover s - Dis**Random**g
-- rowsinal bAlphabetic - -Z List**- **Agories
-atete coriur fav by yoBrowseGenres** - **
--  rankingsnthlyekly, and mo Daily, we0** -
-- **Top 1ight nowar r popul See what's* -**Trending*
-- ionstime suggesth real-itle wit anime by t* - Findearch*overy
-- **Sontent Discs
-
-### Cre# Featund CSS.
-
-#ilwite, and Ta React, Viithuilt wtform blareaming p - ime st
+Made with ❤️ by the NemoNime Team
