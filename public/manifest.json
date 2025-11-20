@@ -10,16 +10,28 @@
   "scope": "/",
   "icons": [
     {
-      "src": "/logo.png",
+      "src": "/favicon.png",
       "sizes": "192x192",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "any"
     },
     {
-      "src": "/logo.png",
+      "src": "/favicon.png",
       "sizes": "512x512",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "any"
+    },
+    {
+      "src": "/favicon.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/favicon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
     }
   ],
   "categories": ["entertainment", "video", "anime"],
@@ -43,21 +55,21 @@
       "short_name": "Home",
       "description": "Go to home page",
       "url": "/home",
-      "icons": [{ "src": "/logo.png", "sizes": "192x192" }]
+      "icons": [{ "src": "/favicon.png", "sizes": "192x192" }]
     },
     {
       "name": "Schedule",
       "short_name": "Schedule",
       "description": "View anime schedule",
       "url": "/schedule",
-      "icons": [{ "src": "/logo.png", "sizes": "192x192" }]
+      "icons": [{ "src": "/favicon.png", "sizes": "192x192" }]
     },
     {
       "name": "Watchlist",
       "short_name": "Watchlist",
       "description": "View your watchlist",
       "url": "/watchlist",
-      "icons": [{ "src": "/logo.png", "sizes": "192x192" }]
+      "icons": [{ "src": "/favicon.png", "sizes": "192x192" }]
     }
   ]
 }
