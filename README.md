@@ -176,7 +176,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 📧 Support
 
-- **Website**: [NemoNime.vercel.app](https://NemoNime.vercel.app)
+- **Website**: [NemoNime.vercel.app](https://NeoNime.vercel.app)
 - **Issues**: [Report bugs](https://github.com/mhafizhdsy-netizen/NemoNime/issues)
 
 ---
