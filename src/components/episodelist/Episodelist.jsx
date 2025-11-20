@@ -206,10 +206,16 @@ function Episodelist({
         <div
           className={`${
             totalEpisodes > 30
-              ? "p-4 grid gap-2 max-[600px]:p-2 max-[600px]:gap-1.5" + 
-                (totalEpisodes > 100 
-                  ? " grid-cols-5" 
-                  : " grid-cols-5 max-[1200px]:grid-cols-12 max-[860px]:grid-cols-10 max-[575px]:grid-cols-8 max-[478px]:grid-cols-6 max-[350px]:grid-cols-5")
+              ? "p-4 grid gap-2 max-[600px]:p-2 max-[600px]:gap-1.5 " + 
+                (totalEpisodes > 500 
+                  ? "grid-cols-20 2xl:grid-cols-18 xl:grid-cols-16 lg:grid-cols-14 md:grid-cols-12 max-[860px]:grid-cols-10 max-[575px]:grid-cols-8 max-[478px]:grid-cols-6 max-[350px]:grid-cols-5"
+                  : totalEpisodes > 200 
+                  ? "grid-cols-16 2xl:grid-cols-14 xl:grid-cols-12 lg:grid-cols-10 md:grid-cols-12 max-[860px]:grid-cols-10 max-[575px]:grid-cols-8 max-[478px]:grid-cols-6 max-[350px]:grid-cols-5"
+                  : totalEpisodes > 100
+                  ? "grid-cols-12 xl:grid-cols-10 lg:grid-cols-12 md:grid-cols-10 max-[860px]:grid-cols-10 max-[575px]:grid-cols-8 max-[478px]:grid-cols-6 max-[350px]:grid-cols-5"
+                  : totalEpisodes > 50
+                  ? "grid-cols-10 xl:grid-cols-8 lg:grid-cols-10 md:grid-cols-8 max-[860px]:grid-cols-8 max-[575px]:grid-cols-6 max-[478px]:grid-cols-5 max-[350px]:grid-cols-4"
+                  : "grid-cols-8 xl:grid-cols-6 lg:grid-cols-8 md:grid-cols-6 max-[860px]:grid-cols-6 max-[575px]:grid-cols-5 max-[478px]:grid-cols-4 max-[350px]:grid-cols-3")
               : ""
           }`}
         >

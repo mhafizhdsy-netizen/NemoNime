@@ -18,6 +18,7 @@ import { useLanguage } from "@/src/context/LanguageContext";
 import { useHomeInfo } from "@/src/context/HomeInfoContext";
 import { useWatchlist } from "@/src/context/WatchlistContext";
 import { useNotification } from "@/src/context/NotificationContext";
+import { useToast } from "@/src/context/ToastContext";
 import Voiceactor from "@/src/components/voiceactor/Voiceactor";
 import "./AnimeInfo.css";
 
@@ -95,6 +96,7 @@ function AnimeInfo({ random = false }) {
   const navigate = useNavigate();
   const { addToWatchlist, removeFromWatchlist, isInWatchlist } = useWatchlist();
   const { addNotification, removeNotification, isSubscribed } = useNotification();
+  const { success, info: showInfo, error: showError } = useToast();
   useEffect(() => {
     if (id === "404-not-found-page") {
       console.log("404 got!");
@@ -309,44 +311,18 @@ function AnimeInfo({ random = false }) {
                     const subscribed = isSubscribed(animeInfo.id);
                     if (subscribed) {
                       removeNotification(animeInfo.id);
-                      // Show toast notification
-                      const toast = document.createElement('div');
-                      toast.className = 'fixed top-24 right-4 z-[100000] animate-slide-in';
-                      toast.innerHTML = `
-                        <div class="flex items-center gap-3 px-4 py-3 rounded-xl border backdrop-blur-xl shadow-2xl bg-yellow-500/20 border-yellow-500/50 text-yellow-400">
-                          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                          </svg>
-                          <p class="text-sm font-medium">Notifications disabled for ${animeInfo.title}</p>
-                        </div>
-                      `;
-                      document.body.appendChild(toast);
-                      setTimeout(() => {
-                        toast.remove();
-                      }, 3000);
+                      showInfo(`Notifications disabled for ${animeInfo.title}`, 3000);
                     } else {
-                      const success = await addNotification({
+                      const notifSuccess = await addNotification({
                         id: animeInfo.id,
                         title: animeInfo.title,
                         poster: animeInfo.poster
                       });
                       
-                      if (!success) {
-                        // Show error toast
-                        const toast = document.createElement('div');
-                        toast.className = 'fixed top-24 right-4 z-[100000] animate-slide-in';
-                        toast.innerHTML = `
-                          <div class="flex items-center gap-3 px-4 py-3 rounded-xl border backdrop-blur-xl shadow-2xl bg-red-500/20 border-red-500/50 text-red-400">
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
-                            </svg>
-                            <p class="text-sm font-medium">Please enable notifications in your browser settings</p>
-                          </div>
-                        `;
-                        document.body.appendChild(toast);
-                        setTimeout(() => {
-                          toast.remove();
-                        }, 4000);
+                      if (notifSuccess) {
+                        success(`You'll be notified about ${animeInfo.title}!`, 3000);
+                      } else {
+                        showError('Please enable notifications in your browser settings', 4000);
                       }
                     }
                   }}

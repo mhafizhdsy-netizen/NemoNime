@@ -29,23 +29,7 @@ const ContinueWatchingLoader = () => (
   </div>
 );
 
-const ScheduleLoader = () => (
-  <div className="mt-8">
-    <Skeleton className="w-[150px] h-7 mb-4" />
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-      {[...Array(6)].map((_, index) => (
-        <div key={index} className="flex gap-3">
-          <Skeleton className="w-[100px] aspect-[2/3] rounded-lg" />
-          <div className="flex-1 flex flex-col gap-2">
-            <Skeleton className="w-3/4 h-4" />
-            <Skeleton className="w-1/2 h-4" />
-            <Skeleton className="w-1/3 h-4" />
-          </div>
-        </div>
-      ))}
-    </div>
-  </div>
-);
+
 
 const TabbedAnimeSectionLoader = () => (
   <div className="mt-8">
@@ -80,7 +64,6 @@ function HomeLoader() {
             className="mt-[60px]"
             title="Latest Episode"
           />
-          <ScheduleLoader />
           <TabbedAnimeSectionLoader />
         </div>
         <div className="w-full mt-[60px]">

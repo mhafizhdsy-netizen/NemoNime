@@ -134,19 +134,12 @@ const CategoryCard = React.memo(
                       {/* Radial Glow */}
                       <div className="corner-glow pointer-events-none"></div>
                       
-                      {/* Enhanced Play Button with Glow */}
-                      <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 transform scale-50 group-hover:scale-100 pointer-events-none">
-                        <div className="relative">
-                          {/* Outer Glow Ring */}
-                          <div className="absolute inset-0 bg-gradient-to-r from-[#E91E63] via-[#F06292] to-[#ec4899] rounded-full blur-xl opacity-75 animate-pulse pointer-events-none"></div>
-                          {/* Play Button */}
-                          <div className="relative bg-gradient-to-br from-[#E91E63] to-[#F06292] rounded-full p-5 shadow-2xl shadow-[#E91E63]/50 backdrop-blur-sm border-2 border-white/30 hover:scale-110 transition-transform duration-300 pointer-events-none">
-                            <FontAwesomeIcon
-                              icon={faPlay}
-                              className="text-white text-3xl max-[450px]:text-2xl drop-shadow-2xl"
-                            />
-                          </div>
-                        </div>
+                      {/* Simple Play Icon - No Background */}
+                      <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+                        <FontAwesomeIcon
+                          icon={faPlay}
+                          className="text-white text-5xl max-[450px]:text-4xl drop-shadow-[0_4px_12px_rgba(0,0,0,0.8)]"
+                        />
                       </div>
                     </div>
                     
@@ -157,39 +150,39 @@ const CategoryCard = React.memo(
                       </div>
                     )}
                     
-                    {/* Info Badges - Slide Up on Hover with Stagger */}
-                    <div className="absolute bottom-0 left-0 right-0 p-3 transform translate-y-4 group-hover:translate-y-0 transition-all duration-600 z-10">
-                      <div className="flex items-center justify-start w-full gap-2 flex-wrap opacity-0 group-hover:opacity-100 transition-opacity duration-600 delay-150">
+                    {/* Info Badges - Always Visible */}
+                    <div className="absolute bottom-0 left-0 right-0 p-3 z-10">
+                      <div className="flex items-center justify-start w-full gap-2 flex-wrap">
                         {item.tvInfo?.sub && (
-                          <div className="flex items-center gap-1.5 h-7 px-3 bg-gradient-to-r from-emerald-500/90 to-green-500/90 backdrop-blur-xl rounded-full border border-emerald-300/50 shadow-lg shadow-emerald-500/30 hover:scale-105 transition-transform duration-300">
-                            <FontAwesomeIcon icon={faClosedCaptioning} className="text-[10px] text-white drop-shadow-lg" />
-                            <span className="text-[10px] font-bold text-white drop-shadow-lg">{item.tvInfo.sub}</span>
+                          <div className="flex items-center gap-1 h-6 px-2.5 bg-white/10 backdrop-blur-md rounded-full border border-white/20 shadow-lg hover:bg-white/15 hover:scale-105 transition-all duration-300">
+                            <FontAwesomeIcon icon={faClosedCaptioning} className="text-[8px] text-white/90 drop-shadow-lg" />
+                            <span className="text-[9px] font-semibold text-white/90 drop-shadow-lg">{item.tvInfo.sub}</span>
                           </div>
                         )}
                         {item.tvInfo?.dub && (
-                          <div className="flex items-center gap-1.5 h-7 px-3 bg-gradient-to-r from-orange-500/90 to-amber-500/90 backdrop-blur-xl rounded-full border border-orange-300/50 shadow-lg shadow-orange-500/30 hover:scale-105 transition-transform duration-300">
-                            <FontAwesomeIcon icon={faMicrophone} className="text-[10px] text-white drop-shadow-lg" />
-                            <span className="text-[10px] font-bold text-white drop-shadow-lg">{item.tvInfo.dub}</span>
+                          <div className="flex items-center gap-1 h-6 px-2.5 bg-white/10 backdrop-blur-md rounded-full border border-white/20 shadow-lg hover:bg-white/15 hover:scale-105 transition-all duration-300">
+                            <FontAwesomeIcon icon={faMicrophone} className="text-[8px] text-white/90 drop-shadow-lg" />
+                            <span className="text-[9px] font-semibold text-white/90 drop-shadow-lg">{item.tvInfo.dub}</span>
                           </div>
                         )}
                         {item.tvInfo?.showType && (
-                          <div className="h-7 px-3 flex items-center bg-gradient-to-r from-[#E91E63]/20 to-[#F06292]/20 backdrop-blur-xl rounded-full border border-[#E91E63]/40 shadow-md hover:scale-105 transition-transform duration-300 max-[478px]:hidden">
-                            <span className="text-[10px] font-bold text-white drop-shadow-lg">{item.tvInfo.showType.split(" ").shift()}</span>
+                          <div className="h-6 px-2.5 flex items-center bg-white/10 backdrop-blur-md rounded-full border border-white/20 shadow-lg hover:bg-white/15 hover:scale-105 transition-all duration-300 max-[478px]:hidden">
+                            <span className="text-[9px] font-semibold text-white/90 drop-shadow-lg">{item.tvInfo.showType.split(" ").shift()}</span>
                           </div>
                         )}
                         {item.releaseDate && (
-                          <div className="h-7 px-3 flex items-center bg-gradient-to-r from-[#F06292]/20 to-[#ec4899]/20 backdrop-blur-xl rounded-full border border-[#F06292]/40 shadow-md hover:scale-105 transition-transform duration-300">
-                            <span className="text-[10px] font-bold text-white drop-shadow-lg">{item.releaseDate}</span>
+                          <div className="h-6 px-2.5 flex items-center bg-white/10 backdrop-blur-md rounded-full border border-white/20 shadow-lg hover:bg-white/15 hover:scale-105 transition-all duration-300">
+                            <span className="text-[9px] font-semibold text-white/90 drop-shadow-lg">{item.releaseDate}</span>
                           </div>
                         )}
                         {!item.tvInfo?.showType && item.type && (
-                          <div className="h-7 px-3 flex items-center bg-gradient-to-r from-[#FF4081]/20 to-[#E91E63]/20 backdrop-blur-xl rounded-full border border-[#FF4081]/40 shadow-md hover:scale-105 transition-transform duration-300">
-                            <span className="text-[10px] font-bold text-white drop-shadow-lg">{item.type}</span>
+                          <div className="h-6 px-2.5 flex items-center bg-white/10 backdrop-blur-md rounded-full border border-white/20 shadow-lg hover:bg-white/15 hover:scale-105 transition-all duration-300">
+                            <span className="text-[9px] font-semibold text-white/90 drop-shadow-lg">{item.type}</span>
                           </div>
                         )}
                         {(item.tvInfo?.duration || item.duration) && (
-                          <div className="h-7 px-3 flex items-center bg-gradient-to-r from-[#F48FB1]/20 to-[#F06292]/20 backdrop-blur-xl rounded-full border border-[#F48FB1]/40 shadow-md hover:scale-105 transition-transform duration-300 max-[478px]:hidden">
-                            <span className="text-[10px] font-bold text-white drop-shadow-lg">
+                          <div className="h-6 px-2.5 flex items-center bg-white/10 backdrop-blur-md rounded-full border border-white/20 shadow-lg hover:bg-white/15 hover:scale-105 transition-all duration-300 max-[478px]:hidden">
+                            <span className="text-[9px] font-semibold text-white/90 drop-shadow-lg">
                               {item.tvInfo?.duration === "m" || item.tvInfo?.duration === "?" || item.duration === "m" || item.duration === "?" ? "N/A" : item.tvInfo?.duration || item.duration || "N/A"}
                             </span>
                           </div>
@@ -265,19 +258,12 @@ const CategoryCard = React.memo(
                     {/* Radial Glow */}
                     <div className="corner-glow pointer-events-none"></div>
                     
-                    {/* Enhanced Play Button with Glow */}
-                    <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 transform scale-50 group-hover:scale-100 pointer-events-none">
-                      <div className="relative">
-                        {/* Outer Glow Ring */}
-                        <div className="absolute inset-0 bg-gradient-to-r from-[#E91E63] via-[#F06292] to-[#ec4899] rounded-full blur-xl opacity-75 animate-pulse pointer-events-none"></div>
-                        {/* Play Button */}
-                        <div className="relative bg-gradient-to-br from-[#E91E63] to-[#F06292] rounded-full p-5 shadow-2xl shadow-[#E91E63]/50 backdrop-blur-sm border-2 border-white/30 hover:scale-110 transition-transform duration-300 pointer-events-none">
-                          <FontAwesomeIcon
-                            icon={faPlay}
-                            className="text-white text-3xl max-[450px]:text-2xl drop-shadow-2xl"
-                          />
-                        </div>
-                      </div>
+                    {/* Simple Play Icon - No Background */}
+                    <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+                      <FontAwesomeIcon
+                        icon={faPlay}
+                        className="text-white text-5xl max-[450px]:text-4xl drop-shadow-[0_4px_12px_rgba(0,0,0,0.8)]"
+                      />
                     </div>
                   </div>
                   
@@ -288,39 +274,39 @@ const CategoryCard = React.memo(
                     </div>
                   )}
                   
-                  {/* Info Badges - Slide Up on Hover with Stagger */}
-                  <div className="absolute bottom-0 left-0 right-0 p-3 transform translate-y-4 group-hover:translate-y-0 transition-all duration-600 z-10">
-                    <div className="flex items-center justify-start w-full gap-2 flex-wrap opacity-0 group-hover:opacity-100 transition-opacity duration-600 delay-150">
+                  {/* Info Badges - Always Visible */}
+                  <div className="absolute bottom-0 left-0 right-0 p-3 z-10">
+                    <div className="flex items-center justify-start w-full gap-2 flex-wrap">
                       {item.tvInfo?.sub && (
-                        <div className="flex items-center gap-1.5 h-7 px-3 bg-gradient-to-r from-emerald-500/90 to-green-500/90 backdrop-blur-xl rounded-full border border-emerald-300/50 shadow-lg shadow-emerald-500/30 hover:scale-105 transition-transform duration-300">
-                          <FontAwesomeIcon icon={faClosedCaptioning} className="text-[10px] text-white drop-shadow-lg" />
-                          <span className="text-[10px] font-bold text-white drop-shadow-lg">{item.tvInfo.sub}</span>
+                        <div className="flex items-center gap-1 h-5 px-2 bg-white/10 backdrop-blur-md rounded-full border border-white/20 shadow-md hover:bg-white/15 hover:scale-105 transition-all duration-300">
+                          <FontAwesomeIcon icon={faClosedCaptioning} className="text-[7px] text-white/90 drop-shadow-lg" />
+                          <span className="text-[8px] font-semibold text-white/90 drop-shadow-lg">{item.tvInfo.sub}</span>
                         </div>
                       )}
                       {item.tvInfo?.dub && (
-                        <div className="flex items-center gap-1.5 h-7 px-3 bg-gradient-to-r from-orange-500/90 to-amber-500/90 backdrop-blur-xl rounded-full border border-orange-300/50 shadow-lg shadow-orange-500/30 hover:scale-105 transition-transform duration-300">
-                          <FontAwesomeIcon icon={faMicrophone} className="text-[10px] text-white drop-shadow-lg" />
-                          <span className="text-[10px] font-bold text-white drop-shadow-lg">{item.tvInfo.dub}</span>
+                        <div className="flex items-center gap-1 h-5 px-2 bg-white/10 backdrop-blur-md rounded-full border border-white/20 shadow-md hover:bg-white/15 hover:scale-105 transition-all duration-300">
+                          <FontAwesomeIcon icon={faMicrophone} className="text-[7px] text-white/90 drop-shadow-lg" />
+                          <span className="text-[8px] font-semibold text-white/90 drop-shadow-lg">{item.tvInfo.dub}</span>
                         </div>
                       )}
                       {item.tvInfo?.showType && (
-                        <div className="h-7 px-3 flex items-center bg-gradient-to-r from-[#E91E63]/20 to-[#F06292]/20 backdrop-blur-xl rounded-full border border-[#E91E63]/40 shadow-md hover:scale-105 transition-transform duration-300 max-[478px]:hidden">
-                          <span className="text-[10px] font-bold text-white drop-shadow-lg">{item.tvInfo.showType.split(" ").shift()}</span>
+                        <div className="h-5 px-2 flex items-center bg-white/10 backdrop-blur-md rounded-full border border-white/20 shadow-md hover:bg-white/15 hover:scale-105 transition-all duration-300 max-[478px]:hidden">
+                          <span className="text-[8px] font-semibold text-white/90 drop-shadow-lg">{item.tvInfo.showType.split(" ").shift()}</span>
                         </div>
                       )}
                       {item.releaseDate && (
-                        <div className="h-7 px-3 flex items-center bg-gradient-to-r from-[#F06292]/20 to-[#ec4899]/20 backdrop-blur-xl rounded-full border border-[#F06292]/40 shadow-md hover:scale-105 transition-transform duration-300">
-                          <span className="text-[10px] font-bold text-white drop-shadow-lg">{item.releaseDate}</span>
+                        <div className="h-5 px-2 flex items-center bg-white/10 backdrop-blur-md rounded-full border border-white/20 shadow-md hover:bg-white/15 hover:scale-105 transition-all duration-300">
+                          <span className="text-[8px] font-semibold text-white/90 drop-shadow-lg">{item.releaseDate}</span>
                         </div>
                       )}
                       {!item.tvInfo?.showType && item.type && (
-                        <div className="h-7 px-3 flex items-center bg-gradient-to-r from-[#FF4081]/20 to-[#E91E63]/20 backdrop-blur-xl rounded-full border border-[#FF4081]/40 shadow-md hover:scale-105 transition-transform duration-300">
-                          <span className="text-[10px] font-bold text-white drop-shadow-lg">{item.type}</span>
+                        <div className="h-5 px-2 flex items-center bg-white/10 backdrop-blur-md rounded-full border border-white/20 shadow-md hover:bg-white/15 hover:scale-105 transition-all duration-300">
+                          <span className="text-[8px] font-semibold text-white/90 drop-shadow-lg">{item.type}</span>
                         </div>
                       )}
                       {(item.tvInfo?.duration || item.duration) && (
-                        <div className="h-7 px-3 flex items-center bg-gradient-to-r from-[#F48FB1]/20 to-[#F06292]/20 backdrop-blur-xl rounded-full border border-[#F48FB1]/40 shadow-md hover:scale-105 transition-transform duration-300 max-[478px]:hidden">
-                          <span className="text-[10px] font-bold text-white drop-shadow-lg">
+                        <div className="h-5 px-2 flex items-center bg-white/10 backdrop-blur-md rounded-full border border-white/20 shadow-md hover:bg-white/15 hover:scale-105 transition-all duration-300 max-[478px]:hidden">
+                          <span className="text-[8px] font-semibold text-white/90 drop-shadow-lg">
                             {item.tvInfo?.duration === "m" || item.tvInfo?.duration === "?" || item.duration === "m" || item.duration === "?" ? "N/A" : item.tvInfo?.duration || item.duration || "N/A"}
                           </span>
                         </div>

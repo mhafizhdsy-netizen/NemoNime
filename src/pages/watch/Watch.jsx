@@ -20,7 +20,6 @@ import SidecardLoader from "@/src/components/Loader/Sidecard.loader";
 import Watchcontrols from "@/src/components/watchcontrols/Watchcontrols";
 import useWatchControl from "@/src/hooks/useWatchControl";
 import Player from "@/src/components/player/Player";
-import DownloadButton from "@/src/components/download/DownloadButton";
 import WatchlistButton from "@/src/components/watchlist/WatchlistButton";
 
 export default function Watch() {
@@ -302,10 +301,10 @@ export default function Watch() {
                   </div>
                 )}
 
-                {/* Watchlist and Download Buttons */}
+                {/* Watchlist and Info Section */}
                 {!buffering && animeInfo && (
                   <div className="px-3 pb-3 pt-2">
-                    <div className="flex gap-3 flex-wrap">
+                    <div className="flex gap-3 flex-wrap items-center">
                       <WatchlistButton 
                         anime={{
                           id: animeId,
@@ -315,15 +314,14 @@ export default function Watch() {
                           episodeNum: activeEpisodeNum
                         }}
                       />
-                      {streamUrl && (
-                        <DownloadButton 
-                          streamUrl={streamUrl}
-                          episodeNum={activeEpisodeNum}
-                          animeTitle={animeInfo?.title}
-                          serverName={activeServerName}
-                          episodeId={episodeId}
-                        />
-                      )}
+                      {/* Download Feature - Coming Soon */}
+                      <div className="flex items-center gap-2 px-4 py-2.5 bg-gradient-to-r from-white/5 to-white/10 border border-white/10 rounded-xl backdrop-blur-sm transition-all duration-300 hover:border-white/20 hover:from-white/8 hover:to-white/15">
+                        <svg className="w-4 h-4 text-white/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                        </svg>
+                        <span className="text-white/60 text-sm font-medium">Download</span>
+                        <span className="px-2 py-0.5 bg-[#e91e63]/20 border border-[#e91e63]/30 rounded-lg text-[#e91e63] text-[10px] font-semibold">Coming Soon</span>
+                      </div>
                     </div>
                   </div>
                 )}

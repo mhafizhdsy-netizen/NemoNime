@@ -85,96 +85,84 @@ function Servers({
             </div>
           </div>
           
-          {/* Servers Grid */}
-          <div className="bg-[#1f1f1f] flex flex-col max-[600px]:rounded-lg max-[600px]:p-2">
+          {/* Servers Grid - Clean & Modern with Rounded Edges */}
+          <div className="bg-gradient-to-b from-[#1a1a1a] to-[#151515] p-4 space-y-3 max-[600px]:p-3 max-[600px]:space-y-2">
             {rawServers.length > 0 && (
-              <div className={`servers px-2 flex items-center flex-wrap gap-y-1 ml-2 max-[600px]:py-1.5 max-[600px]:px-1 max-[600px]:ml-0 ${
-                dubServers.length === 0 || subServers.length === 0
-                  ? "h-1/2"
-                  : "h-full"
-              }`}>
-                <div className="flex items-center gap-x-2 min-w-[65px]">
-                  <FontAwesomeIcon
-                    icon={faFile}
-                    className="text-[#e0e0e0] text-[13px]"
-                  />
-                  <p className="font-bold text-[14px] max-[600px]:text-[12px]">RAW:</p>
+              <div className="server-section">
+                <div className="flex items-center gap-2 mb-2 px-1">
+                  <div className="w-8 h-8 rounded-full bg-gradient-to-br from-purple-500/20 to-purple-600/20 border border-purple-500/30 flex items-center justify-center">
+                    <FontAwesomeIcon icon={faFile} className="text-purple-400 text-xs" />
+                  </div>
+                  <span className="text-white/90 text-sm font-semibold tracking-wide">RAW</span>
+                  <div className="flex-1 h-px bg-gradient-to-r from-purple-500/20 to-transparent"></div>
                 </div>
-                <div className="flex gap-1.5 ml-2 flex-wrap max-[600px]:ml-0">
+                <div className="flex gap-2 flex-wrap">
                   {rawServers.map((item, index) => (
-                    <div
+                    <button
                       key={index}
-                      className={`px-6 py-[5px] rounded-xl cursor-pointer transition-all duration-300 border ${
+                      className={`px-4 py-2 rounded-full font-medium text-sm transition-all duration-300 ${
                         activeServerId === item?.data_id
-                          ? "bg-gradient-to-r from-[#e91e63] to-[#00bcd4] text-white border-transparent shadow-lg"
-                          : "bg-[#373737] text-white border-white/10 hover:border-white/20 hover:bg-[#404040]"
-                      } max-[700px]:px-3 max-[600px]:px-2 max-[600px]:py-1`}
+                          ? "bg-gradient-to-r from-[#e91e63] to-[#00bcd4] text-white shadow-lg shadow-[#e91e63]/30 scale-105"
+                          : "bg-white/5 text-white/80 hover:bg-white/10 hover:text-white border border-white/10 hover:border-white/20"
+                      }`}
                       onClick={() => handleServerSelect(item)}
                     >
-                      <p className="text-[13px] font-semibold max-[600px]:text-[12px]">
-                        {item.serverName}
-                      </p>
-                    </div>
+                      {item.serverName}
+                    </button>
                   ))}
                 </div>
               </div>
             )}
+            
             {subServers.length > 0 && (
-              <div className={`servers px-2 flex items-center flex-wrap gap-y-1 ml-2 max-[600px]:py-1.5 max-[600px]:px-1 max-[600px]:ml-0 ${
-                dubServers.length === 0 ? "h-1/2" : "h-full"
-              }`}>
-                <div className="flex items-center gap-x-2 min-w-[65px]">
-                  <FontAwesomeIcon
-                    icon={faClosedCaptioning}
-                    className="text-[#e0e0e0] text-[13px]"
-                  />
-                  <p className="font-bold text-[14px] max-[600px]:text-[12px]">SUB:</p>
+              <div className="server-section">
+                <div className="flex items-center gap-2 mb-2 px-1">
+                  <div className="w-8 h-8 rounded-full bg-gradient-to-br from-emerald-500/20 to-emerald-600/20 border border-emerald-500/30 flex items-center justify-center">
+                    <FontAwesomeIcon icon={faClosedCaptioning} className="text-emerald-400 text-xs" />
+                  </div>
+                  <span className="text-white/90 text-sm font-semibold tracking-wide">SUBTITLE</span>
+                  <div className="flex-1 h-px bg-gradient-to-r from-emerald-500/20 to-transparent"></div>
                 </div>
-                <div className="flex gap-1.5 ml-2 flex-wrap max-[600px]:ml-0">
+                <div className="flex gap-2 flex-wrap">
                   {subServers.map((item, index) => (
-                    <div
+                    <button
                       key={index}
-                      className={`px-6 py-[5px] rounded-xl cursor-pointer transition-all duration-300 border ${
+                      className={`px-4 py-2 rounded-full font-medium text-sm transition-all duration-300 ${
                         activeServerId === item?.data_id
-                          ? "bg-gradient-to-r from-[#e91e63] to-[#00bcd4] text-white border-transparent shadow-lg"
-                          : "bg-[#373737] text-white border-white/10 hover:border-white/20 hover:bg-[#404040]"
-                      } max-[700px]:px-3 max-[600px]:px-2 max-[600px]:py-1`}
+                          ? "bg-gradient-to-r from-[#e91e63] to-[#00bcd4] text-white shadow-lg shadow-[#e91e63]/30 scale-105"
+                          : "bg-white/5 text-white/80 hover:bg-white/10 hover:text-white border border-white/10 hover:border-white/20"
+                      }`}
                       onClick={() => handleServerSelect(item)}
                     >
-                      <p className="text-[13px] font-semibold max-[600px]:text-[12px]">
-                        {item.serverName}
-                      </p>
-                    </div>
+                      {item.serverName}
+                    </button>
                   ))}
                 </div>
               </div>
             )}
+            
             {dubServers.length > 0 && (
-              <div className={`servers px-2 flex items-center flex-wrap gap-y-1 ml-2 max-[600px]:py-1.5 max-[600px]:px-1 max-[600px]:ml-0 ${
-                subServers.length === 0 ? "h-1/2" : "h-full"
-              }`}>
-                <div className="flex items-center gap-x-2 min-w-[65px]">
-                  <FontAwesomeIcon
-                    icon={faMicrophone}
-                    className="text-[#e0e0e0] text-[13px]"
-                  />
-                  <p className="font-bold text-[14px] max-[600px]:text-[12px]">DUB:</p>
+              <div className="server-section">
+                <div className="flex items-center gap-2 mb-2 px-1">
+                  <div className="w-8 h-8 rounded-full bg-gradient-to-br from-orange-500/20 to-orange-600/20 border border-orange-500/30 flex items-center justify-center">
+                    <FontAwesomeIcon icon={faMicrophone} className="text-orange-400 text-xs" />
+                  </div>
+                  <span className="text-white/90 text-sm font-semibold tracking-wide">DUBBED</span>
+                  <div className="flex-1 h-px bg-gradient-to-r from-orange-500/20 to-transparent"></div>
                 </div>
-                <div className="flex gap-1.5 ml-2 flex-wrap max-[600px]:ml-0">
+                <div className="flex gap-2 flex-wrap">
                   {dubServers.map((item, index) => (
-                    <div
+                    <button
                       key={index}
-                      className={`px-6 py-[5px] rounded-xl cursor-pointer transition-all duration-300 border ${
+                      className={`px-4 py-2 rounded-full font-medium text-sm transition-all duration-300 ${
                         activeServerId === item?.data_id
-                          ? "bg-gradient-to-r from-[#e91e63] to-[#00bcd4] text-white border-transparent shadow-lg"
-                          : "bg-[#373737] text-white border-white/10 hover:border-white/20 hover:bg-[#404040]"
-                      } max-[700px]:px-3 max-[600px]:px-2 max-[600px]:py-1`}
+                          ? "bg-gradient-to-r from-[#e91e63] to-[#00bcd4] text-white shadow-lg shadow-[#e91e63]/30 scale-105"
+                          : "bg-white/5 text-white/80 hover:bg-white/10 hover:text-white border border-white/10 hover:border-white/20"
+                      }`}
                       onClick={() => handleServerSelect(item)}
                     >
-                      <p className="text-[13px] font-semibold max-[600px]:text-[12px]">
-                        {item.serverName}
-                      </p>
-                    </div>
+                      {item.serverName}
+                    </button>
                   ))}
                 </div>
               </div>

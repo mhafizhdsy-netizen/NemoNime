@@ -1,5 +1,5 @@
 import CategoryCard from '@/src/components/categorycard/CategoryCard';
-import CategoryCardLoader from '@/src/components/Loader/CategoryCard.loader';
+import Loader from '@/src/components/Loader/Loader';
 import PageSlider from '@/src/components/pageslider/PageSlider';
 import getSearch from '@/src/utils/getSearch.utils';
 import { useEffect, useState } from 'react';
@@ -38,12 +38,14 @@ function Search() {
 
     const searchGridClass = "grid-cols-8 max-[1600px]:grid-cols-6 max-[1200px]:grid-cols-4 max-[758px]:grid-cols-3 max-[478px]:grid-cols-3 max-[478px]:gap-x-2";
 
+    if (loading && !searchData) {
+        return <Loader type="search" />;
+    }
+
     return (
         <div className="max-w-[1600px] mx-auto flex flex-col mt-[64px] max-md:mt-[50px]">
             <div className="w-full flex flex-col gap-y-8 mt-6">
-                {loading ? (
-                    <CategoryCardLoader className={"max-[478px]:mt-2"} gridClass={searchGridClass} />
-                ) : page > totalPages ? (
+                {page > totalPages ? (
                     <div className="flex flex-col gap-y-4">
                         <h1 className="font-bold text-2xl text-white max-[478px]:text-[18px]">
                             Search Results

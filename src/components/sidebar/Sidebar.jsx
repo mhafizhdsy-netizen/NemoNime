@@ -1,6 +1,6 @@
 import { FaChevronLeft } from "react-icons/fa";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faFilm, faRandom, faHome, faClock, faFire, faTv, faPlay, faCirclePlay, faFilePen, faBookmark } from "@fortawesome/free-solid-svg-icons";
+import { faFilm, faRandom, faHome, faClock, faFire, faTv, faPlay, faCirclePlay, faFilePen, faBookmark, faCalendarAlt, faClosedCaptioning, faMicrophone } from "@fortawesome/free-solid-svg-icons";
 import { useLanguage } from "@/src/context/LanguageContext";
 import { useEffect, useRef, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
@@ -9,16 +9,17 @@ import "./Sidebar.css";
 const MENU_ITEMS = [
   { name: "Home", path: "/home", icon: faHome },
   { name: "My Watchlist", path: "/watchlist", icon: faBookmark },
-  { name: "Recently Added", path: "/recently-added", icon: faCirclePlay },
-  { name: "Top Upcoming", path: "/top-upcoming", icon: faFilePen },
-  { name: "Subbed Anime", path: "/subbed-anime", icon: faFilePen },
-  { name: "Dubbed Anime", path: "/dubbed-anime", icon: faPlay },
+  { name: "Schedule", path: "/schedule", icon: faCalendarAlt },
+  { name: "Recently Added", path: "/recently-added", icon: faClock },
+  { name: "Top Upcoming", path: "/top-upcoming", icon: faFire },
+  { name: "Subbed Anime", path: "/subbed-anime", icon: faClosedCaptioning },
+  { name: "Dubbed Anime", path: "/dubbed-anime", icon: faMicrophone },
   { name: "Most Popular", path: "/most-popular", icon: faFire },
   { name: "Movies", path: "/movie", icon: faFilm },
   { name: "TV Series", path: "/tv", icon: faTv },
   { name: "OVAs", path: "/ova", icon: faCirclePlay },
   { name: "ONAs", path: "/ona", icon: faPlay },
-  { name: "Specials", path: "/special", icon: faClock },
+  { name: "Specials", path: "/special", icon: faFilePen },
 ];
 
 const Sidebar = ({ isOpen, onClose }) => {

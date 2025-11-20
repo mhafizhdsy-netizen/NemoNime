@@ -41,7 +41,13 @@
 
 @media (max-width: 768px) {
   .spotlight-dots-pattern {
-    background-position: 0 -30px, 6px -24px;
+    background-position: 0 -50px, 6px -44px;
+  }
+}
+
+@media (max-width: 480px) {
+  .spotlight-dots-pattern {
+    background-position: 0 -70px, 6px -64px;
   }
 }
 

@@ -1,16 +1,20 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBookmark, faCheck } from '@fortawesome/free-solid-svg-icons';
 import { useWatchlist } from '@/src/context/WatchlistContext';
+import { useToast } from '@/src/context/ToastContext';
 
 function WatchlistButton({ anime }) {
   const { addToWatchlist, removeFromWatchlist, isInWatchlist } = useWatchlist();
+  const { success, info } = useToast();
   const inWatchlist = isInWatchlist(anime.id);
 
   const handleClick = () => {
     if (inWatchlist) {
       removeFromWatchlist(anime.id);
+      info('Removed from Watchlist', 2500);
     } else {
       addToWatchlist(anime);
+      success('Added to Watchlist!', 2500);
     }
   };
 

@@ -1,54 +1,41 @@
-import { useEffect, useState } from 'react';
-import { CheckCircle, XCircle, Info, AlertCircle, X } from 'lucide-react';
+import { useEffect } from 'react';
+import { FaCheck, FaTimes, FaInfo, FaExclamationTriangle } from 'react-icons/fa';
+import './Toast.css';
 
-const icons = {
-  success: CheckCircle,
-  error: XCircle,
-  info: Info,
-  warning: AlertCircle,
-};
-
-const colors = {
-  success: 'bg-green-500/20 border-green-500/50 text-green-400',
-  error: 'bg-red-500/20 border-red-500/50 text-red-400',
-  info: 'bg-blue-500/20 border-blue-500/50 text-blue-400',
-  warning: 'bg-yellow-500/20 border-yellow-500/50 text-yellow-400',
-};
-
-export default function Toast({ message, type = 'info', duration = 3000, onClose }) {
-  const [isVisible, setIsVisible] = useState(true);
-  const Icon = icons[type];
-
+const Toast = ({ message, type = 'success', onClose, duration = 3000 }) => {
   useEffect(() => {
     const timer = setTimeout(() => {
-      setIsVisible(false);
-      setTimeout(onClose, 300);
+      onClose();
     }, duration);
 
     return () => clearTimeout(timer);
   }, [duration, onClose]);
 
+  const icons = {
+    success: <FaCheck className="text-emerald-400" />,
+    error: <FaTimes className="text-red-400" />,
+    info: <FaInfo className="text-blue-400" />,
+    warning: <FaExclamationTriangle className="text-orange-400" />,
+  };
+
+  const colors = {
+    success: 'from-emerald-500/20 to-emerald-600/20 border-emerald-500/30',
+    error: 'from-red-500/20 to-red-600/20 border-red-500/30',
+    info: 'from-blue-500/20 to-blue-600/20 border-blue-500/30',
+    warning: 'from-orange-500/20 to-orange-600/20 border-orange-500/30',
+  };
+
   return (
-    <div
-      className={`fixed top-24 right-4 z-[100000] transition-all duration-300 ${
-        isVisible ? 'translate-x-0 opacity-100' : 'translate-x-full opacity-0'
-      }`}
-    >
-      <div
-        className={`flex items-center gap-3 px-4 py-3 rounded-xl border backdrop-blur-xl shadow-2xl min-w-[300px] max-w-md ${colors[type]}`}
-      >
-        <Icon className="w-5 h-5 flex-shrink-0" />
-        <p className="text-sm font-medium flex-1">{message}</p>
-        <button
-          onClick={() => {
-            setIsVisible(false);
-            setTimeout(onClose, 300);
-          }}
-          className="flex-shrink-0 hover:opacity-70 transition-opacity"
-        >
-          <X className="w-4 h-4" />
-        </button>
+    <div className={`toast-container bg-gradient-to-r ${colors[type]} border backdrop-blur-md`}>
+      <div className="toast-icon">
+        {icons[type]}
       </div>
+      <p className="toast-message">{message}</p>
+      <button onClick={onClose} className="toast-close">
+        <FaTimes className="text-xs" />
+      </button>
     </div>
   );
-}
+};
+
+export default Toast;

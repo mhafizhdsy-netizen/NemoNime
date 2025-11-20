@@ -7,9 +7,9 @@ import Topten from "@/src/components/topten/Topten.jsx";
 import Loader from "@/src/components/Loader/Loader.jsx";
 import Error from "@/src/components/error/Error.jsx";
 import { useHomeInfo } from "@/src/context/HomeInfoContext.jsx";
-import Schedule from "@/src/components/schedule/Schedule";
 import ContinueWatching from "@/src/components/continue/ContinueWatching";
 import TabbedAnimeSection from "@/src/components/tabbed-anime/TabbedAnimeSection";
+
 
 function Home() {
   const { homeInfo, homeInfoLoading, error } = useHomeInfo();
@@ -34,7 +34,8 @@ function Home() {
               path="recently-updated"
               limit={12}
             />
-            <Schedule className="mt-8" />
+            
+
             <TabbedAnimeSection 
               topAiring={homeInfo.top_airing}
               mostFavorite={homeInfo.most_favorite}

@@ -5,6 +5,7 @@ import Artplayer from "artplayer";
 import artplayerPluginChapter from "./artPlayerPluinChaper";
 import autoSkip from "./autoSkip";
 import artplayerPluginVttThumbnail from "./artPlayerPluginVttThumbnail";
+import artplayerPluginPipSubtitle from "./artplayerPluginPipSubtitle";
 import {
   backward10Icon,
   backwardIcon,
@@ -287,6 +288,15 @@ export default function Player({
         }),
         artplayerPluginUploadSubtitle(),
         artplayerPluginChapter({ chapters: createChapters() }),
+        artplayerPluginPipSubtitle({
+          fontSize: 18,
+          fontFamily: 'Inter, Arial, sans-serif',
+          fontColor: '#FFFFFF',
+          backgroundColor: 'rgba(0, 0, 0, 0.8)',
+          padding: 12,
+          borderRadius: 8,
+          position: 'bottom',
+        }),
       ],
       subtitle: {
         style: {
@@ -410,10 +420,119 @@ export default function Player({
     art.on("ready", () => {
       const continueWatchingList = JSON.parse(localStorage.getItem("continueWatching")) || [];
       const currentEntry = continueWatchingList.find((item) => item.episodeId === episodeId);
-      if (currentEntry?.leftAt) art.currentTime = currentEntry.leftAt;
+      
+      // Load continue watching position with retry mechanism
+      if (currentEntry?.leftAt && currentEntry.leftAt > 0) {
+        const savedTime = currentEntry.leftAt;
+        console.log(`📍 Found saved position: ${savedTime}s for episode ${episodeId}`);
+        
+        // Try to set time immediately
+        const trySetTime = (attempts = 0) => {
+          if (attempts > 10) {
+            console.warn('⚠️ Failed to restore playback position after 10 attempts');
+            return;
+          }
+          
+          try {
+            if (art.duration && art.duration > 0 && savedTime < art.duration) {
+              art.currentTime = savedTime;
+              console.log(`✅ Restored playback position to ${savedTime}s`);
+            } else if (art.duration === 0 || isNaN(art.duration)) {
+              // Video not ready yet, retry
+              setTimeout(() => trySetTime(attempts + 1), 500);
+            }
+          } catch (error) {
+            console.error('Error setting playback position:', error);
+            setTimeout(() => trySetTime(attempts + 1), 500);
+          }
+        };
+        
+        // Start trying to set time
+        trySetTime();
+        
+        // Also try on video:canplay event as backup
+        art.once('video:canplay', () => {
+          if (art.currentTime < 5) { // Only if not already set
+            try {
+              art.currentTime = savedTime;
+              console.log(`✅ Restored playback position via canplay: ${savedTime}s`);
+            } catch (error) {
+              console.error('Error in canplay handler:', error);
+            }
+          }
+        });
+      }
 
       art.on("video:timeupdate", () => {
         leftAtRef.current = Math.floor(art.currentTime);
+      });
+      
+      // Save progress periodically (every 10 seconds)
+      let saveInterval = setInterval(() => {
+        if (leftAtRef.current > 0 && animeInfo?.data_id) {
+          const continueWatching = JSON.parse(localStorage.getItem("continueWatching")) || [];
+          const existingIndex = continueWatching.findIndex((item) => item.data_id === animeInfo.data_id);
+          
+          const entry = {
+            id: animeInfo.id,
+            data_id: animeInfo.data_id,
+            episodeId,
+            episodeNum,
+            adultContent: animeInfo.adultContent,
+            poster: animeInfo.poster,
+            title: animeInfo.title,
+            japanese_title: animeInfo.japanese_title,
+            leftAt: leftAtRef.current,
+            updatedAt: new Date().toISOString()
+          };
+          
+          if (existingIndex !== -1) {
+            continueWatching[existingIndex] = entry;
+          } else {
+            continueWatching.push(entry);
+          }
+          
+          localStorage.setItem("continueWatching", JSON.stringify(continueWatching));
+          console.log(`💾 Auto-saved progress: ${leftAtRef.current}s`);
+        }
+      }, 10000);
+      
+      // Save on visibility change (important for mobile when switching apps)
+      const handleVisibilityChange = () => {
+        if (document.hidden && leftAtRef.current > 0 && animeInfo?.data_id) {
+          const continueWatching = JSON.parse(localStorage.getItem("continueWatching")) || [];
+          const existingIndex = continueWatching.findIndex((item) => item.data_id === animeInfo.data_id);
+          
+          const entry = {
+            id: animeInfo.id,
+            data_id: animeInfo.data_id,
+            episodeId,
+            episodeNum,
+            adultContent: animeInfo.adultContent,
+            poster: animeInfo.poster,
+            title: animeInfo.title,
+            japanese_title: animeInfo.japanese_title,
+            leftAt: leftAtRef.current,
+            updatedAt: new Date().toISOString()
+          };
+          
+          if (existingIndex !== -1) {
+            continueWatching[existingIndex] = entry;
+          } else {
+            continueWatching.push(entry);
+          }
+          
+          localStorage.setItem("continueWatching", JSON.stringify(continueWatching));
+          console.log(`💾 Saved on visibility change: ${leftAtRef.current}s`);
+        }
+      };
+      
+      document.addEventListener('visibilitychange', handleVisibilityChange);
+      
+      // Cleanup interval on destroy
+      art.on('destroy', () => {
+        if (saveInterval) clearInterval(saveInterval);
+        document.removeEventListener('visibilitychange', handleVisibilityChange);
       });
 
       // Logo will fade out after 3 seconds, then reappear on hover
