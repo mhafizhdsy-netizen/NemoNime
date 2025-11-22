@@ -5,6 +5,7 @@ import { faTrash, faPlay, faClock, faCalendar } from '@fortawesome/free-solid-sv
 import { useState, useEffect } from 'react';
 import Loader from '@/src/components/Loader/Loader';
 import { getLastWatchedEpisode, formatTime } from '@/src/utils/watchProgress';
+import './Watchlist.css';
 
 function Watchlist() {
   const { watchlist, removeFromWatchlist, clearWatchlist } = useWatchlist();
@@ -12,7 +13,7 @@ function Watchlist() {
   const [watchProgress, setWatchProgress] = useState({});
 
   useEffect(() => {
-    // Simulate loading untuk memberikan waktu context load
+    // Simulate loading to allow context to load
     const timer = setTimeout(() => {
       setLoading(false);
     }, 300);
@@ -20,7 +21,7 @@ function Watchlist() {
   }, []);
 
   useEffect(() => {
-    // Get watch progress untuk setiap anime di watchlist
+    // Get watch progress for each anime in the watchlist
     const progress = {};
     watchlist.forEach((item) => {
       const lastWatched = getLastWatchedEpisode(item.id);
@@ -115,7 +116,7 @@ function Watchlist() {
           {watchlist.map((item) => (
             <div
               key={item.id}
-              className="group relative"
+              className="watchlist-card group relative"
             >
               {/* Card */}
               <div className="relative bg-gradient-to-br from-[#141414] to-[#0f0f0f] rounded-2xl overflow-hidden border border-white/5 hover:border-[#e91e63]/30 transition-all duration-300 shadow-lg hover:shadow-2xl hover:shadow-[#e91e63]/10">

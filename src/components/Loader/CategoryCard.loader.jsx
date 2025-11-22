@@ -1,42 +1,55 @@
 import { Skeleton } from "../ui/Skeleton/Skeleton";
 
-function CategoryCardLoader({ className, showLabelSkeleton = true, gridClass }) {
+const PaginationLoader = () => (
+  <div className="flex justify-center items-center gap-2 mt-8 flex-wrap">
+    <Skeleton className="w-24 h-10 rounded-lg" />
+    {[...Array(5)].map((_, index) => (
+      <Skeleton key={index} className="w-10 h-10 rounded-lg" />
+    ))}
+    <Skeleton className="w-24 h-10 rounded-lg" />
+  </div>
+);
+
+const TitleBoxLoader = () => (
+  <div className="bg-gradient-to-br from-[#141414] to-[#0f0f0f] rounded-xl p-6 border border-white/5 shadow-xl">
+    <div className="flex items-center gap-3">
+      <Skeleton className="w-1.5 h-8 rounded-full" />
+      <Skeleton className="h-8 w-64" />
+    </div>
+    <div className="mt-2 flex items-center gap-2">
+      <Skeleton className="h-4 w-32" />
+    </div>
+  </div>
+);
+
+function CategoryCardLoader({ 
+  className, 
+  showLabelSkeleton = true, 
+  gridClass, 
+  cardCount = 24,
+  showTitleBox = false,
+  showPagination = false
+}) {
   return (
     <div className={`w-full ${className}`}>
-      {showLabelSkeleton && (
-        <Skeleton className="w-[200px] h-[20px] rounded-lg max-[478px]:w-[150px] max-[320px]:w-[120px]" />
+      {showTitleBox && <TitleBoxLoader />}
+      
+      {showLabelSkeleton && !showTitleBox && (
+        <Skeleton className="w-48 h-6 mb-6" />
       )}
+
       <div className={`grid ${gridClass || "grid-cols-6 max-[1400px]:grid-cols-4 max-[758px]:grid-cols-3 max-[478px]:grid-cols-3"} gap-x-3 gap-y-8 mt-6 max-[478px]:gap-x-2 max-[478px]:gap-y-6`}>
-        {[...Array(24)].map((_, index) => (
-          <div
-            key={index}
-            className="flex flex-col transition-transform duration-300 ease-in-out"
-            style={{ height: "fit-content" }}
-          >
-            <div className="w-full relative">
-              {/* Card Skeleton with rounded-2xl like UI asli */}
-              <Skeleton className="w-full pb-[140%] rounded-2xl max-[478px]:rounded-xl" />
-              
-              {/* Info Badges - Always Visible like UI asli */}
-              <div className="absolute bottom-0 left-0 right-0 p-3 max-[478px]:p-2 z-10">
-                <div className="flex items-center justify-start w-full gap-2 max-[478px]:gap-1 flex-wrap">
-                  {/* Badge skeletons with rounded-full and proper sizing */}
-                  <Skeleton className="h-5 w-[40px] rounded-full max-[478px]:h-4 max-[478px]:w-[35px]" />
-                  <Skeleton className="h-5 w-[40px] rounded-full max-[478px]:h-4 max-[478px]:w-[35px]" />
-                  <Skeleton className="h-5 w-[45px] rounded-full max-[478px]:hidden" />
-                </div>
-              </div>
-            </div>
-            
-            {/* Title Outside Card */}
-            <Skeleton className="mt-4 w-[90%] h-[20px] rounded-lg max-[478px]:mt-3 max-[478px]:h-[16px] max-[478px]:w-full" />
+        {[...Array(cardCount)].map((_, index) => (
+          <div key={index} className="flex flex-col">
+            <Skeleton className="w-full pb-[140%] rounded-2xl" />
+            <Skeleton className="mt-3 w-3/4 h-5 rounded-lg" />
           </div>
         ))}
       </div>
+
+      {showPagination && <PaginationLoader />}
     </div>
   );
 }
 
 export default CategoryCardLoader;
-
-

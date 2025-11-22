@@ -10,6 +10,7 @@ import { useLanguage } from "@/src/context/LanguageContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlay } from "@fortawesome/free-solid-svg-icons";
 import "@/src/components/categorycard/CategoryCard.css";
+import "./ContinueWatching.css";
 
 const ContinueWatching = () => {
   const [watchList, setWatchList] = useState([]);
@@ -79,7 +80,7 @@ const ContinueWatching = () => {
               key={index}
               className="text-center flex justify-center items-center"
             >
-              <div className="w-full h-auto pb-[140%] relative inline-block overflow-hidden rounded-xl shadow-lg group">
+              <div className="continue-watching-card w-full h-auto pb-[140%] relative inline-block overflow-hidden rounded-xl shadow-lg group">
                 <button
                   className="absolute top-3 right-3 bg-black/70 text-gray-300 w-8 h-8 flex items-center justify-center rounded-xl text-sm z-10 font-medium hover:bg-white hover:text-black transition-all duration-300"
                   onClick={() => removeFromWatchList(item.episodeId)}
@@ -164,4 +165,3 @@ const ContinueWatching = () => {
 };
 
 export default ContinueWatching;
-

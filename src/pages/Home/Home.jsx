@@ -4,7 +4,7 @@ import Trending from "@/src/components/trending/Trending.jsx";
 import CategoryCard from "@/src/components/categorycard/CategoryCard.jsx";
 import Genre from "@/src/components/genres/Genre.jsx";
 import Topten from "@/src/components/topten/Topten.jsx";
-import Loader from "@/src/components/Loader/Loader.jsx";
+import HomeLoader from "@/src/components/Loader/Home.loader.jsx";
 import Error from "@/src/components/error/Error.jsx";
 import { useHomeInfo } from "@/src/context/HomeInfoContext.jsx";
 import ContinueWatching from "@/src/components/continue/ContinueWatching";
@@ -13,7 +13,7 @@ import TabbedAnimeSection from "@/src/components/tabbed-anime/TabbedAnimeSection
 
 function Home() {
   const { homeInfo, homeInfoLoading, error } = useHomeInfo();
-  if (homeInfoLoading) return <Loader type="home" />;
+  if (homeInfoLoading) return <HomeLoader />;
   if (error) return <Error />;
   if (!homeInfo) return <Error error="404" />;
   return (
