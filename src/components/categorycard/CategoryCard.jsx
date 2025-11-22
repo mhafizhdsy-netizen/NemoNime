@@ -102,7 +102,7 @@ const CategoryCard = React.memo(
                   className="flex flex-col transition-transform duration-300 ease-in-out hover:scale-[1.02]"
                   style={{ height: "fit-content" }}
                 >
-                  <div className="w-full h-auto pb-[140%] relative inline-block overflow-hidden rounded-2xl shadow-lg group">
+                  <div className="w-full h-auto pb-[140%] relative inline-block rounded-2xl shadow-lg group">
                     <div
                       className="inline-block bg-gradient-to-br from-[#1a1a1a] to-[#0a0a0a] absolute left-0 top-0 w-full h-full group hover:cursor-pointer"
                       onClick={() =>
@@ -126,7 +126,7 @@ const CategoryCard = React.memo(
                       <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-500 pointer-events-none" />
                       
                       {/* Glow Effect */}
-                      <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-t from-brand-primary/20 via-transparent to-transparent pointer-events-none" />
+                      <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-t from-[#E91E63]/20 via-transparent to-transparent pointer-events-none" />
                       
                       {/* Shimmer Effect */}
                       <div className="card-shine pointer-events-none"></div>
@@ -226,7 +226,7 @@ const CategoryCard = React.memo(
                 className="flex flex-col transition-transform duration-300 ease-in-out hover:scale-[1.02]"
                 style={{ height: "fit-content" }}
               >
-                <div className="w-full h-auto pb-[140%] relative inline-block overflow-hidden rounded-2xl shadow-lg group">
+                <div className="w-full h-auto pb-[140%] relative inline-block rounded-2xl shadow-lg group">
                   <div
                     className="inline-block bg-gradient-to-br from-[#1a1a1a] to-[#0a0a0a] absolute left-0 top-0 w-full h-full group hover:cursor-pointer"
                     onClick={() =>
@@ -250,7 +250,7 @@ const CategoryCard = React.memo(
                     <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-500 pointer-events-none" />
                     
                     {/* Glow Effect */}
-                    <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-t from-brand-primary/20 via-transparent to-transparent pointer-events-none" />
+                    <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-t from-[#E91E63]/20 via-transparent to-transparent pointer-events-none" />
                     
                     {/* Shimmer Effect */}
                     <div className="card-shine pointer-events-none"></div>
