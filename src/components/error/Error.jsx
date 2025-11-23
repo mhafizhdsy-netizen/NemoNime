@@ -62,7 +62,7 @@ function Error({ error }) {
                     >
                         <Home className="w-5 h-5" />
                         <span className="text-base font-medium">Back to Homepage</span>
-                    </button>
+                    </Link>
                     
                     <Link 
                         href="/search" 
@@ -71,7 +71,7 @@ function Error({ error }) {
                     >
                         <Search className="w-5 h-5" />
                         <span className="text-base font-medium">Search Anime</span>
-                    </button>
+                    </Link>
                 </div>
 
                 {/* Retry Button for Server Errors */}
