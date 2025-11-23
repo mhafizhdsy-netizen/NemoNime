@@ -1,3 +1,5 @@
+'use client';
+
 import { Skeleton } from "@/components/ui/Skeleton/Skeleton";
 import SpotlightLoader from "./Spotlight.loader";
 import TrendingLoader from "./Trending.loader";

@@ -1,3 +1,5 @@
+'use client';
+
 import { useState } from "react";
 import PropTypes from "prop-types";
 import CategoryCard from "@/components/categorycard/CategoryCard.jsx";

@@ -1,3 +1,5 @@
+'use client';
+
 import { Skeleton } from "../ui/Skeleton/Skeleton";
 
 const PaginationLoader = () => (
