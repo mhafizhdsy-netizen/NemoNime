@@ -1,6 +1,8 @@
-import logoTitle from "@/src/config/logoTitle.js";
-import website_name from "@/src/config/website.js";
-import { Link } from "react-router-dom";
+'use client';
+
+import logoTitle from "@/config/logoTitle.js";
+import website_name from "@/config/website.js";
+import Link from "next/link";
 import { useState, useEffect } from "react";
 
 function Footer() {
