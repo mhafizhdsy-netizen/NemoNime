@@ -1,9 +1,8 @@
 'use client';
 
 import { createContext, useContext, useState, useEffect } from 'react';
-import getHomeInfo from '../utils/getHomeInfo.utils.js';
 
-const HomeInfoContext = createContext();
+const HomeInfoContext = createContext(null);
 
 export const HomeInfoProvider = ({ children }) => {
     const [homeInfo, setHomeInfo] = useState(null);
