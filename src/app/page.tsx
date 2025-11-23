@@ -1,13 +1,23 @@
+import { Navbar } from "@/components/navbar/Navbar";
+import { Banner } from "@/components/banner/Banner";
+import { Trending } from "@/components/trending/Trending";
+import { Spotlight } from "@/components/spotlight/Spotlight";
+import { Topten } from "@/components/topten/Topten";
+import { Schedule } from "@/components/schedule/Schedule";
+import { Footer } from "@/components/footer/Footer";
+
 export default function Home() {
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen gap-8 p-4">
-      <div className="relative w-24 h-24 md:w-32 md:h-32">
-        <img
-          src="/logo.svg"
-          alt="Z.ai Logo"
-          className="w-full h-full object-contain"
-        />
+    <div className="min-h-screen bg-background">
+      <Navbar />
+      <Banner />
+      <div className="container mx-auto px-4 py-8 space-y-12">
+        <Trending />
+        <Spotlight />
+        <Topten />
+        <Schedule />
       </div>
+      <Footer />
     </div>
-  )
+  );
 }
