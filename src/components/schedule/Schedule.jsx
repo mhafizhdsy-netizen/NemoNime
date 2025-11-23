@@ -1,5 +1,3 @@
-'use client';
-
 import { useState, useEffect, useRef } from "react";
 import getSchedInfo from "../../utils/getScheduleInfo.utils";
 import { Pagination, Navigation } from "swiper/modules";

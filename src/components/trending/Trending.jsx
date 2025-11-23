@@ -1,7 +1,5 @@
-'use client';
-
-import { useLanguage } from "@/context/LanguageContext";
-import Link from "next/link";
+import { useLanguage } from "@/src/context/LanguageContext";
+import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faClosedCaptioning,
@@ -25,7 +23,7 @@ const Trending = ({ trending, className }) => {
           trending.map((item, index) => (
             <div key={index} className="group">
               <Link
-                href={`/${item.id}`}
+                to={`/${item.id}`}
                 onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
                 className="block"
               >

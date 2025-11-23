@@ -69,7 +69,7 @@ function Banner({ item, index }) {
             <span>Watch Now</span>
           </Link>
           <Link
-            href={`/${item.id}`}
+            to={`/${item.id}`}
             className="spotlight-btn-secondary flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl text-sm font-semibold transition-all duration-300"
           >
             <Info className="w-4 h-4" />
@@ -146,7 +146,7 @@ function Banner({ item, index }) {
           <span>Watch Now</span>
         </Link>
         <Link
-          href={`/${item.id}`}
+          to={`/${item.id}`}
           className="spotlight-btn-secondary flex items-center gap-3 px-8 py-3 rounded-xl font-semibold transition-all duration-300"
         >
           <Info className="w-5 h-5" />
