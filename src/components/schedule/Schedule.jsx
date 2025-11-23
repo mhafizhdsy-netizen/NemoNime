@@ -7,7 +7,7 @@ import BouncingLoader from "../ui/bouncingloader/Bouncingloader";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlay } from "@fortawesome/free-solid-svg-icons";
 import "./schedule.css";
-import { Link } from "react-router-dom";
+import { Link } from "next/link";
 
 const Schedule = () => {
   const [dates, setDates] = useState([]);

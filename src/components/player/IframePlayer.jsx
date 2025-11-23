@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import { useEffect, useState } from "react";
 import BouncingLoader from "../ui/bouncingloader/Bouncingloader";
-import website_name from "@/src/config/website";
+import website_name from "@/config/website";
 
 export default function IframePlayer({
   episodeId,

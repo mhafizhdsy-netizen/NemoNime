@@ -1,15 +1,15 @@
 import { Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Link } from "react-router-dom";
+import { Link } from "next/link";
 import { useEffect, useState, useRef, useMemo } from "react";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { FaHistory, FaChevronLeft, FaChevronRight } from "react-icons/fa";
-import { useLanguage } from "@/src/context/LanguageContext";
+import { useLanguage } from "@/context/LanguageContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlay } from "@fortawesome/free-solid-svg-icons";
-import "@/src/components/categorycard/CategoryCard.css"; // Re-use CategoryCard styles
+import "@/components/categorycard/CategoryCard.css"; // Re-use CategoryCard styles
 
 const ContinueWatching = () => {
   const [watchList, setWatchList] = useState([]);

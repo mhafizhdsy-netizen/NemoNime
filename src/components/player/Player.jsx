@@ -25,7 +25,7 @@ import {
   volumeIcon,
 } from "./PlayerIcons";
 import "./Player.css";
-import website_name from "@/src/config/website";
+import website_name from "@/config/website";
 import getChapterStyles from "./getChapterStyle";
 import artplayerPluginHlsControl from "artplayer-plugin-hls-control";
 import artplayerPluginUploadSubtitle from "./artplayerPluginUploadSubtitle";

@@ -1,4 +1,4 @@
-import { Skeleton } from "@/src/components/ui/Skeleton/Skeleton";
+import { Skeleton } from "@/components/ui/Skeleton/Skeleton";
 import SpotlightLoader from "./Spotlight.loader";
 import TrendingLoader from "./Trending.loader";
 import CategoryCardLoader from "./CategoryCard.loader";

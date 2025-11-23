@@ -1,8 +1,8 @@
-import getSearchSuggestion from "@/src/utils/getSearchSuggestion.utils";
+import getSearchSuggestion from "@/utils/getSearchSuggestion.utils";
 import { useEffect, useState } from "react";
 import BouncingLoader from "../ui/bouncingloader/Bouncingloader";
 import { FaChevronRight } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link } from "next/link";
 
 function Suggestion({ keyword, className, onSuggestionClick }) {
   const [suggestion, setSuggestion] = useState([]);

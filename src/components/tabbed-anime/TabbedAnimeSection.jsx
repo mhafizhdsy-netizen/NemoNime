@@ -1,7 +1,7 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
-import CategoryCard from "@/src/components/categorycard/CategoryCard.jsx";
-import { Link } from "react-router-dom";
+import CategoryCard from "@/components/categorycard/CategoryCard.jsx";
+import { Link } from "next/link";
 import { FaChevronRight } from "react-icons/fa";
 
 function TabbedAnimeSection({ topAiring, mostFavorite, latestCompleted, className = "" }) {

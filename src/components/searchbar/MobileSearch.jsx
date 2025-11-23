@@ -1,8 +1,8 @@
 import Suggestion from '../suggestion/Suggestion';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass, faRandom } from '@fortawesome/free-solid-svg-icons';
-import useSearch from '@/src/hooks/useSearch';
-import { Link, useNavigate, useLocation } from 'react-router-dom';
+import useSearch from '@/hooks/useSearch';
+import { Link, useNavigate, useLocation } from 'next/link';
 
 function MobileSearch({ onClose }) {
     const navigate = useNavigate();

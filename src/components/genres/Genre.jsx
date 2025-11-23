@@ -1,5 +1,5 @@
 import React, { useRef, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link } from "next/link";
 
 function Genre({ data }) {
   const scrollContainerRef = useRef(null);

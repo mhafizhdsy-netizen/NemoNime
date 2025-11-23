@@ -1,4 +1,4 @@
-import { useLanguage } from "@/src/context/LanguageContext";
+import { useLanguage } from "@/context/LanguageContext";
 import {
   faAngleDown,
   faCirclePlay,

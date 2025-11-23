@@ -6,11 +6,11 @@ import {
   faMagnifyingGlass,
   faXmark,
 } from "@fortawesome/free-solid-svg-icons";
-import { useLanguage } from "@/src/context/LanguageContext";
-import { useTheme } from "@/src/context/ThemeContext";
-import { Link, useLocation } from "react-router-dom";
+import { useLanguage } from "@/context/LanguageContext";
+import { useTheme } from "@/context/ThemeContext";
+import { Link, useLocation } from "next/link";
 import Sidebar from "../sidebar/Sidebar";
-import { SearchProvider } from "@/src/context/SearchContext";
+import { SearchProvider } from "@/context/SearchContext";
 import WebSearch from "../searchbar/WebSearch";
 import MobileSearch from "../searchbar/MobileSearch";
 import ThemeToggle from "../theme-toggle/ThemeToggle";

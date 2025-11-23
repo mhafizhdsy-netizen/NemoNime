@@ -1,8 +1,8 @@
-import { useNavigate, useParams, useSearchParams } from "react-router-dom";
+import { useNavigate, useParams, useSearchParams } from "next/link";
 import Error from "../error/Error";
 import CategoryCard from "../categorycard/CategoryCard";
 import { useEffect, useState } from "react";
-import getProducer from "@/src/utils/getProducer.utils";
+import getProducer from "@/utils/getProducer.utils";
 import Loader from "../Loader/Loader";
 import PageSlider from "../pageslider/PageSlider";
 

@@ -1,5 +1,5 @@
-import { useLanguage } from "@/src/context/LanguageContext";
-import { Link } from "react-router-dom";
+import { useLanguage } from "@/context/LanguageContext";
+import { Link } from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faClosedCaptioning,

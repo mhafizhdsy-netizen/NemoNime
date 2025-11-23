@@ -1,8 +1,8 @@
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Suggestion from "../suggestion/Suggestion";
-import useSearch from "@/src/hooks/useSearch";
-import { useNavigate } from "react-router-dom";
+import useSearch from "@/hooks/useSearch";
+import { useNavigate } from "next/link";
 
 function WebSearch() {
     const navigate = useNavigate();

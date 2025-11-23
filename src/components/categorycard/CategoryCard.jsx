@@ -7,8 +7,8 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FaChevronRight } from "react-icons/fa";
 import "./CategoryCard.css";
-import { useLanguage } from "@/src/context/LanguageContext";
-import { Link, useNavigate } from "react-router-dom";
+import { useLanguage } from "@/context/LanguageContext";
+import { Link, useNavigate } from "next/link";
 
 const CategoryCard = React.memo(
   ({

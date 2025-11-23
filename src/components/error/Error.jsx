@@ -1,5 +1,5 @@
 import { FaChevronLeft } from "react-icons/fa";
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "next/link";
 import { Home, Search, RefreshCw } from "lucide-react";
 
 function Error({ error }) {

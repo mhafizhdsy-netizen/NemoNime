@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBookmark, faCheck } from '@fortawesome/free-solid-svg-icons';
-import { useWatchlist } from '@/src/context/WatchlistContext';
-import { useToast } from '@/src/context/ToastContext';
+import { useWatchlist } from '@/context/WatchlistContext';
+import { useToast } from '@/context/ToastContext';
 
 function WatchlistButton({ anime }) {
   const { addToWatchlist, removeFromWatchlist, isInWatchlist } = useWatchlist();

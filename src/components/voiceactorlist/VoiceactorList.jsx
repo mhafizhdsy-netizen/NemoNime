@@ -1,12 +1,12 @@
 import { useState, useEffect } from "react";
-import fetchVoiceActorInfo from "@/src/utils/getVoiceActor.utils";
+import fetchVoiceActorInfo from "@/utils/getVoiceActor.utils";
 import VoiceActorlistLoader from "../Loader/VoiceActorlist.loader";
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "next/link";
 import Error from "../error/Error";
 import {
   cleanupScrollbar,
   toggleScrollbar,
-} from "@/src/helper/toggleScrollbar";
+} from "@/helper/toggleScrollbar";
 import PageSlider from "../pageslider/PageSlider";
 
 function VoiceactorList({ id, isOpen, onClose }) {

@@ -4,8 +4,8 @@ import {
   faClosedCaptioning,
   faMicrophone,
 } from "@fortawesome/free-solid-svg-icons";
-import { useLanguage } from "@/src/context/LanguageContext";
-import { Link, useNavigate } from "react-router-dom";
+import { useLanguage } from "@/context/LanguageContext";
+import { Link, useNavigate } from "next/link";
 
 function Topten({ data, className }) {
   const { language } = useLanguage();

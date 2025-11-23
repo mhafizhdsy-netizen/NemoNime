@@ -4,9 +4,9 @@ import {
   faMicrophone,
 } from "@fortawesome/free-solid-svg-icons";
 import { FaChevronRight } from "react-icons/fa";
-import { useLanguage } from "@/src/context/LanguageContext";
+import { useLanguage } from "@/context/LanguageContext";
 import "./Cart.css";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "next/link";
 
 function Cart({ label, data, path }) {
   const { language } = useLanguage();
