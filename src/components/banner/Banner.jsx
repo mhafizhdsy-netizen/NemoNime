@@ -10,12 +10,13 @@ import {
   faInfo,
 } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
-import { useLanguage } from "@/context/LanguageContext";
 import { Play, Info, Star } from "lucide-react";
 import "./Banner.css";
 
 function Banner({ item, index }) {
-  const { language } = useLanguage();
+  // For now, default to EN language
+  const language = "EN";
+  
   return (
     <section className="spotlight-modern w-full h-full relative rounded-2xl overflow-hidden group">
       {/* Background Image with Parallax Effect */}
@@ -69,7 +70,7 @@ function Banner({ item, index }) {
             <span>Watch Now</span>
           </Link>
           <Link
-            to={`/${item.id}`}
+            href={`/${item.id}`}
             className="spotlight-btn-secondary flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl text-sm font-semibold transition-all duration-300"
           >
             <Info className="w-4 h-4" />
@@ -146,7 +147,7 @@ function Banner({ item, index }) {
           <span>Watch Now</span>
         </Link>
         <Link
-          to={`/${item.id}`}
+          href={`/${item.id}`}
           className="spotlight-btn-secondary flex items-center gap-3 px-8 py-3 rounded-xl font-semibold transition-all duration-300"
         >
           <Info className="w-5 h-5" />

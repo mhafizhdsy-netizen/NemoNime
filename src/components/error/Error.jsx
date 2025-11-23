@@ -77,7 +77,11 @@ function Error({ error }) {
                 {/* Retry Button for Server Errors */}
                 {error === "500" && (
                     <button 
-                        onClick={() => window.location.reload()} 
+                        onClick={() => {
+                            if (typeof window !== 'undefined') {
+                                window.location.reload();
+                            }
+                        }} 
                         className="mt-4 text-gray-400 hover:text-white transition-colors flex items-center gap-2 text-sm"
                         aria-label="Retry"
                     >

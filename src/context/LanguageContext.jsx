@@ -5,12 +5,21 @@ import { createContext, useContext, useState, useEffect } from 'react';
 const LanguageContext = createContext(null);
 
 export const LanguageProvider = ({ children }) => {
-  const [language, setLanguage] = useState(() => {
-    const storedLanguage = localStorage.getItem('language');
-    return storedLanguage ? storedLanguage : 'EN'; 
-  });
+  const [language, setLanguage] = useState('EN'); // Default to 'EN' for SSR
+  
   useEffect(() => {
-    localStorage.setItem('language', language);
+    // Only access localStorage on client side
+    const storedLanguage = localStorage.getItem('language');
+    if (storedLanguage) {
+      setLanguage(storedLanguage);
+    }
+  }, []);
+  
+  useEffect(() => {
+    // Only save to localStorage on client side
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('language', language);
+    }
   }, [language]);
 
   const toggleLanguage = (lang) => {

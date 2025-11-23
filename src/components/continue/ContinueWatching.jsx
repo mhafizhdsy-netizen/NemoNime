@@ -8,19 +8,27 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { FaHistory, FaChevronLeft, FaChevronRight } from "react-icons/fa";
-import { useLanguage } from "@/context/LanguageContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlay } from "@fortawesome/free-solid-svg-icons";
 import "@/components/categorycard/CategoryCard.css"; // Re-use CategoryCard styles
 
 const ContinueWatching = () => {
   const [watchList, setWatchList] = useState([]);
-  const { language } = useLanguage();
+  // For now, default to EN language
+  const language = "EN";
   const swiperRef = useRef(null);
 
   useEffect(() => {
-    const data = JSON.parse(localStorage.getItem("continueWatching") || "[]");
-    setWatchList(data);
+    // Only access localStorage on client side
+    if (typeof window !== 'undefined') {
+      try {
+        const data = JSON.parse(localStorage.getItem("continueWatching") || "[]");
+        setWatchList(data);
+      } catch (error) {
+        console.error("Error reading from localStorage:", error);
+        setWatchList([]);
+      }
+    }
   }, []);
 
   const memoizedWatchList = useMemo(() => watchList, [watchList]);
@@ -28,7 +36,14 @@ const ContinueWatching = () => {
   const removeFromWatchList = (episodeId) => {
     setWatchList((prevList) => {
       const updatedList = prevList.filter((item) => item.episodeId !== episodeId);
-      localStorage.setItem("continueWatching", JSON.stringify(updatedList));
+      // Only save to localStorage on client side
+      if (typeof window !== 'undefined') {
+        try {
+          localStorage.setItem("continueWatching", JSON.stringify(updatedList));
+        } catch (error) {
+          console.error("Error writing to localStorage:", error);
+        }
+      }
       return updatedList;
     });
   };
@@ -68,7 +83,7 @@ const ContinueWatching = () => {
             <SwiperSlide key={index} className="text-center flex justify-center items-center">
                 <div className="category-card-container group w-full">
                     <div className="w-full h-auto pb-[140%] relative inline-block rounded-xl shadow-lg">
-                        <Link to={`/watch/${item?.id}?ep=${item.episodeId}`} className="inline-block bg-gradient-to-br from-[#1a1a1a] to-[#0a0a0a] absolute left-0 top-0 w-full h-full">
+                        <Link href={`/watch/${item?.id}?ep=${item.episodeId}`} className="inline-block bg-gradient-to-br from-[#1a1a1a] to-[#0a0a0a] absolute left-0 top-0 w-full h-full">
                             <img src={`${item?.poster}`} alt={item?.title} className="block w-full h-full object-cover transition-all duration-700 ease-in-out group-hover:scale-110" title={item?.title} loading="lazy" />
                             <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-500 pointer-events-none" />
                             <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-t from-brand-primary/20 via-transparent to-transparent pointer-events-none" />
