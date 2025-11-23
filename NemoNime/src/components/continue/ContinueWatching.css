@@ -1,0 +1,315 @@
+/* Enhanced Continue Watching Card Styles */
+.continue-watching-container {
+  transition: transform 0.4s cubic-bezier(0.23, 1, 0.320, 1), box-shadow 0.4s cubic-bezier(0.23, 1, 0.320, 1);
+  position: relative;
+  border-radius: 16px;
+  overflow: visible;
+  background: linear-gradient(145deg, #1a1a1a 0%, #0d0d0d 100%);
+  box-shadow: 
+    0 4px 16px rgba(0, 0, 0, 0.5),
+    0 0 0 1px rgba(255, 255, 255, 0.06);
+}
+
+.continue-watching-container:hover {
+  transform: translateY(-6px) scale(1.015);
+  box-shadow: 
+    0 16px 32px rgba(0, 0, 0, 0.6),
+    0 0 0 1px hsl(187 100% 42% / 0.25),
+    0 0 20px hsl(187 100% 42% / 0.15),
+    0 0 40px hsl(291 64% 42% / 0.08);
+  z-index: 10;
+}
+
+/* Enhanced Border Effect with Animated Gradient - Continue Watching Theme */
+.continue-watching-container::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(135deg, 
+    hsl(187 100% 42%), 
+    hsl(340 82% 52%), 
+    hsl(45 93% 47%), 
+    hsl(187 100% 42%));
+  background-size: 300% 300%;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+  z-index: -1;
+  border-radius: 18px;
+  filter: blur(6px);
+  animation: continue-gradient-shift 4s ease infinite;
+}
+
+.continue-watching-container:hover::before {
+  opacity: 0.9;
+  animation: continue-gradient-shift 1.5s ease infinite;
+}
+
+@keyframes continue-gradient-shift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+/* Enhanced Image Effects */
+.continue-watching-container img {
+  border-radius: 16px;
+  transform: scale(1);
+  transition: transform 0.6s cubic-bezier(0.23, 1, 0.320, 1), filter 0.6s cubic-bezier(0.23, 1, 0.320, 1);
+  filter: brightness(0.8) contrast(0.9) saturate(0.8);
+}
+
+.continue-watching-container:hover img {
+  transform: scale(1.08);
+  filter: brightness(1.1) contrast(1.05) saturate(1.2);
+}
+
+/* Continue Watching Shimmer Effect */
+.continue-shimmer {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    105deg,
+    transparent 40%,
+    hsl(187 100% 42% / 0.15) 50%,
+    hsl(340 82% 52% / 0.2) 60%,
+    hsl(45 93% 47% / 0.1) 70%,
+    transparent 80%
+  );
+  transform: skewX(-25deg);
+  transition: none;
+  pointer-events: none;
+  z-index: 3;
+}
+
+.continue-watching-container:hover .continue-shimmer {
+  animation: continue-shimmer-slide 0.9s cubic-bezier(0.23, 1, 0.320, 1);
+}
+
+@keyframes continue-shimmer-slide {
+  0% {
+    left: -100%;
+    opacity: 0;
+  }
+  15% {
+    opacity: 1;
+  }
+  85% {
+    opacity: 1;
+  }
+  100% {
+    left: 150%;
+    opacity: 0;
+  }
+}
+
+/* Enhanced Corner Glow - Continue Watching Theme */
+.continue-corner-glow {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: 
+    radial-gradient(circle at 20% 20%, hsl(187 100% 42% / 0.3) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, hsl(340 82% 52% / 0.3) 0%, transparent 50%),
+    radial-gradient(circle at 20% 80%, hsl(45 93% 47% / 0.25) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, hsl(291 64% 42% / 0.25) 0%, transparent 50%);
+  opacity: 0;
+  pointer-events: none !important;
+  z-index: 2;
+  transition: opacity 0.4s cubic-bezier(0.23, 1, 0.320, 1);
+  mix-blend-mode: screen;
+}
+
+.continue-watching-container:hover .continue-corner-glow {
+  opacity: 1;
+  animation: continue-corner-pulse 1.8s ease-in-out infinite alternate;
+}
+
+@keyframes continue-corner-pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.7;
+  }
+  100% {
+    transform: scale(1.08);
+    opacity: 1;
+  }
+}
+
+/* Enhanced Progress Bar */
+.continue-progress-bar {
+  height: 3px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 2px;
+  overflow: hidden;
+  position: relative;
+}
+
+.continue-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, hsl(187 100% 42%), hsl(340 82% 52%));
+  border-radius: 2px;
+  transition: width 0.6s cubic-bezier(0.23, 1, 0.320, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.continue-progress-fill::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  animation: progress-shine 2s infinite;
+}
+
+@keyframes progress-shine {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* Enhanced Play Button */
+.continue-play-button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, hsl(187 100% 42%), hsl(340 82% 52%));
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1);
+  box-shadow: 
+    0 8px 24px hsl(187 100% 42% / 0.3),
+    0 4px 12px hsl(340 82% 52% / 0.25);
+  z-index: 10;
+}
+
+.continue-watching-container:hover .continue-play-button {
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 1;
+}
+
+.continue-play-button:hover {
+  transform: translate(-50%, -50%) scale(1.1);
+  box-shadow: 
+    0 12px 32px hsl(187 100% 42% / 0.4),
+    0 6px 16px hsl(340 82% 52% / 0.3);
+}
+
+/* Enhanced Episode Badge */
+.continue-episode-badge {
+  background: linear-gradient(135deg, hsl(187 100% 42%), hsl(340 82% 52%));
+  color: white;
+  padding: 6px 12px;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 11px;
+  letter-spacing: 0.05em;
+  box-shadow: 
+    0 4px 12px hsl(187 100% 42% / 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.25);
+  transition: all 0.3s cubic-bezier(0.23, 1, 0.320, 1);
+}
+
+.continue-watching-container:hover .continue-episode-badge {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 
+    0 8px 20px hsl(187 100% 42% / 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+/* Mobile Optimizations */
+@media (max-width: 768px) {
+  .continue-watching-container:hover {
+    transform: translateY(-6px) scale(1.02);
+  }
+  
+  .continue-watching-container:hover img {
+    transform: scale(1.08);
+    filter: brightness(1.12) contrast(1.05) saturate(1.2);
+  }
+  
+  .continue-watching-container::before {
+    display: none;
+  }
+  
+  .continue-play-button {
+    width: 50px;
+    height: 50px;
+  }
+}
+
+@media (max-width: 478px) {
+  .continue-watching-container:hover {
+    transform: translateY(-4px) scale(1.015);
+  }
+  
+  .continue-watching-container:hover img {
+    transform: scale(1.06);
+    filter: brightness(1.08) contrast(1.02) saturate(1.1);
+  }
+  
+  .continue-watching-container:hover .continue-shimmer {
+    animation: continue-shimmer-slide-mobile 0.6s cubic-bezier(0.23, 1, 0.320, 1);
+  }
+  
+  @keyframes continue-shimmer-slide-mobile {
+    0% {
+      left: -100%;
+      opacity: 0;
+    }
+    25% {
+      opacity: 0.7;
+    }
+    75% {
+      opacity: 0.7;
+    }
+    100% {
+      left: 120%;
+      opacity: 0;
+    }
+  }
+  
+  .continue-play-button {
+    width: 45px;
+    height: 45px;
+  }
+  
+  .continue-episode-badge {
+    padding: 4px 8px;
+    font-size: 9px;
+  }
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  .continue-watching-container,
+  .continue-watching-container img,
+  .continue-shimmer,
+  .continue-corner-glow,
+  .continue-play-button,
+  .continue-episode-badge {
+    transition: none;
+    animation: none;
+  }
+}
