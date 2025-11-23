@@ -1,9 +1,8 @@
 import { FaChevronLeft } from "react-icons/fa";
-import { useNavigate } from "next/link";
+import Link from "next/link";
 import { Home, Search, RefreshCw } from "lucide-react";
 
 function Error({ error }) {
-    const navigate = useNavigate();
     
     const errorConfig = {
         "404": {
@@ -56,8 +55,8 @@ function Error({ error }) {
 
                 {/* Action Buttons */}
                 <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
-                    <button 
-                        onClick={() => navigate('/home')} 
+                    <Link 
+                        href="/home" 
                         className="group bg-brand-primary hover:bg-[#FF5252] transition-all duration-200 text-white py-3 px-6 rounded-lg flex items-center justify-center gap-3 shadow-lg hover:shadow-xl hover:scale-105 active:scale-95"
                         aria-label="Go to homepage"
                     >
@@ -65,8 +64,8 @@ function Error({ error }) {
                         <span className="text-base font-medium">Back to Homepage</span>
                     </button>
                     
-                    <button 
-                        onClick={() => navigate('/search')} 
+                    <Link 
+                        href="/search" 
                         className="group bg-white/10 hover:bg-white/20 transition-all duration-200 text-white py-3 px-6 rounded-lg flex items-center justify-center gap-3 border border-white/20 hover:border-white/40 hover:scale-105 active:scale-95"
                         aria-label="Search anime"
                     >
