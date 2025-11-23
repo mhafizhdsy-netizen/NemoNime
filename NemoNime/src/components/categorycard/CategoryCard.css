@@ -1,0 +1,584 @@
+.overlay {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0.2) 50%,
+    rgba(0, 0, 0, 0.85) 100%
+  );
+  z-index: 50;
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 16px;
+}
+
+.group:hover .overlay {
+  background: linear-gradient(
+    180deg,
+    hsl(340 82% 52% / 0.12) 0%,
+    rgba(0, 0, 0, 0.5) 50%,
+    rgba(0, 0, 0, 0.92) 100%
+  );
+}
+
+.dot {
+  width: 2px;
+  height: 2px;
+  display: inline-block;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.4);
+  margin: 0 6px;
+  position: relative;
+  top: -1px;
+}
+
+/* Modern Card Styles - Optimized for Desktop Performance */
+.category-card-container {
+  transition: transform 0.4s cubic-bezier(0.23, 1, 0.320, 1), box-shadow 0.4s cubic-bezier(0.23, 1, 0.320, 1);
+  position: relative;
+  border-radius: 16px;
+  overflow: visible;
+  background: linear-gradient(145deg, #1a1a1a 0%, #0d0d0d 100%);
+  box-shadow: 
+    0 4px 16px rgba(0, 0, 0, 0.5),
+    0 0 0 1px rgba(255, 255, 255, 0.06);
+}
+
+.category-card-container:hover {
+  transform: translateY(-6px) scale(1.015);
+  box-shadow: 
+    0 16px 32px rgba(0, 0, 0, 0.6),
+    0 0 0 1px hsl(340 82% 52% / 0.25),
+    0 0 20px hsl(340 82% 52% / 0.15),
+    0 0 40px hsl(187 100% 42% / 0.08);
+  z-index: 10;
+}
+
+/* Enhanced Border Effect with Animated Gradient */
+.category-card-container::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(135deg, 
+    hsl(340 82% 52%), 
+    hsl(187 100% 42%), 
+    hsl(291 64% 42%), 
+    hsl(340 82% 52%));
+  background-size: 300% 300%;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+  z-index: -1;
+  border-radius: 18px;
+  filter: blur(6px);
+  animation: gradient-shift 4s ease infinite;
+}
+
+.category-card-container:hover::before {
+  opacity: 0.8;
+  animation: gradient-shift 2s ease infinite;
+}
+
+@keyframes gradient-shift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+/* Desktop-specific optimizations */
+@media (min-width: 1024px) {
+  .category-card-container:hover {
+    transform: translateY(-8px) scale(1.02);
+  }
+}
+
+/* Remove heavy after pseudo-element */
+.category-card-container::after {
+  display: none;
+}
+
+.category-card-container img {
+  border-radius: 16px;
+  transform: scale(1);
+  transition: transform 0.6s cubic-bezier(0.23, 1, 0.320, 1), filter 0.6s cubic-bezier(0.23, 1, 0.320, 1);
+  filter: brightness(0.85) contrast(0.95);
+}
+
+.category-card-container:hover img {
+  transform: scale(1.08);
+  filter: brightness(1.1) contrast(1.05) saturate(1.2);
+}
+
+/* Desktop optimization */
+@media (min-width: 1024px) {
+  .category-card-container:hover img {
+    transform: scale(1.12);
+  }
+}
+
+.category-badge {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  background: linear-gradient(135deg, 
+    hsl(340 82% 52% / 0.12), 
+    hsl(187 100% 42% / 0.12));
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 6px 12px;
+  border-radius: 12px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1);
+  box-shadow: 
+    0 4px 12px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  position: relative;
+  overflow: hidden;
+}
+
+.category-badge::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.5s cubic-bezier(0.23, 1, 0.320, 1);
+}
+
+.category-badge:hover::before {
+  left: 100%;
+}
+
+.category-badge:hover {
+  background: linear-gradient(135deg, 
+    hsl(340 82% 52% / 0.25), 
+    hsl(187 100% 42% / 0.25));
+  border-color: rgba(255, 255, 255, 0.25);
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 
+    0 8px 20px hsl(340 82% 52% / 0.3),
+    0 0 25px hsl(187 100% 42% / 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.25);
+}
+
+.item-title {
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  font-size: 15px;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.9);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1);
+  position: relative;
+}
+
+.item-title:hover {
+  color: hsl(340 82% 52%);
+  text-shadow: 
+    0 0 8px hsl(340 82% 52% / 0.6),
+    0 0 16px hsl(340 82% 52% / 0.4),
+    0 2px 4px rgba(0, 0, 0, 0.8);
+  transform: translateY(-1px);
+}
+
+/* Simplified play icon - removed heavy animations */
+
+.info-container {
+  padding: 12px 16px 16px;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.95) 0%,
+    rgba(0, 0, 0, 0.7) 50%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  transition: all 0.5s cubic-bezier(0.23, 1, 0.320, 1);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.group:hover .info-container {
+  padding-bottom: 20px;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.98) 0%,
+    rgba(10, 10, 10, 0.9) 30%,
+    rgba(20, 20, 20, 0.8) 60%,
+    rgba(0, 0, 0, 0.95) 100%
+  );
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-top: 1px solid hsl(340 82% 52% / 0.3);
+  box-shadow: 
+    0 -4px 20px hsl(340 82% 52% / 0.15),
+    0 -2px 10px hsl(187 100% 42% / 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.meta-info {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 13px;
+  font-weight: 500;
+}
+
+/* Shimmer Loading Effect */
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+.category-card-skeleton {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.05) 0%,
+    rgba(255, 255, 255, 0.1) 50%,
+    rgba(255, 255, 255, 0.05) 100%
+  );
+  background-size: 1000px 100%;
+  animation: shimmer 2s infinite;
+}
+
+/* Removed badge glow animation for performance */
+
+/* Removed fade in animation */
+
+/* Removed stagger animation for better performance */
+
+/* Removed float animation */
+
+/* Removed float animation for better performance */
+
+/* Removed glow pulse animation */
+
+/* Desktop Optimizations */
+@media (min-width: 1400px) {
+  .category-card-container {
+    border-radius: 18px;
+  }
+  
+  .category-card-container::before,
+  .category-card-container::after {
+    border-radius: 20px;
+  }
+  
+  .category-card-container:hover {
+    transform: translateY(-12px) scale(1.03);
+  }
+  
+  .item-title {
+    font-size: 16px;
+  }
+}
+
+/* Tablet Adjustments */
+@media (max-width: 1400px) {
+  .category-card-container {
+    border-radius: 14px;
+  }
+  
+  .category-card-container::before,
+  .category-card-container::after {
+    border-radius: 16px;
+  }
+  
+  .item-title {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 758px) {
+  .category-card-container {
+    border-radius: 12px;
+  }
+  
+  .category-card-container:hover {
+    transform: translateY(-3px) scale(1.01);
+  }
+  
+  .item-title {
+    font-size: 13px;
+    line-height: 1.4;
+  }
+  
+  .category-badge {
+    padding: 4px 8px;
+    font-size: 10px;
+  }
+}
+
+@media (max-width: 478px) {
+  .category-card-container {
+    border-radius: 10px;
+  }
+  
+  .category-card-container:hover {
+    transform: translateY(-2px);
+  }
+  
+  .item-title {
+    font-size: 12px;
+    margin-top: 8px;
+  }
+  
+  .category-badge {
+    padding: 3px 6px;
+    font-size: 9px;
+    border-radius: 6px;
+  }
+}
+
+/* Dark Mode Enhancements */
+@media (prefers-color-scheme: dark) {
+  .category-card-container {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.08);
+  }
+  
+  .category-card-container:hover {
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.15);
+  }
+}
+
+/* Performance Optimization - Desktop Focus */
+@media (min-width: 1024px) {
+  .category-card-container:hover {
+    will-change: transform;
+  }
+  
+  .category-card-container:hover img {
+    will-change: transform;
+  }
+}
+
+/* GPU Acceleration - Only on hover */
+.category-card-container:hover,
+.category-card-container:hover img {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+/* Accessibility */
+.category-card-container:focus-within {
+  outline: 2px solid rgba(255, 255, 255, 0.5);
+  outline-offset: 2px;
+}
+
+.item-title:focus {
+  outline: 2px solid rgba(255, 255, 255, 0.5);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  .category-card-container,
+  .category-card-container img,
+  .overlay,
+  .info-container,
+  .play-icon,
+  .item-title,
+  .category-badge {
+    transition: none;
+    animation: none;
+  }
+}
+
+/* Neon Glow Text Effect */
+.neon-text {
+  text-shadow: 
+    0 0 10px rgba(233, 30, 99, 0.8),
+    0 0 20px rgba(233, 30, 99, 0.6),
+    0 0 30px rgba(233, 30, 99, 0.4),
+    0 0 40px rgba(240, 98, 146, 0.3);
+}
+
+/* Removed holographic animation */
+
+/* Removed particle animation */
+
+/* 3D Perspective */
+.card-3d-container {
+  perspective: 1000px;
+  transform-style: preserve-3d;
+}
+
+/* Removed scanline effect */
+
+/* Removed rainbow border animation */
+
+/* Removed glitch animation */
+
+/* Removed ripple animation */
+
+/* Removed cyber grid */
+
+/* Removed neon pulse animation */
+
+/* Removed energy wave animation */
+
+/* Removed badge stagger for performance */
+
+/* Enhanced Mobile Responsiveness */
+@media (max-width: 478px) {
+  .category-card-container:hover {
+    transform: translateY(-6px) scale(1.015);
+    box-shadow: 
+      0 16px 32px rgba(0, 0, 0, 0.7),
+      0 0 0 1px rgba(233, 30, 99, 0.2),
+      0 0 20px rgba(233, 30, 99, 0.15);
+  }
+  
+  .category-card-container::before {
+    display: none;
+  }
+  
+  .category-card-container:hover img {
+    transform: scale(1.06);
+    filter: brightness(1.08) contrast(1.02) saturate(1.1);
+  }
+  
+  .category-card-container:hover .card-shine {
+    animation: shimmer-slide-mobile 0.6s cubic-bezier(0.23, 1, 0.320, 1);
+  }
+  
+  @keyframes shimmer-slide-mobile {
+    0% {
+      left: -100%;
+      opacity: 0;
+    }
+    30% {
+      opacity: 0.8;
+    }
+    70% {
+      opacity: 0.8;
+    }
+    100% {
+      left: 120%;
+      opacity: 0;
+    }
+  }
+  
+  .item-title {
+    font-size: 12px;
+    margin-top: 8px;
+  }
+  
+  .category-badge {
+    padding: 3px 8px;
+    font-size: 9px;
+    border-radius: 8px;
+  }
+  
+  .category-badge:hover {
+    transform: translateY(-1px) scale(1.02);
+  }
+}
+
+/* High Performance Mode */
+@media (prefers-reduced-motion: no-preference) {
+  .category-card-container {
+    will-change: transform, box-shadow;
+  }
+}
+
+/* Removed border rotate animation */
+
+/* Modern Shimmer Effect */
+.card-shine {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    105deg,
+    transparent 40%,
+    hsl(340 82% 52% / 0.15) 50%,
+    hsl(187 100% 42% / 0.2) 60%,
+    hsl(291 64% 42% / 0.1) 70%,
+    transparent 80%
+  );
+  transform: skewX(-25deg);
+  transition: none;
+  pointer-events: none;
+  z-index: 3;
+}
+
+.category-card-container:hover .card-shine {
+  animation: shimmer-slide 0.8s cubic-bezier(0.23, 1, 0.320, 1);
+}
+
+@keyframes shimmer-slide {
+  0% {
+    left: -100%;
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    left: 150%;
+    opacity: 0;
+  }
+}
+
+/* Enhanced Corner Glow with Multiple Layers */
+.corner-glow {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: 
+    radial-gradient(circle at 20% 20%, hsl(340 82% 52% / 0.3) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, hsl(187 100% 42% / 0.3) 0%, transparent 50%),
+    radial-gradient(circle at 20% 80%, hsl(291 64% 42% / 0.25) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, hsl(45 93% 47% / 0.25) 0%, transparent 50%);
+  opacity: 0;
+  pointer-events: none !important;
+  z-index: 2;
+  transition: opacity 0.4s cubic-bezier(0.23, 1, 0.320, 1);
+  mix-blend-mode: screen;
+}
+
+.category-card-container:hover .corner-glow {
+  opacity: 1;
+  animation: corner-pulse 2s ease-in-out infinite alternate;
+}
+
+@keyframes corner-pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1.05);
+    opacity: 1;
+  }
+}
+
+/* Removed - Too heavy */
+
+/* Removed - Too heavy */
+
+/* Removed - Too heavy */

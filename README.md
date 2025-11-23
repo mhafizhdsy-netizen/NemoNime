@@ -1,184 +1,141 @@
-# NemoNime 🎬
+# 🚀 Welcome to Z.ai Code Scaffold
 
-Modern anime streaming platform built with React, Vite, and Tailwind CSS. Watch your favorite anime with a beautiful, responsive interface and powerful features.
+A modern, production-ready web application scaffold powered by cutting-edge technologies, designed to accelerate your development with [Z.ai](https://chat.z.ai)'s AI-powered coding assistance.
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/mhafizhdsy-netizen/NemoNime)
+## ✨ Technology Stack
 
-## ✨ Features
+This scaffold provides a robust foundation built with:
 
-### 🎥 Watch Experience
-- **HD Streaming** - High-quality video playback with HLS support
-- **Multiple Servers** - Backup options for uninterrupted viewing
-- **Sub & Dub** - Watch in your preferred language
-- **Auto Play** - Seamless episode transitions
-- **Skip Intro/Outro** - Jump straight to the action
-- **Continue Watching** - Resume where you left off
-- **Picture-in-Picture** - Watch while browsing
+### 🎯 Core Framework
+- **⚡ Next.js 15** - The React framework for production with App Router
+- **📘 TypeScript 5** - Type-safe JavaScript for better developer experience
+- **🎨 Tailwind CSS 4** - Utility-first CSS framework for rapid UI development
 
-### 📱 User Features
-- **Watchlist** - Save anime to watch later
-- **Push Notifications** - Get notified of new episodes
-- **Language Toggle** - Switch between English and Japanese titles
-- **Dark Mode** - Optimized for comfortable viewing
-- **Responsive Design** - Perfect on any device
-- **PWA Support** - Install as a native app
+### 🧩 UI Components & Styling
+- **🧩 shadcn/ui** - High-quality, accessible components built on Radix UI
+- **🎯 Lucide React** - Beautiful & consistent icon library
+- **🌈 Framer Motion** - Production-ready motion library for React
+- **🎨 Next Themes** - Perfect dark mode in 2 lines of code
 
-### 🔍 Content Discovery
-- **Search** - Find anime by title with real-time suggestions
-- **Trending** - See what's popular right now
-- **Top 100** - Daily, weekly, and monthly rankings
-- **Genres** - Browse by your favorite categories
-- **A-Z List** - Alphabetical browsing
-- **Random** - Discover something new
-- **Schedule** - Track upcoming episode releases
+### 📋 Forms & Validation
+- **🎣 React Hook Form** - Performant forms with easy validation
+- **✅ Zod** - TypeScript-first schema validation
 
-### 📊 Information
-- **Detailed Pages** - Complete anime information
-- **Character Profiles** - Character and voice actor details
-- **Studio Info** - Browse by production studio
-- **Episode Schedule** - Know when new episodes air
-- **Ratings** - MAL scores and community ratings
+### 🔄 State Management & Data Fetching
+- **🐻 Zustand** - Simple, scalable state management
+- **🔄 TanStack Query** - Powerful data synchronization for React
+- **🌐 Axios** - Promise-based HTTP client
 
-## 🚀 Tech Stack
+### 🗄️ Database & Backend
+- **🗄️ Prisma** - Next-generation Node.js and TypeScript ORM
+- **🔐 NextAuth.js** - Complete open-source authentication solution
 
-- **React 18** - UI library
-- **Vite** - Build tool and dev server
-- **Tailwind CSS** - Utility-first styling
-- **React Router** - Navigation
-- **Artplayer** - Video player
-- **Axios** - HTTP client
-- **HLS.js** - Video streaming
-- **Swiper** - Touch slider
-- **Vercel Analytics** - Performance monitoring
+### 🎨 Advanced UI Features
+- **📊 TanStack Table** - Headless UI for building tables and datagrids
+- **🖱️ DND Kit** - Modern drag and drop toolkit for React
+- **📊 Recharts** - Redefined chart library built with React and D3
+- **🖼️ Sharp** - High performance image processing
 
-## 📦 Getting Started
+### 🌍 Internationalization & Utilities
+- **🌍 Next Intl** - Internationalization library for Next.js
+- **📅 Date-fns** - Modern JavaScript date utility library
+- **🪝 ReactUse** - Collection of essential React hooks for modern development
 
-### Prerequisites
+## 🎯 Why This Scaffold?
 
-- Node.js (v16 or higher)
-- npm or yarn
+- **🏎️ Fast Development** - Pre-configured tooling and best practices
+- **🎨 Beautiful UI** - Complete shadcn/ui component library with advanced interactions
+- **🔒 Type Safety** - Full TypeScript configuration with Zod validation
+- **📱 Responsive** - Mobile-first design principles with smooth animations
+- **🗄️ Database Ready** - Prisma ORM configured for rapid backend development
+- **🔐 Auth Included** - NextAuth.js for secure authentication flows
+- **📊 Data Visualization** - Charts, tables, and drag-and-drop functionality
+- **🌍 i18n Ready** - Multi-language support with Next Intl
+- **🚀 Production Ready** - Optimized build and deployment settings
+- **🤖 AI-Friendly** - Structured codebase perfect for AI assistance
 
-### Installation
+## 🚀 Quick Start
 
-1. Clone the repository
 ```bash
-git clone https://github.com/mhafizhdsy-netizen/NemoNime.git
-cd NemoNime
-```
-
-2. Install dependencies
-```bash
+# Install dependencies
 npm install
-```
 
-3. Set up environment variables
-```bash
-cp .env.example .env
-```
-
-Edit `.env` with your API configuration:
-```env
-VITE_API_URL=your_api_url
-VITE_WORKER_URL=your_worker_url
-```
-
-4. Start development server
-```bash
+# Start development server
 npm run dev
-```
 
-5. Open http://localhost:5173
-
-### Build for Production
-
-```bash
+# Build for production
 npm run build
+
+# Start production server
+npm start
 ```
 
-The build output will be in the `dist` directory.
+Open [http://localhost:3000](http://localhost:3000) to see your application running.
 
-## 🌐 Deployment
+## 🤖 Powered by Z.ai
 
-### Deploy to Vercel
+This scaffold is optimized for use with [Z.ai](https://chat.z.ai) - your AI assistant for:
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/mhafizhdsy-netizen/NemoNime)
+- **💻 Code Generation** - Generate components, pages, and features instantly
+- **🎨 UI Development** - Create beautiful interfaces with AI assistance  
+- **🔧 Bug Fixing** - Identify and resolve issues with intelligent suggestions
+- **📝 Documentation** - Auto-generate comprehensive documentation
+- **🚀 Optimization** - Performance improvements and best practices
 
-1. Click the button above
-2. Connect your GitHub account
-3. Configure environment variables
-4. Deploy!
-
-### Deploy to Other Platforms
-
-The app can be deployed to any static hosting service:
-- Netlify
-- Cloudflare Pages
-- GitHub Pages
-- Railway
-- Render
+Ready to build something amazing? Start chatting with Z.ai at [chat.z.ai](https://chat.z.ai) and experience the future of AI-powered development!
 
 ## 📁 Project Structure
 
 ```
-NemoNime/
-├── public/              # Static assets
-├── src/
-│   ├── components/      # React components
-│   │   ├── ui/         # UI components
-│   │   ├── Loader/     # Loading skeletons
-│   │   ├── player/     # Video player
-│   │   └── ...
-│   ├── pages/          # Page components
-│   ├── context/        # React context
-│   ├── hooks/          # Custom hooks
-│   ├── utils/          # Utility functions
-│   ├── config/         # Configuration
-│   ├── App.jsx         # Main app component
-│   └── main.jsx        # Entry point
-├── .env.example        # Environment variables template
-├── vite.config.js      # Vite configuration
-└── tailwind.config.js  # Tailwind configuration
+src/
+├── app/                 # Next.js App Router pages
+├── components/          # Reusable React components
+│   └── ui/             # shadcn/ui components
+├── hooks/              # Custom React hooks
+└── lib/                # Utility functions and configurations
 ```
 
-## 🎨 Features in Detail
+## 🎨 Available Features & Components
 
-### Progressive Web App (PWA)
-Install NemoNime as a native app on your device for offline access and push notifications.
+This scaffold includes a comprehensive set of modern web development tools:
 
-### Watch Progress Tracking
-Your watch progress is automatically saved and synced across devices.
+### 🧩 UI Components (shadcn/ui)
+- **Layout**: Card, Separator, Aspect Ratio, Resizable Panels
+- **Forms**: Input, Textarea, Select, Checkbox, Radio Group, Switch
+- **Feedback**: Alert, Toast (Sonner), Progress, Skeleton
+- **Navigation**: Breadcrumb, Menubar, Navigation Menu, Pagination
+- **Overlay**: Dialog, Sheet, Popover, Tooltip, Hover Card
+- **Data Display**: Badge, Avatar, Calendar
 
-### Smart Search
-Real-time search with suggestions as you type.
+### 📊 Advanced Data Features
+- **Tables**: Powerful data tables with sorting, filtering, pagination (TanStack Table)
+- **Charts**: Beautiful visualizations with Recharts
+- **Forms**: Type-safe forms with React Hook Form + Zod validation
 
-### Episode Schedule
-Never miss a new episode with the built-in schedule tracker.
+### 🎨 Interactive Features
+- **Animations**: Smooth micro-interactions with Framer Motion
+- **Drag & Drop**: Modern drag-and-drop functionality with DND Kit
+- **Theme Switching**: Built-in dark/light mode support
 
-## 🤝 Contributing
+### 🔐 Backend Integration
+- **Authentication**: Ready-to-use auth flows with NextAuth.js
+- **Database**: Type-safe database operations with Prisma
+- **API Client**: HTTP requests with Axios + TanStack Query
+- **State Management**: Simple and scalable with Zustand
 
-Contributions are welcome! Please feel free to submit a Pull Request.
+### 🌍 Production Features
+- **Internationalization**: Multi-language support with Next Intl
+- **Image Optimization**: Automatic image processing with Sharp
+- **Type Safety**: End-to-end TypeScript with Zod validation
+- **Essential Hooks**: 100+ useful React hooks with ReactUse for common patterns
 
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
+## 🤝 Get Started with Z.ai
 
-## 📝 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## 🙏 Acknowledgments
-
-- [ANIME API](https://github.com/itzzzme/anime-api) - For providing the anime data
-- All contributors who have helped improve this project
-- The anime community for their support
-
-## 📧 Support
-
-- **Website**: [NemoNime.vercel.app](https://NeoNime.vercel.app)
-- **Issues**: [Report bugs](https://github.com/mhafizhdsy-netizen/NemoNime/issues)
+1. **Clone this scaffold** to jumpstart your project
+2. **Visit [chat.z.ai](https://chat.z.ai)** to access your AI coding assistant
+3. **Start building** with intelligent code generation and assistance
+4. **Deploy with confidence** using the production-ready setup
 
 ---
 
-Made with ❤️ by the NemoNime Team
+Built with ❤️ for the developer community. Supercharged by [Z.ai](https://chat.z.ai) 🚀
